@@ -15,6 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Menu.MyInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Menu.NoticeActivity" />
+        <activity android:name=".Menu.InformationRuleActivity" />
+        <activity android:name=".Menu.ServiceInfoActivity" />
+        <activity android:name=".Menu.SettingActivity" />
+        <activity android:name=".Menu.VersionInfoActivity"></activity>
     </application>
 
 </manifest>
