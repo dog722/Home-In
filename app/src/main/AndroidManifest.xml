@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.eunbi.homein.homeinproject">
+    package="kr.co.homein.homeinproject">
 
     <application
         android:allowBackup="true"
@@ -8,26 +8,36 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Menu.MyInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Menu.NoticeActivity" />
-        <activity android:name=".Menu.InformationRuleActivity" />
-        <activity android:name=".Menu.ServiceInfoActivity" />
-        <activity android:name=".Menu.SettingActivity" />
-        <activity android:name=".Menu.VersionInfoActivity" />
-        <activity android:name=".HomeIn.PeopleItemDetailActivity" />
+        <activity android:name=".Menu.NoticeActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Menu.InformationRuleActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Menu.ServiceInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Menu.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Menu.VersionInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".HomeIn.PeopleItemDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Company.CompanyInfoActivity"
             android:label="@string/title_activity_company_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Company.CompanyDetailItemActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

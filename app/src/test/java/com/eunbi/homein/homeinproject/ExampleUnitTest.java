@@ -1,4 +1,4 @@
-package com.eunbi.homein.homeinproject;
+package com.co.homein.homeinproject;
 
 import org.junit.Test;
 

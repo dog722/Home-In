@@ -1,4 +1,4 @@
-package com.eunbi.homein.homeinproject;
+package kr.co.homein.homeinproject;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
