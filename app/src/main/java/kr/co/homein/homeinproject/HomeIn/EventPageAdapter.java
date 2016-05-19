@@ -24,10 +24,10 @@ public class EventPageAdapter extends PagerAdapter {
         Bitmap galImage;
         BitmapFactory.Options options;
         private final int[] galImages = new int[] {
-                R.drawable.eventpage_dummy,
-                R.drawable.eventpage_dummy,
-                R.drawable.eventpage_dummy,
-                R.drawable.eventpage_dummy
+                R.drawable.company_item_dummy,
+                R.drawable.company_item_dummy,
+                R.drawable.company_item_dummy,
+                R.drawable.company_item_dummy
         };
 
     EventPageAdapter(Context context) {

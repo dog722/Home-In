@@ -1,7 +1,15 @@
 package kr.co.homein.homeinproject.HomeIn;
 
-/**
- * Created by seoeunbi on 2016. 5. 18..
- */
-public class SearchTagActivity {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import kr.co.homein.homeinproject.R;
+
+public class SearchTagActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_tag);
+    }
 }

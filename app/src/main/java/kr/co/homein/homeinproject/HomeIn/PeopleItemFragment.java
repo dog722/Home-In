@@ -99,10 +99,7 @@ public class PeopleItemFragment extends Fragment {
             }
         });
 
-
-
         setData();
-
     }
 
 

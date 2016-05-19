@@ -9,12 +9,17 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import kr.co.homein.homeinproject.Company.CompanyItemFragment;
+import kr.co.homein.homeinproject.User.MyEstimateListActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemFragment;
+import kr.co.homein.homeinproject.HomeIn.SearchTagActivity;
 import kr.co.homein.homeinproject.Menu.InformationRuleActivity;
 import kr.co.homein.homeinproject.Menu.MyInfoActivity;
 import kr.co.homein.homeinproject.Menu.NoticeActivity;
@@ -22,6 +27,8 @@ import kr.co.homein.homeinproject.Menu.ServiceInfoActivity;
 import kr.co.homein.homeinproject.Menu.SettingActivity;
 import kr.co.homein.homeinproject.Menu.VersionInfoActivity;
 import kr.co.homein.homeinproject.Posting.PostingFragment;
+import kr.co.homein.homeinproject.User.UserProfileActivity;
+import kr.co.homein.homeinproject.User.WishListActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -32,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -46,18 +57,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
         //탭 등록
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("홈-인"), PeopleItemFragment.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("시공사례"), CompanyItemFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("피플 홈인"), PeopleItemFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("시공 홈인"), CompanyItemFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("포스팅"), PostingFragment.class, null);
 
         menuView = (NavigationView)findViewById(R.id.nav_menu);
         menuView.setNavigationItemSelectedListener(this);
+        View headerView = menuView.getHeaderView(0);
         drawer = (DrawerLayout)findViewById(R.id.drawer);
         Button btn = (Button)findViewById(R.id.btn_menu);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawer.openDrawer(GravityCompat.START);
+            }
+        });
+
+
+        Toolbar toolbar = (Toolbar) headerView.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(android.R.drawable.ic_menu_search);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "center toolbar navigation click", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, SearchTagActivity.class)); //
+
+            }
+        });
+
+        ImageButton imgBtn = (ImageButton) headerView.findViewById(R.id.wishlist);
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, WishListActivity.class)); //관심 목록으로 이동
+
+            }
+        });
+
+
+        imgBtn  = (ImageButton) headerView.findViewById(R.id.estimatelist);
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class)); // 내 견적서 문의로 이동
+
+            }
+        });
+
+
+        ImageView profileImg = (ImageView) headerView.findViewById(R.id.profile_img);
+        profileImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class)); // 프로필 수정 화면으로 이동
             }
         });
     }
@@ -72,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
 
 
     @Override
@@ -94,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.version) { //버전정보
             startActivity(new Intent(MainActivity.this, VersionInfoActivity.class));
-
           }
         else if (id == R.id.setting) { //환경설정
             startActivity(new Intent(MainActivity.this, SettingActivity.class));

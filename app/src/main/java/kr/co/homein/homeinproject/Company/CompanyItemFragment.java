@@ -51,7 +51,7 @@ public class CompanyItemFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_company_item, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.rv_list);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_list2);
         recyclerView.setAdapter(mAdatper);
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext());

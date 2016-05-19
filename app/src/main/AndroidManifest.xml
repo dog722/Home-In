@@ -8,36 +8,53 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Menu.MyInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Menu.NoticeActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Menu.InformationRuleActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Menu.ServiceInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Menu.SettingActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Menu.VersionInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".HomeIn.PeopleItemDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Menu.NoticeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Menu.InformationRuleActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Menu.ServiceInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Menu.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Menu.VersionInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HomeIn.PeopleItemDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Company.CompanyDetailItemActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Company.CompanyInfoActivity"
-            android:label="@string/title_activity_company_info"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Company.CompanyDetailItemActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        <activity
+            android:name=".HomeIn.SearchTagActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".User.WishListActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".User.MyEstimateListActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Posting.PostingDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".User.UserProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
