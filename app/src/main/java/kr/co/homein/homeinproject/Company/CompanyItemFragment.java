@@ -9,10 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import kr.co.homein.homeinproject.data.CompanyItemData;
+import android.widget.Button;
 
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.CompanyItemData;
 
 
 /**
@@ -23,10 +23,11 @@ public class CompanyItemFragment extends Fragment {
 
     RecyclerView recyclerView;
     CompanyItemListAdapter mAdatper;
-
+    Button edit;
 
     public CompanyItemFragment() {
         // Required empty public constructor
+
     }
 
     @Override
@@ -42,6 +43,7 @@ public class CompanyItemFragment extends Fragment {
             }
         });
         setData();
+
     }
 
     @Override
@@ -59,9 +61,9 @@ public class CompanyItemFragment extends Fragment {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
-
         return view;
     }
+
 
 
     private void setData() {
@@ -70,6 +72,8 @@ public class CompanyItemFragment extends Fragment {
             CompanyItemData c = new CompanyItemData();
             c.setGoodCount("20" + i);
             mAdatper.add(c);
+            c.tag.add("태그1");
+            c.tag.add("태그2");
         }
 
     }

@@ -48,13 +48,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="1개의 답글"
             android:id="@+id/comment_count"
-            android:paddingTop="30dp" />
+            android:layout_marginTop="20dp" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@mipmap/ic_launcher"
-            android:id="@+id/btn_comment" />
+            android:id="@+id/btn_comment"
+            android:layout_margin="20dp" />
     </LinearLayout>
 
     <LinearLayout

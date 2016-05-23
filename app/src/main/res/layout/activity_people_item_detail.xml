@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#F2F2F2"
     android:layout_height="match_parent"
     tools:context=".HomeIn.PeopleItemDetailActivity">
 
@@ -9,4 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv_list" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_key"
+        android:layout_margin="10dp" />
+
 </RelativeLayout>

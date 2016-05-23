@@ -1,15 +1,16 @@
 package kr.co.homein.homeinproject.Company;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kr.co.homein.homeinproject.Maps.CompanyMapActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyInfoData;
 
@@ -52,8 +53,10 @@ public class CompanyInfoFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(getActivity(), CompanyMapActivity.class);
+                startActivity(intent);
             }
         });
 

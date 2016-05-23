@@ -1,9 +1,12 @@
 package kr.co.homein.homeinproject.HomeIn;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.wefika.flowlayout.FlowLayout;
 
 import kr.co.homein.homeinproject.data.PeopleItemData;
 
@@ -17,6 +20,7 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView scoreView;
     TextView tag;
+    FlowLayout tagLayout;
 
 
 
@@ -39,7 +43,8 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
 
         imageView = (ImageView)itemView.findViewById(R.id.item_image);
         scoreView = (TextView)itemView.findViewById(R.id.good_score);
-        tag = (TextView) itemView.findViewById(R.id.btn_tag);
+        tagLayout = (FlowLayout)itemView.findViewById(R.id.tag_layout);
+//        tag = (TextView) itemView.findViewById(R.id.btn_tag);
 
 
 //
@@ -56,11 +61,26 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+
     public void setPeopleItem(PeopleItemData peopleItem){
         this.peopleItem = peopleItem;
 
 
         scoreView.setText(peopleItem.getGoodCount());
+
+        tagLayout.removeAllViews();
+
+        for (String s : peopleItem.tag) {
+            TextView tv = new TextView(itemView.getContext());
+            FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(20, 20, 20, 20);
+            tv.setLayoutParams(lp);
+            tv.setTextSize(20);
+            tv.setTextColor(Color.WHITE);
+            tv.setBackgroundColor(Color.BLUE);
+            tv.setText(s);
+            tagLayout.addView(tv);
+        }
 //        Glide.with(imageView.getContext()).load(url).into(imageView);
 
     }

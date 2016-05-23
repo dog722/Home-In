@@ -1,9 +1,12 @@
 package kr.co.homein.homeinproject.Company;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.wefika.flowlayout.FlowLayout;
 
 import kr.co.homein.homeinproject.data.CompanyItemData;
 
@@ -20,6 +23,8 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
     CompanyItemData companyItem;
     ImageView imageView;
     TextView scoreView;
+    FlowLayout tagLayout;
+
 
     public interface OnItemClickListener {
         public void onItemClick(View view, CompanyItemData companyItemData);
@@ -36,6 +41,7 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
 
         imageView = (ImageView) itemView.findViewById(R.id.item_image);
         scoreView = (TextView) itemView.findViewById(R.id.good_score);
+        tagLayout = (FlowLayout)itemView.findViewById(R.id.tag_layout);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +61,19 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
 
         scoreView.setText(companyItem.getGoodCount());
 //        Glide.with(imageView.getContext()).load(url).into(imageView);
+        tagLayout.removeAllViews();
 
+        for (String s : companyItem.tag) {
+            TextView tv = new TextView(itemView.getContext());
+            FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(20, 20, 20, 20);
+            tv.setLayoutParams(lp);
+            tv.setTextSize(20);
+            tv.setTextColor(Color.WHITE);
+            tv.setBackgroundColor(Color.BLUE);
+            tv.setText(s);
+            tagLayout.addView(tv);
+        }
     }
 
 }

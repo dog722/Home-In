@@ -4,17 +4,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import kr.co.homein.homeinproject.data.CommentData;
-import kr.co.homein.homeinproject.data.PeopleDetailItemData;
+import android.view.View;
+import android.widget.ImageButton;
 
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.CommentData;
+import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 
 public class PeopleItemDetailActivity extends AppCompatActivity {
     public static final String EXTRA_PEOPLE_ITEM_CODE = "people_item_code";
 
     RecyclerView listView;
     PeopleItemDetailAdapter mAdapter;
+    ImageButton backKey;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,16 @@ public class PeopleItemDetailActivity extends AppCompatActivity {
         mAdapter = new PeopleItemDetailAdapter();
         listView.setAdapter(mAdapter);
         listView.setLayoutManager(new LinearLayoutManager(this));
+
+        backKey = (ImageButton) findViewById(R.id.back_key);
+        backKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(PeopleItemDetailActivity.this, MainActivity.class); //홈으로 가기
+//                startActivity(intent);
+                finish();
+            }
+        });
 
         setData();
     }

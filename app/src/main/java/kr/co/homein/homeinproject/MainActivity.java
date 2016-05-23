@@ -12,12 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TabHost;
 
 import kr.co.homein.homeinproject.Company.CompanyItemFragment;
-import kr.co.homein.homeinproject.User.MyEstimateListActivity;
+import kr.co.homein.homeinproject.Estimate.MyEstimateListActivity;
+import kr.co.homein.homeinproject.HomeIn.AddPeopleImageActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemFragment;
 import kr.co.homein.homeinproject.HomeIn.SearchTagActivity;
 import kr.co.homein.homeinproject.Menu.InformationRuleActivity;
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentTabHost tabHost;
     NavigationView menuView;
     DrawerLayout drawer;
+    ImageButton editBtn;
+    ImageButton menuBtn;
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,15 +65,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("시공 홈인"), CompanyItemFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("포스팅"), PostingFragment.class, null);
 
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if(tabId == "tab1") {
+                    editBtn.setVisibility(View.VISIBLE);
+                }
+                else if(tabId == "tab2") {
+                    editBtn.setVisibility(View.GONE);
+                    if (drawer.isDrawerOpen(GravityCompat.START)) {
+                        drawer.closeDrawer(GravityCompat.START);
+                    }
+                }
+                else if(tabId == "tab3") {
+                    editBtn.setVisibility(View.GONE);
+                    if (drawer.isDrawerOpen(GravityCompat.START)) {
+                        drawer.closeDrawer(GravityCompat.START);
+                    }
+                }
+            }
+        });
+
         menuView = (NavigationView)findViewById(R.id.nav_menu);
         menuView.setNavigationItemSelectedListener(this);
         View headerView = menuView.getHeaderView(0);
         drawer = (DrawerLayout)findViewById(R.id.drawer);
-        Button btn = (Button)findViewById(R.id.btn_menu);
-        btn.setOnClickListener(new View.OnClickListener() {
+         menuBtn = (ImageButton)findViewById(R.id.btn_menu);
+        editBtn = (ImageButton) findViewById(R.id.btn_edit);
+
+        menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawer.openDrawer(GravityCompat.START);
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddPeopleImageActivity.class)); //관심 목록으로 이동
+
             }
         });
 
@@ -81,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "center toolbar navigation click", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, SearchTagActivity.class)); //
-
             }
         });
 
@@ -99,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         imgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class)); // 내 견적서 문의로 이동
 
             }
@@ -115,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
@@ -126,6 +162,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
+
+//
+    public void goneEditBtn(){
+
+        editBtn.setVisibility(View.GONE);
+    }
+
+    public void visibleEditBtn(){
+        editBtn.setVisibility(View.VISIBLE);
+
+    }
+
+    public void goneMenuBtn(){
+        menuBtn.setVisibility(View.GONE);
+    }
+
+    public void visibleMenuBtn(){
+        menuBtn.setVisibility(View.VISIBLE);
+    }
+
+    public void visibleMapBtn(){
+        fab.setVisibility(View.VISIBLE);
+    }
+
+    public void goneMapBtn(){
+        fab.setVisibility(View.GONE);
+    }
+
+
+
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        editBtn.setVisibility(View.VISIBLE);
+//    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

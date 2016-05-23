@@ -1,11 +1,15 @@
 package kr.co.homein.homeinproject.Company;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.matthewtamlin.sliding_intro_screen_library.DotIndicator;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyDetailItemData;
@@ -21,8 +25,9 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
     TextView tag1, tag2;
     TextView comment2;
     TextView adress , price, period , size;
+    ImageButton backKey;
 
-    CompanyItemPageAdapter mAdapter;
+    CompanyItemPageAdapter mAdapter; //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,7 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_company_detail_item);
         companyDetailItemData = new CompanyDetailItemData();
 
-        viewPager = (ViewPager) findViewById(R.id.company_viewPager);
+        viewPager = (ViewPager) findViewById(R.id.company_viewPager); //
         userId = (TextView) findViewById(R.id.user_id);
         comment = (TextView) findViewById(R.id.comment2);
         tag1 = (TextView) findViewById(R.id.tag1);
@@ -40,6 +45,20 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
         price = (TextView) findViewById(R.id.price);
         period = (TextView) findViewById(R.id.period);
         size = (TextView) findViewById(R.id.size);
+        backKey = (ImageButton) findViewById(R.id.back_key);
+
+        final DotIndicator infoIndicator = (DotIndicator)findViewById(R.id.dot);
+        infoIndicator.setSelectedDotColor(Color.parseColor("#013ADF"));
+        infoIndicator.setUnselectedDotColor(Color.parseColor("#CFCFCF"));
+
+        backKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(PeopleItemDetailActivity.this, MainActivity.class); //홈으로 가기
+//                startActivity(intent);
+                finish();
+            }
+        });
 
         //업체 프로필로 이동
         userId.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +70,9 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
         });
 
 
-        mAdapter = new CompanyItemPageAdapter(this);
-        viewPager.setAdapter(mAdapter);
+        mAdapter = new CompanyItemPageAdapter(this);//
+        infoIndicator.setNumberOfItems(mAdapter.getCount());
+        viewPager.setAdapter(mAdapter);//
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -61,14 +81,14 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+                infoIndicator.setSelectedItem(viewPager.getCurrentItem(), true);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 
             }
-        });
+        });//
 
 
         setData();

@@ -16,5 +16,6 @@
         android:text="눈 감고 할 수 있는 셀프 인테리어 10가지"
         android:id="@+id/posting_title"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
 </RelativeLayout>

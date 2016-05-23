@@ -26,18 +26,22 @@
                     android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-                <Button
+                <ImageButton
                     android:id="@+id/btn_menu"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|top"
-                    android:text="메뉴"/>
-                <Button
+                    android:background="#013ADF"
+                    android:layout_gravity="left|top"/>
+                <ImageButton
                     android:id="@+id/btn_edit"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|top"
-                    android:text="작성"/>
+                    android:background="#013ADF"
+                    android:layout_gravity="right|top"/>
             </FrameLayout>
 
             <android.support.design.widget.NavigationView
