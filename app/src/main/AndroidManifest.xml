@@ -16,8 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Menu.MyInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -46,7 +45,7 @@
             android:name=".Company.CompanyInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HomeIn.SearchTagActivity"
+            android:name=".search.SearchTagActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".User.WishListActivity"
@@ -71,17 +70,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBAF86YQhQ6bSwl0mdGki7FYO6skpi7nDw" />
 
-        <activity android:name=".Maps.CompanyMapActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+        <activity
+            android:name=".Maps.CompanyMapActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".search.SearchResultActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -12,9 +12,6 @@ import kr.co.homein.homeinproject.data.CompanyItemData;
 
 import kr.co.homein.homeinproject.R;
 
-
-
-
 /**
  * Created by seoeunbi on 2016. 5. 17..
  */
@@ -24,7 +21,7 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView scoreView;
     FlowLayout tagLayout;
-
+    
 
     public interface OnItemClickListener {
         public void onItemClick(View view, CompanyItemData companyItemData);

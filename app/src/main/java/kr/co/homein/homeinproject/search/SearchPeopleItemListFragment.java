@@ -1,4 +1,4 @@
-package kr.co.homein.homeinproject.Posting;
+package kr.co.homein.homeinproject.search;
 
 
 import android.content.Intent;
@@ -10,50 +10,47 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import kr.co.homein.homeinproject.HomeIn.PeoPleItemListViewHolder;
+import kr.co.homein.homeinproject.HomeIn.PeopleItemDetailActivity;
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.PostingItemData;
-
+import kr.co.homein.homeinproject.data.PeopleItemData;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PostingFragment extends Fragment {
-    RecyclerView recyclerView;
-    PostingAdapter mAdatper;
+public class SearchPeopleItemListFragment extends Fragment {
 
-    public PostingFragment() {
+
+    RecyclerView recyclerView;
+    PeopleItemListAdapter mAdatper;
+
+
+    public SearchPeopleItemListFragment() {
         // Required empty public constructor
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdatper = new PostingAdapter();
-        mAdatper.setOnItemClickListener(new PostingViewHolder.OnItemClickListener() {
+        mAdatper = new PeopleItemListAdapter();
+        mAdatper.setOnItemClickListener(new PeoPleItemListViewHolder.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, PostingItemData postingItemData) {
-                Intent intent = new Intent(getContext(), PostingDetailActivity.class); //포스팅 상세 페이지로 이동
+            public void onItemClick(View view, PeopleItemData peopleItem) {
+                Intent intent = new Intent(getContext(), PeopleItemDetailActivity.class); //사용자 아이템 상세 페이지 이동
                 startActivity(intent);
             }
         });
         setData();
     }
 
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        recyclerView.scrollToPosition(0);
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_posting, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_search_people_item_list, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_list2);
         recyclerView.setAdapter(mAdatper);
@@ -63,19 +60,18 @@ public class PostingFragment extends Fragment {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
-
         return view;
     }
 
-    private void setData() {
+    private void setData() { ///여기서 다르게 검색해주기. 키워드 받아서 서버에서 값 받아오기.
 
         for( int i = 0 ; i < 10 ; i ++){
-            PostingItemData p = new PostingItemData();
-            p.setPostingTitle("눈 감고 할 수 있는 셀프 인테리어 10가지"+ i);
-            p.setGoocScore("2" + i);
+            PeopleItemData p = new PeopleItemData();
+            p.setGoodCount("20" + i);
             mAdatper.add(p);
+            p.tag.add("태그1");
+            p.tag.add("태그2");
         }
+
     }
-
-
 }

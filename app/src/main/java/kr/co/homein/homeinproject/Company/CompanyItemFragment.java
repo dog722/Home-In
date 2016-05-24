@@ -46,6 +46,14 @@ public class CompanyItemFragment extends Fragment {
 
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.scrollToPosition(0);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

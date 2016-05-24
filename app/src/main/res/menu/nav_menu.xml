@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/wishlist"
+        android:title="관심목록"
+        android:icon="@android:drawable/ic_input_add"/>
+    <item android:id="@+id/my_estimate"
+        android:title="문의한 견적서"
+        android:icon="@android:drawable/ic_input_add"/>
     <item android:id="@+id/my_info"
         android:title="내 정보"
         android:icon="@android:drawable/ic_input_add"/>
@@ -18,6 +24,4 @@
     <item android:id="@+id/setting"
         android:title="환경설정"
         android:icon="@android:drawable/ic_input_get"/>
-
-
 </menu>

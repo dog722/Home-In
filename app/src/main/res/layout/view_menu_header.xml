@@ -9,23 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
-        android:background="@color/colorPrimary" />
+        android:background="#ffffff" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="204dp"
         android:layout_weight="0.16"
         android:background="#bbbaba">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/wishlist"
-            android:src="@mipmap/ic_launcher"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/profile_img"
-            android:layout_toStartOf="@+id/profile_img"
-            android:layout_marginRight="27dp"
-            android:layout_marginEnd="27dp" />
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="120dp"
@@ -36,31 +25,9 @@
             app:civ_shadow="true"
             app:civ_shadow_radius="10"
             app:civ_shadow_color="#8BC34A"
-            android:layout_alignBottom="@+id/count1"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/profile_img" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="24"
-            android:id="@+id/count1"
-            android:layout_below="@+id/wishlist"
-            android:layout_alignRight="@+id/wishlist"
-            android:layout_alignEnd="@+id/wishlist"
-            android:layout_marginRight="27dp"
-            android:layout_marginEnd="27dp" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/estimatelist"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp"
-            android:layout_alignTop="@+id/wishlist"
-            android:layout_toRightOf="@+id/profile_img"
-            android:layout_toEndOf="@+id/profile_img" />
+            android:id="@+id/profile_img"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,16 +36,14 @@
             android:id="@+id/count2"
             android:layout_marginRight="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_below="@+id/estimatelist"
-            android:layout_alignRight="@+id/estimatelist"
-            android:layout_alignEnd="@+id/estimatelist" />
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="eunbi722"
             android:id="@+id/user_id"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/count2"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 

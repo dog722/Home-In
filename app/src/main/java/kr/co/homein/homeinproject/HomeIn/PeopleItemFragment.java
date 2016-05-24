@@ -115,6 +115,11 @@ public class PeopleItemFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        listView.scrollToPosition(0);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

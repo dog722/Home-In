@@ -1,4 +1,4 @@
-package kr.co.homein.homeinproject.Posting;
+package kr.co.homein.homeinproject.search;
 
 
 import android.content.Intent;
@@ -10,18 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import kr.co.homein.homeinproject.Posting.PostingAdapter;
+import kr.co.homein.homeinproject.Posting.PostingDetailActivity;
+import kr.co.homein.homeinproject.Posting.PostingViewHolder;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.PostingItemData;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PostingFragment extends Fragment {
+public class SearchPostingFragment extends Fragment {
+
+
     RecyclerView recyclerView;
     PostingAdapter mAdatper;
 
-    public PostingFragment() {
+    public SearchPostingFragment() {
         // Required empty public constructor
     }
 
@@ -38,14 +42,6 @@ public class PostingFragment extends Fragment {
             }
         });
         setData();
-    }
-
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        recyclerView.scrollToPosition(0);
     }
 
 
@@ -67,7 +63,7 @@ public class PostingFragment extends Fragment {
         return view;
     }
 
-    private void setData() {
+    private void setData() { //키워드 넘겨서 서버에서 값 받아오기
 
         for( int i = 0 ; i < 10 ; i ++){
             PostingItemData p = new PostingItemData();

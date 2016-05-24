@@ -47,16 +47,16 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
 //        tag = (TextView) itemView.findViewById(R.id.btn_tag);
 
 
-//
-//        ///아이템 누르면 넘어가게 구현하기.
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(mListener != null){
-//                    mListener.onItemClick(v, peopleItem);
-//                }
-//            }
-//        });
+
+        ///아이템 누르면 넘어가게 구현하기.
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mListener != null){
+                    mListener.onItemClick(v, peopleItem);
+                }
+            }
+        });
 
 
     }

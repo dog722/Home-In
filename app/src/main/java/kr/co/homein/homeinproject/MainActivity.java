@@ -1,7 +1,12 @@
 package kr.co.homein.homeinproject;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -16,11 +21,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TabHost;
 
+import com.bumptech.glide.Glide;
+
+import java.io.File;
+
 import kr.co.homein.homeinproject.Company.CompanyItemFragment;
 import kr.co.homein.homeinproject.Estimate.MyEstimateListActivity;
 import kr.co.homein.homeinproject.HomeIn.AddPeopleImageActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemFragment;
-import kr.co.homein.homeinproject.HomeIn.SearchTagActivity;
+import kr.co.homein.homeinproject.search.SearchTagActivity;
 import kr.co.homein.homeinproject.Menu.InformationRuleActivity;
 import kr.co.homein.homeinproject.Menu.MyInfoActivity;
 import kr.co.homein.homeinproject.Menu.NoticeActivity;
@@ -28,7 +37,6 @@ import kr.co.homein.homeinproject.Menu.ServiceInfoActivity;
 import kr.co.homein.homeinproject.Menu.SettingActivity;
 import kr.co.homein.homeinproject.Menu.VersionInfoActivity;
 import kr.co.homein.homeinproject.Posting.PostingFragment;
-import kr.co.homein.homeinproject.User.UserProfileActivity;
 import kr.co.homein.homeinproject.User.WishListActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -39,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageButton editBtn;
     ImageButton menuBtn;
     FloatingActionButton fab;
+    Uri mFileUri;
+    ImageView profileImg;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,16 +81,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if(tabId == "tab1") {
+                if (tabId == "tab1") {
                     editBtn.setVisibility(View.VISIBLE);
-                }
-                else if(tabId == "tab2") {
+                } else if (tabId == "tab2") {
                     editBtn.setVisibility(View.GONE);
                     if (drawer.isDrawerOpen(GravityCompat.START)) {
                         drawer.closeDrawer(GravityCompat.START);
                     }
-                }
-                else if(tabId == "tab3") {
+                } else if (tabId == "tab3") {
                     editBtn.setVisibility(View.GONE);
                     if (drawer.isDrawerOpen(GravityCompat.START)) {
                         drawer.closeDrawer(GravityCompat.START);
@@ -119,36 +130,72 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        ImageButton imgBtn = (ImageButton) headerView.findViewById(R.id.wishlist);
-        imgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, WishListActivity.class)); //관심 목록으로 이동
-
-            }
-        });
 
 
-        imgBtn  = (ImageButton) headerView.findViewById(R.id.estimatelist);
-        imgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class)); // 내 견적서 문의로 이동
-
-            }
-        });
-
-
-        ImageView profileImg = (ImageView) headerView.findViewById(R.id.profile_img);
+        profileImg = (ImageView) headerView.findViewById(R.id.profile_img);
         profileImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UserProfileActivity.class)); // 프로필 수정 화면으로 이동
+                callGallery();
             }
         });
+
+
+        if (savedInstanceState != null) {
+            mFileUri = savedInstanceState.getParcelable("selected_file");
+        }
+
+
+
     }
 
+    private static final int RC_GALLERY = 1;
+    private static final int CROP_IMAGE = 2;
+
+    private void callGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, RC_GALLERY);
+    }
+
+    private Uri getFileUri() {
+        File dir = getExternalFilesDir("myfile");
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        File file = new File(dir,"my_image_" + System.currentTimeMillis() + ".jpeg");
+        mFileUri = Uri.fromFile(file);
+        return mFileUri;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putParcelable("selected_file", mFileUri);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_GALLERY) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri uri = data.getData();
+                Cursor c = getContentResolver().query(uri, new String[]{MediaStore.Images.Media.DATA}, null, null, null);
+                if (c.moveToNext()) {
+                    String path = c.getString(c.getColumnIndex(MediaStore.Images.Media.DATA));
+                    Uri fileUri = Uri.fromFile(new File(path));
+//                    BitmapFactory.Options opts = new BitmapFactory.Options();
+//                    opts.inSampleSize = 4;
+//                    Bitmap bm = BitmapFactory.decodeFile(path, opts);
+//                    photoView.setImageBitmap(bm);
+                    Glide.with(this).load(fileUri).into(profileImg);
+                }
+                c.close();
+//                Glide.with(this).load(mFileUri).into(photoView);
+            }
+        }
+
+    }
 
 
     @Override
@@ -161,10 +208,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-
-
-//
     public void goneEditBtn(){
 
         editBtn.setVisibility(View.GONE);
@@ -172,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void visibleEditBtn(){
         editBtn.setVisibility(View.VISIBLE);
-
     }
 
     public void goneMenuBtn(){
@@ -209,7 +251,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.my_info) { //내 정보
             startActivity(new Intent(MainActivity.this, MyInfoActivity.class));
 
-        } else if (id == R.id.notice) { //공지사항
+        }else if (id == R.id.wishlist) { //관심목록
+            startActivity(new Intent(MainActivity.this, WishListActivity.class));
+
+        }else if (id == R.id.my_estimate) { //문의한 견적서
+            startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class));
+
+        }else if (id == R.id.notice) { //공지사항
             startActivity(new Intent(MainActivity.this, NoticeActivity.class));
 
         } else if (id == R.id.service) { //서비스 이용약관
