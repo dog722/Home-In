@@ -42,6 +42,13 @@ public class WishListActivity extends AppCompatActivity {
         listView.setLayoutManager(new GridLayoutManager(this, 3));
 
 
+//        mAdapter.setOnItemClickListener(new WishListViewHolder.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, WishListData wishListData, int position) {
+//                Toast.makeText(WishListActivity.this, "eunbi!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
         setWishList();
     }
 

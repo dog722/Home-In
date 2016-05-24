@@ -19,31 +19,33 @@ public class WishListViewHolder extends RecyclerView.ViewHolder implements Check
 
 
     boolean isChecked = false;
+
     @Override
     public void setChecked(boolean checked) {
+
         if (isChecked != checked) {
             isChecked = checked;
             drawCheck();
         }
     }
 
-    public void toogle() {
-        setChecked(!isChecked);
-    }
 
     @Override
     public boolean isChecked() {
-        return false;
+
+        return isChecked;
     }
 
     @Override
     public void toggle() {
-
+        setChecked(!isChecked);
     }
 
     public void drawCheck() {
         if (isChecked) { // check draw
             checkedImg.setVisibility(View.VISIBLE);
+//            imageView.setImageResource(R.drawable.check);
+
         }else{ // un check draw
             checkedImg.setVisibility(View.GONE);
         }
@@ -64,13 +66,11 @@ public class WishListViewHolder extends RecyclerView.ViewHolder implements Check
         imageView = (ImageView) itemView.findViewById(R.id.wishImg);
         checkedImg = (ImageView)itemView.findViewById(R.id.checked);
 
-
-
-        itemView.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
-
+                    mListener.onItemClick(v, wishListData, getAdapterPosition());
                 }
             }
         });
@@ -80,7 +80,6 @@ public class WishListViewHolder extends RecyclerView.ViewHolder implements Check
     public void setWishListItem(WishListData wishListData) {
         this.wishListData = wishListData;
 //        Glide.with(imageView.getContext()).load(wishListData.getUrl()).into(imageView);
-
     }
 
 

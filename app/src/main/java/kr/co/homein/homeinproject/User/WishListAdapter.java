@@ -31,14 +31,15 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListViewHolder>  i
     @Override
     public WishListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_view, parent, false);
-        return new WishListViewHolder(view);
+        WishListViewHolder h = new WishListViewHolder(view);
+        h.setOnItemClickListener(this);
+        return h;
     }
 
     @Override
     public void onBindViewHolder(WishListViewHolder holder, int position) {
 //        WishListViewHolder h = (WishListViewHolder) holder;
         holder.setWishListItem(wishListdata.get(position));
-        holder.setOnItemClickListener(mListener);
         holder.setChecked(checkedItems.get(position));
     }
 
