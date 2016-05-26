@@ -18,7 +18,6 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
     TextView comment;
     TextView tag;
 
-
     int isBtn = 0 ;
     int result;
     PeopleDetailItemData peopleDetailItem;
@@ -37,9 +36,9 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
     public void setPeopleDetailItem(PeopleDetailItemData PeopleDetailItemData){
         this.peopleDetailItem = PeopleDetailItemData;
 
-        userId.setText(peopleDetailItem.getUser_id());
-        comment.setText(peopleDetailItem.getComment());
-        tag.setText(peopleDetailItem.getTag().get(0));
+        userId.setText(peopleDetailItem.getGeneral_id());
+        comment.setText(peopleDetailItem.getPH_content());
+        tag.setText(peopleDetailItem.getPH_tag().get(0));
 //        Glide.with(imageView.getContext()).load(url).into(imageView);
 
     }

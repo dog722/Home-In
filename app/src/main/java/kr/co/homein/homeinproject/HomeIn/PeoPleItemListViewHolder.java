@@ -8,9 +8,10 @@ import android.widget.TextView;
 
 import com.wefika.flowlayout.FlowLayout;
 
-import kr.co.homein.homeinproject.data.PeopleItemData;
+import java.util.List;
 
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.PeopleItemData;
 
 /**
  * Created by seoeunbi on 2016. 5. 13..
@@ -21,11 +22,7 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
     TextView scoreView;
     TextView tag;
     FlowLayout tagLayout;
-
-
-
-
-
+    TextView time;
    PeopleItemData peopleItem;
 
 
@@ -44,6 +41,7 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
         imageView = (ImageView)itemView.findViewById(R.id.item_image);
         scoreView = (TextView)itemView.findViewById(R.id.good_score);
         tagLayout = (FlowLayout)itemView.findViewById(R.id.tag_layout);
+        time = (TextView) itemView.findViewById(R.id.time_text);
 //        tag = (TextView) itemView.findViewById(R.id.btn_tag);
 
 
@@ -61,16 +59,14 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-
     public void setPeopleItem(PeopleItemData peopleItem){
         this.peopleItem = peopleItem;
 
-
-        scoreView.setText(peopleItem.getGoodCount());
-
+        scoreView.setText(""+peopleItem.getPH_pick());
+        time.setText(""+peopleItem.getPass_time());
         tagLayout.removeAllViews();
 
-        for (String s : peopleItem.tag) {
+        for (String s : peopleItem.getPH_tag()) {
             TextView tv = new TextView(itemView.getContext());
             FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
             lp.setMargins(20, 20, 20, 20);
@@ -81,11 +77,8 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
             tv.setText(s);
             tagLayout.addView(tv);
         }
-//        Glide.with(imageView.getContext()).load(url).into(imageView);
-
+        List<String> url = peopleItem.getPH_picture();
+//        Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
     }
-
-
-
 
 }

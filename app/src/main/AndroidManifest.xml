@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Menu.MyInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -82,8 +82,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".search.SearchResultActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".search.SearchResultActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".User.WishListActivity2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Estimate.EstimateRequestActivity" />
+        <activity android:name=".Estimate.EstimateRequestActivity2" />
+        <activity android:name=".Estimate.EstimateRequestActivity3" />
+        <activity android:name=".Estimate.EstimateRequestActivity4" />
+        <activity android:name=".Estimate.EstimateRequestActivity5"></activity>
     </application>
 
 </manifest>

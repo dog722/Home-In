@@ -11,11 +11,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.homein.homeinproject.Maps.AddressInfo;
 import kr.co.homein.homeinproject.Maps.AddressInfoResult;
 import kr.co.homein.homeinproject.MyApplication;
+import kr.co.homein.homeinproject.data.PeopleItemData;
+import kr.co.homein.homeinproject.data.PeopleItemDataResult;
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -131,4 +134,36 @@ public class NetworkManager {
     }
 
 
+
+    private static final String TSTORE_SERVER = "http://52.79.170.110:80";
+    private static final String TSTORE_CATEGORY_URL = TSTORE_SERVER + "/people_homein_list";
+    public Request getPeopleItemList(Object tag, OnResultListener<List<PeopleItemData>> listener) {
+        Request request = new Request.Builder()
+                .url(TSTORE_CATEGORY_URL)
+                .header("Accept","application/json")
+                .header("appKey","458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .build();
+        final NetworkResult<List<PeopleItemData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    PeopleItemDataResult data = gson.fromJson(response.body().charStream(), PeopleItemDataResult.class);
+                    result.result = data.peopleitemdata;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
 }

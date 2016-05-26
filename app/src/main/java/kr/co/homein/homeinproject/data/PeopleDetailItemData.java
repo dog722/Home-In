@@ -6,53 +6,68 @@ import java.util.ArrayList;
  * Created by seoeunbi on 2016. 5. 18..
  */
 public class PeopleDetailItemData {
-    public String url;
-    public String user_img;
-    public String user_id;
-    public ArrayList<String> tag = new ArrayList<String>();
-    public String comment;
 
+    public String PH_number;
+    public String general_id;
+    public String PH_picture;
+    public String PH_content;
+    public ArrayList<String> PH_tag = new ArrayList<String>();
+    public int PH_pick;
+    public ArrayList<CommentData> PH_comment = new ArrayList<CommentData>();
 
-    public String getComment() {
-        return comment;
+    public String getPH_number() {
+        return PH_number;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setPH_number(String PH_number) {
+        this.PH_number = PH_number;
     }
 
-    public String getUrl() {
-        return url;
+    public String getGeneral_id() {
+        return general_id;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setGeneral_id(String general_id) {
+        this.general_id = general_id;
     }
 
-    public String getUser_img() {
-        return user_img;
+    public String getPH_picture() {
+        return PH_picture;
     }
 
-    public void setUser_img(String user_img) {
-        this.user_img = user_img;
+    public void setPH_picture(String PH_picture) {
+        this.PH_picture = PH_picture;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getPH_content() {
+        return PH_content;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setPH_content(String PH_content) {
+        this.PH_content = PH_content;
     }
 
-    public ArrayList<String> getTag() {
-        return tag;
+    public ArrayList<String> getPH_tag() {
+        return PH_tag;
     }
 
-    public void setTag(ArrayList<String> tag) {
-        this.tag = tag;
+    public void setPH_tag(ArrayList<String> PH_tag) {
+        this.PH_tag = PH_tag;
     }
 
+    public int getPH_pick() {
+        return PH_pick;
+    }
 
+    public void setPH_pick(int PH_pick) {
+        this.PH_pick = PH_pick;
+    }
 
+    public ArrayList<CommentData> getPH_comment() {
+        return PH_comment;
+    }
+
+    public void setPH_comment(ArrayList<CommentData> PH_comment) {
+        this.PH_comment = PH_comment;
+    }
 }

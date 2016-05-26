@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kr.co.homein.homeinproject.Estimate.EstimateRequestActivity;
 import kr.co.homein.homeinproject.Maps.CompanyMapActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyInfoData;
@@ -27,6 +28,7 @@ public class CompanyInfoFragment extends Fragment {
     TextView companyTel;
     TextView companyDomain;
     TextView comment;
+    TextView requestBtn;
     CompanyInfoData companyInfoData;
 
     public CompanyInfoFragment() {
@@ -37,6 +39,7 @@ public class CompanyInfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         companyInfoData = new CompanyInfoData();
+
 
         setData();
     }
@@ -67,7 +70,7 @@ public class CompanyInfoFragment extends Fragment {
         companyTel = (TextView) view.findViewById(R.id.tel);
         companyDomain = (TextView) view.findViewById(R.id.domain);
         comment = (TextView) view.findViewById(R.id.comment);
-
+        requestBtn = (TextView) view.findViewById(R.id.request);
 
         companyId.setText(companyInfoData.getCompanyId());
         companyTitle.setText(companyInfoData.getCompanyTitle());
@@ -76,6 +79,16 @@ public class CompanyInfoFragment extends Fragment {
         companyTel.setText(companyInfoData.getCompanyTel());
         companyDomain.setText(companyInfoData.getCompanyDomain());
         comment.setText(companyInfoData.getComment());
+
+
+        requestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), EstimateRequestActivity.class); //포스팅 상세 페이지로 이동
+                startActivity(intent);
+            }
+        });
+
 
         return view;
     }

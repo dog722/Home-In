@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,15 @@ import android.widget.Toast;
 import com.matthewtamlin.sliding_intro_screen_library.DotIndicator;
 import com.poliveira.parallaxrecycleradapter.ParallaxRecyclerAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.homein.homeinproject.MainActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.PeopleItemData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 
 /**
@@ -74,9 +78,6 @@ public class PeopleItemFragment extends Fragment {
 //                });
                 h.setPeopleItem(peopleItem.get(i));
 
-
-
-
             }
 
             @Override
@@ -109,10 +110,6 @@ public class PeopleItemFragment extends Fragment {
         });
 
         setData();
-
-
-
-
     }
 
     @Override
@@ -210,18 +207,44 @@ public class PeopleItemFragment extends Fragment {
 
 
 
+//    private void setData() {
+//
+//        for( int i = 0 ; i < 10 ; i ++){
+//            PeopleItemData p = new PeopleItemData();
+//            p.setPH_pick(20 + i);
+////            p.getPH_number("")
+//
+//            peopleItem.add(p);
+//            p.getPH_tag().add("태그1");
+//            p.getPH_tag().add("태그2");
+//        }
+//
+//    }
+
     private void setData() {
+        NetworkManager.getInstance().getPeopleItemList(getContext(), new NetworkManager.OnResultListener<List<PeopleItemData>>() {
+            @Override
+            public void onSuccess(Request request, List<PeopleItemData> result) {
+//                mAdapter.clear();
 
-        for( int i = 0 ; i < 10 ; i ++){
-            PeopleItemData p = new PeopleItemData();
-            p.setGoodCount("20" + i);
-            peopleItem.add(p);
-            p.tag.add("태그1");
-            p.tag.add("태그2");
-        }
+                for(int i = 0 ; i< result.size() ; i++) {
+                    pAdapter.addItem(result.get(i), i);
+//                    mAdapter.addAll(result);
+                }
+                Log.d("test7", "dhodho");
+            }
 
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(getContext(), "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+//        mAdapter.clear();
+//        for (int i = 0; i < 10; i++) {
+//            TStoreCategory category = new TStoreCategory();
+//            category.setCategoryName("Category " + i);
+//            category.setCategoryCode("Code : " + i);
+//            mAdapter.add(category);
+//        }
     }
-
-
-
 }

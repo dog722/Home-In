@@ -116,7 +116,7 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
     private void callGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
-        startActivityForResult(intent, RC_GALLERY);
+        startActivityForResult(intent,RC_GALLERY);
     }
 
     private Uri getFileUri() {
@@ -186,6 +186,7 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
 
     @Override
     public void onClick(View v) {
+
         InputTagDialogFragment dialog =  new InputTagDialogFragment(this);
         dialog.setOnDismissListener(this);
         dialog.show();

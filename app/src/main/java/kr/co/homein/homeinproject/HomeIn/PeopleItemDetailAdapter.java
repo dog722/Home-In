@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import kr.co.homein.homeinproject.data.CommentData;
-import kr.co.homein.homeinproject.data.PeopleDetailItemData;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.CommentData;
+import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 
 /**
  * Created by seoeunbi on 2016. 5. 18..
@@ -58,7 +57,7 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
             }
             case VEIW_TYPE_BODY : {
                 CommentViewHolder h = (CommentViewHolder) holder;
-                h.setComment(commentData.get(position));
+                h.setComment(peopleDetailItemData);
                 break;
             }
         }
@@ -66,16 +65,11 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemCount() {
-        return commentData.size() + 1;
+        return peopleDetailItemData.getPH_comment().size() + 1;
     }
 
     public void addHeader(PeopleDetailItemData peopleDetailItemData) {
         this.peopleDetailItemData = peopleDetailItemData;
-        notifyDataSetChanged();
-    }
-
-    public void addComment(CommentData commentData){
-        this.commentData.add(commentData);
         notifyDataSetChanged();
     }
 }

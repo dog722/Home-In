@@ -4,24 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_height="70dp">
+        android:layout_height="70dp"
+        android:id="@+id/toolbar"
+        android:titleTextColor="@android:color/black"
+        android:background="#ffffff">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="문의한 견적서"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="내 견적문의"
-            android:id="@+id/textView4"
-            android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="20dp" />
-    </LinearLayout>
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="90dp" />
 
+    </android.support.v7.widget.Toolbar>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

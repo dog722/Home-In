@@ -44,17 +44,19 @@ public class PeopleItemDetailActivity extends AppCompatActivity {
 
     private void setData() {
 
-        for(int i = 0 ; i< 5 ; i++) {
-            CommentData commentData = new CommentData();
-            commentData.userId ="eunbi" + i;
-            commentData.Comment = "우와 신기해요!!! " + i;
-            mAdapter.addComment(commentData);
-        }
 
         PeopleDetailItemData peopleDetailItemData = new PeopleDetailItemData();
-        peopleDetailItemData.comment = "작은 내 방 모던하고 따뜻하게 :=)";
-        peopleDetailItemData.user_id="eunbi722";
-        peopleDetailItemData.tag.add("#한셈 인테리어");
+        peopleDetailItemData.PH_content = "작은 내 방 모던하고 따뜻하게 :=)";
+        peopleDetailItemData.general_id="eunbi722";
+        for(int i = 0 ; i< 5 ; i++) {
+            CommentData commentData = new CommentData();
+            commentData.member_name ="eunbi" + i;
+            commentData.comment_content = "우와 신기해요!!! " + i;
+//            mAdapter.addComment(commentData);
+            peopleDetailItemData.getPH_comment().add(commentData);
+        }
+//        peopleDetailItemData.getPH_comment().get(0).comment_content="너무 이뻐요!!^^";
+        peopleDetailItemData.getPH_tag().add("#한셈 인테리어");
 
         mAdapter.addHeader(peopleDetailItemData);
     }

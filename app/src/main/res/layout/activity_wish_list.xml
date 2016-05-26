@@ -34,10 +34,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="편집"
+        android:text="삭제"
         android:textColor="#ffffff"
         android:background="@color/colorPrimary"
-        android:id="@+id/textView10"
+        android:id="@+id/btn_delete"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="center_vertical|center_horizontal"
         android:layout_gravity="center_horizontal"

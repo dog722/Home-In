@@ -8,18 +8,19 @@
         android:layout_height="258dp">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:id="@+id/item_image"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:src="@drawable/peopleitemdummy"
+
             android:scaleType="fitXY" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="205dp"
+            android:layout_height="250dp"
             android:layout_gravity="center_horizontal|top">
 
             <LinearLayout
@@ -34,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="4분 전"
-                    android:id="@+id/textView5" />
+                    android:id="@+id/time_text" />
 
                 <TextView
                     android:layout_width="wrap_content"

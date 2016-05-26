@@ -51,6 +51,8 @@ public class WishListViewHolder extends RecyclerView.ViewHolder implements Check
         }
     }
 
+
+
     public interface OnItemClickListener {
         public void onItemClick(View view, WishListData wishListData , int position);
     }
@@ -81,7 +83,5 @@ public class WishListViewHolder extends RecyclerView.ViewHolder implements Check
         this.wishListData = wishListData;
 //        Glide.with(imageView.getContext()).load(wishListData.getUrl()).into(imageView);
     }
-
-
 
 }

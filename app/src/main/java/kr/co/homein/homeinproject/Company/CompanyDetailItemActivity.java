@@ -46,7 +46,7 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
         period = (TextView) findViewById(R.id.period);
         size = (TextView) findViewById(R.id.size);
         backKey = (ImageButton) findViewById(R.id.back_key);
-
+//        backKey.setEnabled(false);
         final DotIndicator infoIndicator = (DotIndicator)findViewById(R.id.dot);
         infoIndicator.setSelectedDotColor(Color.parseColor("#013ADF"));
         infoIndicator.setUnselectedDotColor(Color.parseColor("#CFCFCF"));

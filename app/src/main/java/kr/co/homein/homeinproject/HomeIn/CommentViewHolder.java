@@ -6,9 +6,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import kr.co.homein.homeinproject.data.CommentData;
-
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 
 /**
  * Created by seoeunbi on 2016. 5. 18..
@@ -19,7 +18,7 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
     TextView comment;
     TextView commentCount;
 
-    CommentData commentData;
+    PeopleDetailItemData peopleDetailItemData;
     ImageButton btnComment;
     int result;
     LinearLayout layout;
@@ -61,11 +60,11 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void setComment(CommentData commentData){
-        this.commentData = commentData;
+    public void setComment(PeopleDetailItemData peopleDetailItemData){
+        this.peopleDetailItemData = peopleDetailItemData;
 
-        userId.setText(commentData.getUserId());
-        comment.setText(commentData.getComment());
+        userId.setText(peopleDetailItemData.getPH_comment().get(0).member_name);
+        comment.setText(peopleDetailItemData.getPH_comment().get(0).comment_content);
 //        Glide.with(imageView.getContext()).load(url).into(imageView);
 
     }

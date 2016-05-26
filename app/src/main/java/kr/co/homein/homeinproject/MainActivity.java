@@ -29,7 +29,6 @@ import kr.co.homein.homeinproject.Company.CompanyItemFragment;
 import kr.co.homein.homeinproject.Estimate.MyEstimateListActivity;
 import kr.co.homein.homeinproject.HomeIn.AddPeopleImageActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemFragment;
-import kr.co.homein.homeinproject.search.SearchTagActivity;
 import kr.co.homein.homeinproject.Menu.InformationRuleActivity;
 import kr.co.homein.homeinproject.Menu.MyInfoActivity;
 import kr.co.homein.homeinproject.Menu.NoticeActivity;
@@ -37,7 +36,8 @@ import kr.co.homein.homeinproject.Menu.ServiceInfoActivity;
 import kr.co.homein.homeinproject.Menu.SettingActivity;
 import kr.co.homein.homeinproject.Menu.VersionInfoActivity;
 import kr.co.homein.homeinproject.Posting.PostingFragment;
-import kr.co.homein.homeinproject.User.WishListActivity;
+import kr.co.homein.homeinproject.User.WishListActivity2;
+import kr.co.homein.homeinproject.search.SearchTagActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("피플 홈인"), PeopleItemFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("시공 홈인"), CompanyItemFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("포스팅"), PostingFragment.class, null);
+
+
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -131,14 +133,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-
-        profileImg = (ImageView) headerView.findViewById(R.id.profile_img);
-        profileImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callGallery();
-            }
-        });
+//
+//        profileImg = (ImageView) headerView.findViewById(R.id.profile_img);
+//        profileImg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                callGallery();
+//            }
+//        });
 
 
         if (savedInstanceState != null) {
@@ -252,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this, MyInfoActivity.class));
 
         }else if (id == R.id.wishlist) { //관심목록
-            startActivity(new Intent(MainActivity.this, WishListActivity.class));
+            startActivity(new Intent(MainActivity.this, WishListActivity2.class));
 
         }else if (id == R.id.my_estimate) { //문의한 견적서
             startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class));

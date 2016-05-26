@@ -67,10 +67,10 @@ public class SearchPeopleItemListFragment extends Fragment {
 
         for( int i = 0 ; i < 10 ; i ++){
             PeopleItemData p = new PeopleItemData();
-            p.setGoodCount("20" + i);
+            p.setPH_pick(20 + i);
             mAdatper.add(p);
-            p.tag.add("태그1");
-            p.tag.add("태그2");
+            p.getPH_tag().add("태그1");
+            p.getPH_tag().add("태그2");
         }
 
     }
