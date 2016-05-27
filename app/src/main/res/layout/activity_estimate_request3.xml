@@ -1,19 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity3">
+    tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity3"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:weightSum="1">
 
-    <TextView
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/toolbar"
+        android:titleTextColor="@android:color/black"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="견적 문의(3/5)"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="90dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"></LinearLayout>
+
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="버튼을 눌러 공사면적을 입력하세요."
-        android:id="@+id/textView26"
-        android:layout_below="@+id/imageView10"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            android:focusable="false"
+            android:id="@+id/img"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal">
+        </ImageView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/plus"
+            android:src="@android:drawable/ic_input_add"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="33dp"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/input_size"
+            android:layout_alignTop="@+id/plus"
+            android:layout_alignLeft="@+id/plus"
+            android:layout_alignStart="@+id/plus"
+            android:layout_gravity="center">
+        <requestFocus />
+        </EditText>
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout2"
+        android:layout_weight="1.02">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="버튼을 눌러 공사면적을 입력하세요."
+            android:id="@+id/textView26"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -23,27 +99,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:background="@color/colorPrimary"
         android:id="@+id/next_btn"
-        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/editText"
-        android:background="@mipmap/ic_launcher"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
-        android:focusable="false" />
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/imageView10"
-        android:src="@android:drawable/ic_input_add"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp" />
-</RelativeLayout>
+</LinearLayout>

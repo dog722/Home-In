@@ -8,8 +8,9 @@ import java.util.ArrayList;
 public class PeopleDetailItemData {
 
     public String PH_number;
-    public String general_id;
-    public String PH_picture;
+    public String general_name;
+    public ArrayList<String> PH_picture = new ArrayList<String>();
+    public String _id;
     public String PH_content;
     public ArrayList<String> PH_tag = new ArrayList<String>();
     public int PH_pick;
@@ -24,19 +25,15 @@ public class PeopleDetailItemData {
     }
 
     public String getGeneral_id() {
-        return general_id;
+        return general_name;
     }
 
     public void setGeneral_id(String general_id) {
-        this.general_id = general_id;
+        this.general_name = general_id;
     }
 
-    public String getPH_picture() {
+    public ArrayList<String> getPH_picture() {
         return PH_picture;
-    }
-
-    public void setPH_picture(String PH_picture) {
-        this.PH_picture = PH_picture;
     }
 
     public String getPH_content() {
@@ -69,5 +66,25 @@ public class PeopleDetailItemData {
 
     public void setPH_comment(ArrayList<CommentData> PH_comment) {
         this.PH_comment = PH_comment;
+    }
+
+    public String getGeneral_name() {
+        return general_name;
+    }
+
+    public void setGeneral_name(String general_name) {
+        this.general_name = general_name;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public void setPH_picture(ArrayList<String> PH_picture) {
+        this.PH_picture = PH_picture;
     }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.wefika.flowlayout.FlowLayout;
 
 import java.util.List;
@@ -59,6 +60,12 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+    public String getItemId(PeopleItemData peopleItem){
+        this.peopleItem = peopleItem;
+        return peopleItem.getPH_number();
+
+    }
+
     public void setPeopleItem(PeopleItemData peopleItem){
         this.peopleItem = peopleItem;
 
@@ -78,7 +85,7 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
             tagLayout.addView(tv);
         }
         List<String> url = peopleItem.getPH_picture();
-//        Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
+        Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
     }
 
 }

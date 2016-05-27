@@ -5,10 +5,27 @@
     android:layout_height="match_parent"
     tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity3">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/toolbar"
+        android:titleTextColor="@android:color/black"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="견적 문의(4/5)"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="90dp" />
+
+    </android.support.v7.widget.Toolbar>
+
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/imageView10"
+        android:id="@+id/plus"
         android:src="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -17,12 +34,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="버튼을 눌러 공사하실 장소 사진을 등록하세요.
-        (최대 4장까지 등록 가능합니다.)"
+        android:text="버튼을 눌러 공사하실 장소 사진을 등록하세요.\n(최대 4장까지 등록 가능합니다.)"
         android:id="@+id/textView26"
-        android:layout_below="@+id/imageView10"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/plus"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal" />
 
     <Button
         android:layout_width="match_parent"

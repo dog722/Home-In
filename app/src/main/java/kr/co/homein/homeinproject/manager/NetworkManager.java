@@ -17,14 +17,20 @@ import java.util.concurrent.TimeUnit;
 import kr.co.homein.homeinproject.Maps.AddressInfo;
 import kr.co.homein.homeinproject.Maps.AddressInfoResult;
 import kr.co.homein.homeinproject.MyApplication;
+import kr.co.homein.homeinproject.data.CompanyItemData;
+import kr.co.homein.homeinproject.data.CompanyItemDataResult;
+import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 import kr.co.homein.homeinproject.data.PeopleItemData;
 import kr.co.homein.homeinproject.data.PeopleItemDataResult;
+import kr.co.homein.homeinproject.data.PeopleItemDetailResult;
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -134,14 +140,14 @@ public class NetworkManager {
     }
 
 
-
-    private static final String TSTORE_SERVER = "http://52.79.170.110:80";
-    private static final String TSTORE_CATEGORY_URL = TSTORE_SERVER + "/people_homein_list";
+    //피플 아이템 리스트
+    private static final String HOMEIN_SERVER = "http://52.79.170.110:80";
+    private static final String PEOPLE_ITEM_LIST = HOMEIN_SERVER + "/people_homein_list";
     public Request getPeopleItemList(Object tag, OnResultListener<List<PeopleItemData>> listener) {
         Request request = new Request.Builder()
-                .url(TSTORE_CATEGORY_URL)
-                .header("Accept","application/json")
-                .header("appKey","458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .url(PEOPLE_ITEM_LIST)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
                 .build();
         final NetworkResult<List<PeopleItemData>> result = new NetworkResult<>();
         result.request = request;
@@ -166,4 +172,74 @@ public class NetworkManager {
         });
         return request;
     }
+
+    //피플 아이템 상세 페이지
+
+    private static final String PEOPLE_DETAIL = HOMEIN_SERVER + "/people_homein_info";
+    public Request getPeopleItemDetail(Object tag, String PH_number, OnResultListener<PeopleDetailItemData> listener) {
+        String url = String.format(PEOPLE_DETAIL);
+        RequestBody body = new FormBody.Builder()
+                .add("PH_number", PH_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<PeopleDetailItemData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    PeopleItemDetailResult data = gson.fromJson(response.body().charStream(), PeopleItemDetailResult.class);
+                    result.result = data.peopleDetailItemData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+    //회사 아이템 리스트
+    private static final String COMPANY_ITEM = HOMEIN_SERVER + "/construction_homein_list";
+    public Request getCompanyItemList(Object tag, OnResultListener<List<CompanyItemData>> listener) {
+        Request request = new Request.Builder()
+                .url(COMPANY_ITEM)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .build();
+        final NetworkResult<List<CompanyItemData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    CompanyItemDataResult data = gson.fromJson(response.body().charStream(), CompanyItemDataResult.class);
+                    result.result = data.companyItemData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
 }

@@ -72,7 +72,7 @@ public class SearchCompanyItemListFragment extends Fragment {
 
         for( int i = 0 ; i < 10 ; i ++){
             CompanyItemData c = new CompanyItemData();
-            c.setGoodCount("20" + i);
+            c.setCH_pick(20 + i);
             mAdatper.add(c);
             c.tag.add("태그1");
             c.tag.add("태그2");

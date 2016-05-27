@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.wefika.flowlayout.FlowLayout;
+
+import java.util.List;
 
 import kr.co.homein.homeinproject.data.CompanyItemData;
 
@@ -21,6 +24,7 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView scoreView;
     FlowLayout tagLayout;
+    TextView distance;
     
 
     public interface OnItemClickListener {
@@ -39,6 +43,7 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
         imageView = (ImageView) itemView.findViewById(R.id.item_image);
         scoreView = (TextView) itemView.findViewById(R.id.good_score);
         tagLayout = (FlowLayout)itemView.findViewById(R.id.tag_layout);
+        distance = (TextView) itemView.findViewById(R.id.distance);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +61,11 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
         this.companyItem = companyItem;
 
 
-        scoreView.setText(companyItem.getGoodCount());
-//        Glide.with(imageView.getContext()).load(url).into(imageView);
+        scoreView.setText(companyItem.getCH_pick()+"");
+        distance.setText(companyItem.getDistance());
         tagLayout.removeAllViews();
 
-        for (String s : companyItem.tag) {
+        for (String s : companyItem.getCH_tag()) {
             TextView tv = new TextView(itemView.getContext());
             FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
             lp.setMargins(20, 20, 20, 20);
@@ -70,6 +75,11 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
             tv.setBackgroundColor(Color.BLUE);
             tv.setText(s);
             tagLayout.addView(tv);
+        }
+
+        if (companyItem.getCH_picture().size() > 0) {
+            List<String> url = companyItem.getCH_picture();
+            Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
         }
     }
 

@@ -20,7 +20,13 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
     public static final int VEIW_TYPE_BODY = 2;
 
     List<CommentData> commentData = new ArrayList<>();
-    PeopleDetailItemData peopleDetailItemData = new PeopleDetailItemData();
+    PeopleDetailItemData peopleDetailItemData;
+
+
+//    public void addAll(List<TStoreCategory> items) {
+//        this.items.addAll(items);
+//        notifyDataSetChanged();
+//    }
 
     @Override
     public int getItemViewType(int position) {
@@ -57,7 +63,7 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
             }
             case VEIW_TYPE_BODY : {
                 CommentViewHolder h = (CommentViewHolder) holder;
-                h.setComment(peopleDetailItemData);
+                h.setComment(peopleDetailItemData.getPH_comment().get(position - 1));
                 break;
             }
         }
@@ -65,11 +71,20 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemCount() {
+        if (peopleDetailItemData == null) return 0;
         return peopleDetailItemData.getPH_comment().size() + 1;
     }
 
-    public void addHeader(PeopleDetailItemData peopleDetailItemData) {
+    public void set(PeopleDetailItemData peopleDetailItemData) {
         this.peopleDetailItemData = peopleDetailItemData;
         notifyDataSetChanged();
     }
+//
+//    public void addComment(PeopleDetailItemData peopleDetailItemData){
+//        this.peopleDetailItemData = peopleDetailItemData;
+//        peopleDetailItemData.getPH_comment()
+//        notifyDataSetChanged();
+//    }
+
+
 }

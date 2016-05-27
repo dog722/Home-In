@@ -39,8 +39,9 @@ public class PeopleItemFragment extends Fragment {
     RecyclerView listView;
     ViewPager viewPager;
     EventPageAdapter eventPageAdapter;
+    String PH_number;
 
-
+    final static String PH_NUMBER = "PH_number";
     ParallaxRecyclerAdapter<PeopleItemData>  pAdapter;
 
 
@@ -77,6 +78,7 @@ public class PeopleItemFragment extends Fragment {
 //                    }
 //                });
                 h.setPeopleItem(peopleItem.get(i));
+                PH_number= h.getItemId(peopleItem.get(i));
 
             }
 
@@ -98,6 +100,7 @@ public class PeopleItemFragment extends Fragment {
             @Override
             public void onClick(View view, int i) {
                 Intent intent = new Intent(getContext(), PeopleItemDetailActivity.class); //사용자 아이템 상세 페이지 이동
+                intent.putExtra(PH_NUMBER,  PH_number);
                 startActivity(intent);
             }
         });
@@ -167,10 +170,6 @@ public class PeopleItemFragment extends Fragment {
 //        layout = (FlowLayout) mainView.findViewById(R.id.tag_layout);
 
 
-
-
-
-
         //헤더 선언
         View v = LayoutInflater.from(getContext()).inflate(R.layout.homein_header_view, container , false);
 
@@ -214,9 +213,9 @@ public class PeopleItemFragment extends Fragment {
 //            p.setPH_pick(20 + i);
 ////            p.getPH_number("")
 //
-//            peopleItem.add(p);
-//            p.getPH_tag().add("태그1");
-//            p.getPH_tag().add("태그2");
+//            peopleItem.set(p);
+//            p.getPH_tag().set("태그1");
+//            p.getPH_tag().set("태그2");
 //        }
 //
 //    }
@@ -244,7 +243,7 @@ public class PeopleItemFragment extends Fragment {
 //            TStoreCategory category = new TStoreCategory();
 //            category.setCategoryName("Category " + i);
 //            category.setCategoryCode("Code : " + i);
-//            mAdapter.add(category);
+//            mAdapter.set(category);
 //        }
     }
 }

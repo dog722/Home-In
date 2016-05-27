@@ -10,9 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyItemData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 
 /**
@@ -75,14 +81,31 @@ public class CompanyItemFragment extends Fragment {
 
 
     private void setData() {
+        NetworkManager.getInstance().getCompanyItemList(getContext(), new NetworkManager.OnResultListener<List<CompanyItemData>>() {
+            @Override
+            public void onSuccess(Request request, List<CompanyItemData> result) {
+//                mAdapter.clear();
+                mAdatper.addAll(result);
+            }
 
-        for( int i = 0 ; i < 10 ; i ++){
-            CompanyItemData c = new CompanyItemData();
-            c.setGoodCount("20" + i);
-            mAdatper.add(c);
-            c.tag.add("태그1");
-            c.tag.add("태그2");
-        }
-
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(getContext(), "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+//        mAd
+
+
+//    private void setData() {
+//
+//        for( int i = 0 ; i < 10 ; i ++){
+//            CompanyItemData c = new CompanyItemData();
+//            c.setCH_pick(20 + i);
+//            mAdatper.add(c);
+//            c.tag.add("태그1");
+//            c.tag.add("태그2");
+//        }
+//
+//    }
 }
