@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -17,11 +16,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.SearchData;
+import kr.co.homein.homeinproject.data.SearchListDataResult;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 public class SearchTagActivity extends AppCompatActivity {
 
@@ -29,8 +30,7 @@ public class SearchTagActivity extends AppCompatActivity {
     EditText editText;
     RecyclerView listView;
     SearchAdapter mAdapter;
-    List<SearchData> searchData = new ArrayList<>();
-
+    String tag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class SearchTagActivity extends AppCompatActivity {
             public void onItemClick(View view, SearchData searchData) {
 
                 Intent intent = new Intent(SearchTagActivity.this, SearchResultActivity.class);
-                intent.putExtra("tag",searchData.getCompanyName());
+                intent.putExtra("tag", searchData.getTag_name());
                 startActivity(intent); //검색 결과창으로 이동.
                 finish();
             }
@@ -84,6 +84,7 @@ public class SearchTagActivity extends AppCompatActivity {
                     case EditorInfo.IME_ACTION_SEARCH:
                         Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
                         //여기서 검색 키워드 서버에 보내주기
+                        tag = editText.getText().toString();
                         setData();
                         break;
                     default:
@@ -96,21 +97,21 @@ public class SearchTagActivity extends AppCompatActivity {
 
     }
 
-
-
     private void setData() {
+        NetworkManager.getInstance().getSearchResult(this, tag, new NetworkManager.OnResultListener<SearchListDataResult>() {
+            @Override
+            public void onSuccess(Request request,SearchListDataResult result) {
+                Toast.makeText(SearchTagActivity.this, " tag:" + tag, Toast.LENGTH_SHORT).show();
+                mAdapter.clear();
+                mAdapter.addAll(result.getSearchData());
+                mAdapter.addHeader(result.getTotal_count()+"");
+            }
 
-        SearchData s= new SearchData();
-        for(int i = 1 ; i< 5 ; i++) {
-            s.setSearchCount("" + i);
-            s.setCompanyName("한샘" + i);
-            mAdapter.addSearchItem(s);
-
-            Log.d("왜안돼" , i+"");
-        }
-
-        String totalCount = "833";
-
-        mAdapter.addHeader(totalCount);
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(SearchTagActivity.this, "server disconnected", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

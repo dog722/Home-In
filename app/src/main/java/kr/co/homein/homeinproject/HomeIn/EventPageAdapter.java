@@ -9,7 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import kr.co.homein.homeinproject.R;
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import kr.co.homein.homeinproject.data.EventPageData;
 
 /**
  * Created by seoeunbi on 2016. 5. 13..
@@ -23,21 +28,28 @@ public class EventPageAdapter extends PagerAdapter {
         Context context;
         Bitmap galImage;
         BitmapFactory.Options options;
-        private final int[] galImages = new int[] {
-                R.drawable.company_item_dummy,
-                R.drawable.company_item_dummy,
-                R.drawable.company_item_dummy,
-                R.drawable.company_item_dummy
-        };
+
+
+    List <EventPageData> eventPageData = new  ArrayList<EventPageData>();
+//    EventPageData eventPageData = new EventPageData();
+
 
     EventPageAdapter(Context context) {
             this.context = context;
-            options = new BitmapFactory.Options();
+//            options = new BitmapFactory.Options();
         }
+
+
+
+        public void clear() {
+            eventPageData.clear();
+            notifyDataSetChanged();
+        }
+
 
         @Override
         public int getCount() {
-            return galImages.length;
+            return eventPageData.size();
         }
 
         @Override
@@ -51,11 +63,16 @@ public class EventPageAdapter extends PagerAdapter {
 //            int padding = context.getResources().getDimensionPixelSize();
 //            imageView.setPadding(padding, padding, padding, padding);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            options.inSampleSize = 4;
-            galImage = BitmapFactory.decodeResource(context.getResources(), galImages[position], options);
+//            options.inSampleSize = 4;
+//            galImage = BitmapFactory.decodeResource(context.getResources(), galImages[position], options);
+//
+//            imageView.setImageBitmap(galImage);
+//               if (eventPageData.size() > 0) {
+                Glide.with(imageView.getContext()).load(eventPageData.get(position).getEvent_picture().get(0)).into(imageView);
+//            }
 
-            imageView.setImageBitmap(galImage);
-            ((ViewPager) container).addView(imageView, 0);
+//            imageView.setBackgroundColor(Color.RED);
+            ((ViewPager) container).addView(imageView);
             return imageView;
         }
 
@@ -63,4 +80,11 @@ public class EventPageAdapter extends PagerAdapter {
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView((ImageView) object);
         }
+
+
+    public void addAll(List<EventPageData> items) {
+        this.eventPageData.addAll(items);
+        notifyDataSetChanged();
+    }
+
     }

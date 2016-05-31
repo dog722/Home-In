@@ -27,7 +27,15 @@ public class SearchAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder
         mListener = listener;
     }
 
+    public void addAll(List<SearchData> items) {
+        this.searchData.addAll(items);
+        notifyDataSetChanged();
+    }
 
+    public void clear() {
+        searchData.clear();
+        notifyDataSetChanged();
+    }
 
 
     @Override
@@ -57,24 +65,48 @@ public class SearchAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        switch (holder.getItemViewType()){
-            case VIEW_TYPE_HEADER: {
-                SearchHeaderViewHolder h = (SearchHeaderViewHolder) holder;
-                h.setSearchHeaderItem(totalCount);
-                break;
-            }
-            case VEIW_TYPE_BODY : {
-                SearchViewHolder h = (SearchViewHolder) holder;
-                h.setSearchItem(searchData.get(position-1));
-                h.setOnItemClickListener(mListener);
-
-                break;
-            }
+//        switch (holder.getItemViewType()){
+//            case VIEW_TYPE_HEADER: {
+//                SearchHeaderViewHolder h = (SearchHeaderViewHolder) holder;
+//                h.setSearchHeaderItem(totalCount);
+//                break;
+//            }
+//            case VEIW_TYPE_BODY : {
+//                SearchViewHolder h = (SearchViewHolder) holder;
+//                h.setSearchItem(searchData.get(position-1));
+//                h.setOnItemClickListener(mListener);
+//
+//                break;
+//            }
+//        }
+        if(position == 0){
+            SearchHeaderViewHolder h = (SearchHeaderViewHolder)holder;
+            h.setSearchHeaderItem(totalCount);
+            return;
         }
+        position--;
+        if(searchData.size()>0) {
+            if (position < searchData.size()) {
+                SearchViewHolder h = (SearchViewHolder)holder;
+                h.setSearchItem(searchData.get(position));
+                h.setOnItemClickListener(mListener);
+                return;
+            }
+
+        }
+
+        position-=searchData.size();
+
+        throw new IllegalArgumentException("Invalid position");
     }
 
     @Override
     public int getItemCount() {
+        int size = 0;
+        if(searchData.size()==0){
+            return size;
+        }
+
         return searchData.size() + 1;
     }
 

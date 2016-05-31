@@ -48,8 +48,9 @@ public class SearchViewHolder  extends RecyclerView.ViewHolder {
 
     public void setSearchItem(SearchData searchData) {
         this.searchData = searchData;
-        companyName.setText(searchData.getCompanyName());
-        searchCount.setText(searchData.getSearchCount());
+        companyName.setText(searchData.getTag_name());
+//        searchCount.setText(searchData.getCount());
+        searchCount.setText("DDDDD");
     }
 
 }

@@ -36,6 +36,7 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
         return VEIW_TYPE_BODY;
     }
 
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType){

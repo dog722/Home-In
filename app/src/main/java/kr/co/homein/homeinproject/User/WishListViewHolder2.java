@@ -4,6 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.WishListData;
 
@@ -44,7 +48,12 @@ public class WishListViewHolder2 extends RecyclerView.ViewHolder {
 
     public void setWishListItem(WishListData wishListData) {
         this.wishListData = wishListData;
-//        Glide.with(imageView.getContext()).load(wishListData.getUrl()).into(imageView);
+//        Glide.with(imageView.getContext()).load(wishListData.getPost_picture().get(0)).into(imageView);
+
+        if (wishListData.getPosting_picture().size() > 0) {
+            List<String> url = wishListData.getPosting_picture();
+            Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
+        }
     }
 
 }

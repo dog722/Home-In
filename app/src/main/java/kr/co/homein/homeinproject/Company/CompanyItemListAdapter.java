@@ -5,12 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import kr.co.homein.homeinproject.data.CompanyItemData;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.CompanyItemData;
 
 /**
  * Created by seoeunbi on 2016. 5. 17..
@@ -18,13 +17,12 @@ import kr.co.homein.homeinproject.R;
 public class CompanyItemListAdapter extends RecyclerView.Adapter<CompanyItemViewHolder> {
 
     List<CompanyItemData> companyItem = new ArrayList<>();
-
+    String CH_number;
 
     CompanyItemViewHolder.OnItemClickListener mListener;
     public void setOnItemClickListener(CompanyItemViewHolder.OnItemClickListener listener) {
         mListener = listener;
     }
-
 
 
     @Override
@@ -38,8 +36,17 @@ public class CompanyItemListAdapter extends RecyclerView.Adapter<CompanyItemView
         CompanyItemViewHolder h = (CompanyItemViewHolder) holder;
         h.setCompanyItem(companyItem.get(position));
         holder.setOnItemClickListener(mListener);
+        CH_number = h.getCompanyItemId(companyItem.get(position));
 
     }
+
+    public String getCompanyItemId(){
+        return CH_number;
+    }
+
+
+
+
 
     @Override
     public int getItemCount() {
@@ -90,6 +97,8 @@ public class CompanyItemListAdapter extends RecyclerView.Adapter<CompanyItemView
         this.companyItem.addAll(items);
         notifyDataSetChanged();
     }
+
+
 
 }
 

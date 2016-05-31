@@ -9,9 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyItemData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +28,8 @@ public class CompanyInfoItemFragment extends Fragment {
 
     RecyclerView recyclerView;
     CompanyItemListAdapter mAdatper;
+    final static String OF_NUMBER = "office_number";
+    String officeNumber;
 
 
     public CompanyInfoItemFragment() {
@@ -31,6 +39,8 @@ public class CompanyInfoItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        officeNumber = ((CompanyInfoActivity)getActivity()).getOfficeNumber();
 
         mAdatper = new CompanyItemListAdapter();
         mAdatper.setOnItemClickListener(new CompanyItemViewHolder.OnItemClickListener() {
@@ -64,12 +74,19 @@ public class CompanyInfoItemFragment extends Fragment {
 
 
     private void setData() {
+        NetworkManager.getInstance().getCompanyOwnItemList(getContext(), officeNumber, new NetworkManager.OnResultListener<List<CompanyItemData>>() {
+            @Override
+            public void onSuccess(Request request, List<CompanyItemData> result) {
+//                mAdapter.clear();
+                mAdatper.addAll(result);
+            }
 
-        for( int i = 0 ; i < 10 ; i ++){
-            CompanyItemData c = new CompanyItemData();
-            c.setCH_pick(20 + i);
-            mAdatper.add(c);
-        }
-
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(getContext(), "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 }

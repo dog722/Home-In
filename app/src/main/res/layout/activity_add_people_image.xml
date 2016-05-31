@@ -8,38 +8,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/toolbar"
+            android:titleTextColor="@android:color/black"
+            android:background="#ffffff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="게시물 등록"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp" />
+        </android.support.v7.widget.Toolbar>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="40dp">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="350dp"
             android:id="@+id/picture"
-            android:src="@drawable/detail_item_dummy"
+            android:src="@drawable/take_picture"
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/btn_add"
-            android:src="@android:drawable/ic_input_add"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/back_key"
-            android:src="@mipmap/ic_launcher"
-            android:layout_alignBottom="@+id/btn_add"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
         <LinearLayout
@@ -54,13 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="글"
-                    android:id="@+id/textView17" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -106,56 +97,45 @@
                     android:background="@android:color/white"
                     android:outlineProvider="none"
                     android:autoText="false"
-                    android:maxLength="300" />
+                    android:maxLength="300"
+                    android:hint="텍스트를 입력하세요."
+                    android:gravity="center_vertical|center_horizontal" />
             </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="100dp"
-            android:background="#ffffff"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:weightSum="1"
-                android:layout_marginTop="20dp">
+                android:layout_height="match_parent">
+
+                <com.wefika.flowlayout.FlowLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/tag_layout"
+                    android:layout_height="110dp"
+                    android:gravity="start|top"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="태그"
-                    android:id="@+id/textView23"
-                    android:layout_marginTop="10dp" />
+                    android:text="아래 버튼을 눌러 테그를 입력하세요."
+                    android:id="@+id/explain_tag"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView24"
-                    android:layout_weight="0.96" />
 
-                <ImageButton
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_input_add"
-                    android:id="@+id/input_tag_btn"
-                    android:layout_marginTop="0dp" />
-
-            </LinearLayout>
-
-            <com.wefika.flowlayout.FlowLayout
-                android:layout_width="match_parent"
-                android:id="@+id/tag_layout"
-                android:layout_height="match_parent"
-                android:gravity="start|top"/>
-
-        </LinearLayout>
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_input_add"
+            android:id="@+id/input_tag_btn"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="30dp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -166,7 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:textColor="#ffffff"
-                android:text="게시물 등록"
+                android:text="등록"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@color/colorPrimary"
                 android:id="@+id/upload_btn" />

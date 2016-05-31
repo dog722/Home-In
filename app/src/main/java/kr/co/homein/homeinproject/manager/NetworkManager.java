@@ -17,17 +17,35 @@ import java.util.concurrent.TimeUnit;
 import kr.co.homein.homeinproject.Maps.AddressInfo;
 import kr.co.homein.homeinproject.Maps.AddressInfoResult;
 import kr.co.homein.homeinproject.MyApplication;
+import kr.co.homein.homeinproject.data.CompanyDetailItemData;
+import kr.co.homein.homeinproject.data.CompanyDetailItemDataResult;
+import kr.co.homein.homeinproject.data.CompanyInfoData;
+import kr.co.homein.homeinproject.data.CompanyInfoDataResult;
 import kr.co.homein.homeinproject.data.CompanyItemData;
 import kr.co.homein.homeinproject.data.CompanyItemDataResult;
+import kr.co.homein.homeinproject.data.EventPageData;
+import kr.co.homein.homeinproject.data.EventPageResult;
+import kr.co.homein.homeinproject.data.MyInfoData;
+import kr.co.homein.homeinproject.data.MyInfoDataResult;
+import kr.co.homein.homeinproject.data.PeopleAddWishList;
+import kr.co.homein.homeinproject.data.PeopleAddWishListResult;
 import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 import kr.co.homein.homeinproject.data.PeopleItemData;
 import kr.co.homein.homeinproject.data.PeopleItemDataResult;
 import kr.co.homein.homeinproject.data.PeopleItemDetailResult;
+import kr.co.homein.homeinproject.data.PeopleItemWriteData;
+import kr.co.homein.homeinproject.data.PeopleItemWriteDataResult;
+import kr.co.homein.homeinproject.data.SearchListDataResult;
+import kr.co.homein.homeinproject.data.SearchResult;
+import kr.co.homein.homeinproject.data.WishListData;
+import kr.co.homein.homeinproject.data.WishListDataResult;
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.JavaNetCookieJar;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -66,6 +84,8 @@ public class NetworkManager {
 
         mClient = builder.build();
     }
+
+
 
     public interface OnResultListener<T> {
         public void onSuccess(Request request, T result);
@@ -233,6 +253,372 @@ public class NetworkManager {
                 if (response.isSuccessful()) {
                     CompanyItemDataResult data = gson.fromJson(response.body().charStream(), CompanyItemDataResult.class);
                     result.result = data.companyItemData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+    //회사 아이템 상세 페이지
+    private static final String COMPANY_DETAIL = HOMEIN_SERVER + "/construction_homein_info/";
+    public Request getCompanyItemDetail(Object tag, String CH_number, OnResultListener<CompanyDetailItemData> listener) {
+        String url = String.format(COMPANY_DETAIL);
+        RequestBody body = new FormBody.Builder()
+                .add("CH_number", CH_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<CompanyDetailItemData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    CompanyDetailItemDataResult data = gson.fromJson(response.body().charStream(), CompanyDetailItemDataResult.class);
+                    result.result = data.companyDetailItemData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+    //업체 프로필 페이지
+    private static final String COMPANY_INFO = HOMEIN_SERVER + "/office_info/";
+    public Request getCompanyInfo(Object tag, String office_number, OnResultListener<CompanyInfoData> listener) {
+        String url = String.format(COMPANY_INFO);
+        RequestBody body = new FormBody.Builder()
+                .add("office_number", office_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<CompanyInfoData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    CompanyInfoDataResult data = gson.fromJson(response.body().charStream(), CompanyInfoDataResult.class);
+                    result.result = data.companyInfoData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //업체에 해당하는 시공 사례 페이지
+    private static final String COMPANY_OWN_ITEM_ = HOMEIN_SERVER + "/construction_example_list/";
+    public Request getCompanyOwnItemList(Object tag, String office_number, OnResultListener<List<CompanyItemData>> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("office_number", office_number)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(COMPANY_OWN_ITEM_)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<List<CompanyItemData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    CompanyItemDataResult data = gson.fromJson(response.body().charStream(), CompanyItemDataResult.class);
+                    result.result = data.companyItemData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+
+    //작성 페이지
+    private static final String PEOPLE_WRITE = HOMEIN_SERVER + "/people_homein_write/";
+    public Request sendPeopleWrite(Object tag, String general_number, String PH_content, List<String>PH_tag, File file, int category_number,
+                                   OnResultListener<PeopleItemWriteData> listener) {
+        String url = String.format(PEOPLE_WRITE);
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.addFormDataPart("general_number", general_number)
+                .addFormDataPart("PH_content", PH_content);
+        for (int i = 0; i <PH_tag.size(); i++) {
+            String t = PH_tag.get(i);
+            builder.addFormDataPart("PH_tag["+i+"]", t);
+        }
+
+        builder.setType(MultipartBody.FORM)
+                .addFormDataPart("PH_picture", file.getName(),
+                        RequestBody.create(MediaType.parse("image/jpeg"), file));
+
+        builder.addFormDataPart("category_number", category_number+"");
+
+        RequestBody body = builder.build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        final NetworkResult<PeopleItemWriteData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    PeopleItemWriteDataResult data = gson.fromJson(response.body().charStream(), PeopleItemWriteDataResult.class);
+                    result.result = data.peopleItemWriteData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+    //내 정보
+    private static final String MY_INFO = HOMEIN_SERVER + "/my_info/";
+    public Request getMyInfo(Object tag, String general_number, OnResultListener<MyInfoData> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("general_number", general_number)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(MY_INFO)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<MyInfoData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    MyInfoDataResult data = gson.fromJson(response.body().charStream(), MyInfoDataResult.class);
+                    result.result = data.myInfoData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //피플 홈인 관심 목록 담기
+    private static final String PICK_LIST = HOMEIN_SERVER + "/pick_list/";
+    public Request getMyWishList(Object tag, String general_number, OnResultListener<List<WishListData>> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("general_number", general_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(PICK_LIST)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<List<WishListData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    WishListDataResult data = gson.fromJson(response.body().charStream(), WishListDataResult.class);
+                    result.result = data.wishListData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+    //피플 관심 목록 담기
+    private static final String PEOPLE_ADD_WISHLIST = HOMEIN_SERVER + "/add_pick_list";
+    public Request addPeopleWishlist(Object tag, String PH_number,String general_number, OnResultListener<PeopleAddWishList> listener) {
+        String url = String.format(PEOPLE_ADD_WISHLIST);
+        RequestBody body = new FormBody.Builder()
+                .add("PH_number", PH_number)
+                .add("general_number", general_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<PeopleAddWishList> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    PeopleAddWishListResult data = gson.fromJson(response.body().charStream(), PeopleAddWishListResult.class);
+                    result.result = data.peopleAddWishList;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //검색 화면 결과 리스트
+    private static final String SEARCH_LIST = HOMEIN_SERVER + "/search_count";
+    public Request getSearchResult(Object tag, String tag_result, OnResultListener<SearchListDataResult> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("tag", tag_result)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(SEARCH_LIST)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<SearchListDataResult> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    SearchResult data = gson.fromJson(response.body().charStream(), SearchResult.class);
+                    result.result = data.searchListDataResult;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+    //이벤트 페이지
+    private static final String EVENTPAGE = HOMEIN_SERVER + "/event_list";
+    public Request getEventPage(Object tag, OnResultListener<List<EventPageData>> listener) {
+        Request request = new Request.Builder()
+                .url(EVENTPAGE)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .build();
+        final NetworkResult<List<EventPageData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    EventPageResult data = gson.fromJson(response.body().charStream(), EventPageResult.class);
+                    result.result = data.eventPageData;
                     mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
                 } else {
                     throw new IOException(response.message());

@@ -9,11 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 import kr.co.homein.homeinproject.Estimate.EstimateRequestActivity;
 import kr.co.homein.homeinproject.Maps.CompanyMapActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyInfoData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +34,10 @@ public class CompanyInfoFragment extends Fragment {
     TextView companyDomain;
     TextView comment;
     TextView requestBtn;
+    TextView companyAddress2;
     CompanyInfoData companyInfoData;
+    final static String OF_NUMBER = "office_number";
+    String officeNumber;
 
     public CompanyInfoFragment() {
         // Required empty public constructor
@@ -39,8 +47,9 @@ public class CompanyInfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         companyInfoData = new CompanyInfoData();
-
-
+//        Bundle extra = getArguments();
+        officeNumber = ((CompanyInfoActivity)getActivity()).getOfficeNumber();
+        Toast.makeText(getContext(), "officeNumber : "+ officeNumber, Toast.LENGTH_SHORT).show();
         setData();
     }
 
@@ -67,19 +76,11 @@ public class CompanyInfoFragment extends Fragment {
         companyTitle = (TextView) view.findViewById(R.id.company_title);
         companyScore = (TextView) view.findViewById(R.id.score);
         companyAdress = (TextView) view.findViewById(R.id.adress);
+        companyAddress2 = (TextView) view.findViewById(R.id.adress2);
         companyTel = (TextView) view.findViewById(R.id.tel);
         companyDomain = (TextView) view.findViewById(R.id.domain);
         comment = (TextView) view.findViewById(R.id.comment);
         requestBtn = (TextView) view.findViewById(R.id.request);
-
-        companyId.setText(companyInfoData.getCompanyId());
-        companyTitle.setText(companyInfoData.getCompanyTitle());
-        companyScore.setText(companyInfoData.getCompanyScore());
-        companyAdress.setText(companyInfoData.getCompanyAdress());
-        companyTel.setText(companyInfoData.getCompanyTel());
-        companyDomain.setText(companyInfoData.getCompanyDomain());
-        comment.setText(companyInfoData.getComment());
-
 
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,14 +95,34 @@ public class CompanyInfoFragment extends Fragment {
     }
 
     private void setData() {
-        companyInfoData.setCompanyId("한셈인테리어");
-        companyInfoData.setCompanyTitle("논현홈아이엔티키친프라자점");
-        companyInfoData.setCompanyScore("472");
-        companyInfoData.setCompanyAdress("서울특별시 서초구 방배중앙로 107-1");
-        companyInfoData.setCompanyTel("02 596 8213");
-        companyInfoData.setCompanyDomain("http://www.hanssem.com/");
-        companyInfoData.setComment("지난 30년간 우리나라 주거환경의 변화를 주도해 온 한샘은 부엌을 비롯한 실내 공간의 가구와 기기," +
-                "소품,조명,패브릭 등을 제공하는 토탈 홈 인테리어 기업입니다.");
+
+        NetworkManager.getInstance().getCompanyInfo(this, officeNumber, new NetworkManager.OnResultListener<CompanyInfoData>() {
+            @Override
+            public void onSuccess(Request request, CompanyInfoData result) {
+//                mAdapter.set(result);
+                companyInfoData = result;
+
+                companyId.setText(companyInfoData.getOffice_name());
+                companyTitle.setText(companyInfoData.getOffice_sub_name());
+                companyScore.setText(companyInfoData.getOffice_pick_count()+"");
+                companyAdress.setText(companyInfoData.getOffice_address1());
+                companyTel.setText(companyInfoData.getOffice_tel());
+                companyDomain.setText(companyInfoData.getOffice_website());
+                comment.setText(companyInfoData.getOffice_info_content());
+                companyAddress2.setText(companyInfoData.getOffice_address2());
+
+//                List<String> url = companyDetailItemData.getCH_picture();
+//                Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
+
+            }
+
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(getContext(), "server disconnected", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
+
+
 }

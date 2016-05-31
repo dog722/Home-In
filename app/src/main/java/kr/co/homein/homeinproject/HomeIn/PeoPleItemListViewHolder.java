@@ -60,11 +60,11 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public String getItemId(PeopleItemData peopleItem){
-        this.peopleItem = peopleItem;
-        return peopleItem.getPH_number();
-
-    }
+//    public String getItemId(PeopleItemData peopleItem){
+//        this.peopleItem = peopleItem;
+//        return peopleItem.getPH_number();
+//
+//    }
 
     public void setPeopleItem(PeopleItemData peopleItem){
         this.peopleItem = peopleItem;

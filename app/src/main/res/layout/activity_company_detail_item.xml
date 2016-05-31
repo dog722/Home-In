@@ -54,22 +54,34 @@
             android:scaleType="fitXY"
             android:layout_margin="20dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="eunbi722"
-            android:id="@+id/user_id"
-            android:paddingTop="30dp"
-            android:paddingLeft="10dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="eunbi722"
+                    android:id="@+id/user_id"
+                    android:paddingTop="30dp"
+                    android:paddingLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서브네임"
+                    android:id="@+id/sub_name" />
+            </LinearLayout>
+
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
             android:layout_weight="0.91" />
 
-        <ImageButton
+            <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src = "@mipmap/ic_launcher"
@@ -77,7 +89,7 @@
             android:layout_margin="20dp"
             android:scaleType="fitXY" />
 
-    </LinearLayout>
+        </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -100,17 +112,12 @@
             android:id="@+id/adress" />
     </LinearLayout>
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:columnCount="2"
         android:padding="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="주거형태:"
-            android:id="@+id/textView7" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,20 +128,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="비용:"
-            android:id="@+id/textView9" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="5000만원 이상"
             android:id="@+id/price" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="기간:"
-            android:id="@+id/textView11" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -142,18 +137,8 @@
             android:text="3주 이상"
             android:id="@+id/period" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="넓이:"
-            android:id="@+id/textView14" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="42평"
-            android:id="@+id/size" />
-    </GridLayout>
+    </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -168,25 +153,14 @@
                 android:id="@+id/comment3" />
         </LinearLayout>
 
-        <GridLayout
+        <com.wefika.flowlayout.FlowLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="#마일드 블랙 스타일"
-                android:id="@+id/tag1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="#42평"
-                android:id="@+id/tag2" />
-        </GridLayout>
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:id="@+id/tag_layout"
+            android:paddingLeft="20dp">
+        </com.wefika.flowlayout.FlowLayout>
 
         <LinearLayout
             android:orientation="vertical"

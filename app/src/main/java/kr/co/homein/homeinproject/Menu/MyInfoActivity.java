@@ -48,10 +48,10 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
             }
         });
         
-        setData();
-        userId.setText(myInfoData.getUserId());
-        email.setText(myInfoData.getUserEmail());
-        userPhone.setText(myInfoData.getUserPhoneNum());
+//        setData();
+//        userId.setText(myInfoData.getUserId());
+//        email.setText(myInfoData.getUserEmail());
+//        userPhone.setText(myInfoData.getUserPhoneNum());
 
 //        //비밀번호 변경
 //        editPW.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -76,13 +76,13 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
 
     }
 
-    private void setData() {
-        myInfoData.setUserId("ving.9");
-        myInfoData.setUserAdress("서울 특별시 신림동");
-        myInfoData.setUserEmail("mingu77777@gmail.com");
-        myInfoData.setUserPhoneNum("+82 10 2866 8263");
-        myInfoData.setUserPW("00000000");
-    }
+//    private void setData() {
+//        myInfoData.setUserId("ving.9");
+//        myInfoData.setUserAdress("서울 특별시 신림동");
+//        myInfoData.setUserEmail("mingu77777@gmail.com");
+//        myInfoData.setUserPhoneNum("+82 10 2866 8263");
+//        myInfoData.setUserPW("00000000");
+//    }
 
 
     @Override

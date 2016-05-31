@@ -30,6 +30,9 @@ public class CompanyItemFragment extends Fragment {
     RecyclerView recyclerView;
     CompanyItemListAdapter mAdatper;
     Button edit;
+    String CH_number;
+    final static String CH_NUMBER = "CH_number";
+
 
     public CompanyItemFragment() {
         // Required empty public constructor
@@ -45,11 +48,11 @@ public class CompanyItemFragment extends Fragment {
             @Override
             public void onItemClick(View view, CompanyItemData companyItemData) {
                 Intent intent = new Intent(getContext(), CompanyDetailItemActivity.class); //사용자 아이템 상세 페이지 이동
+                intent.putExtra(CH_NUMBER, companyItemData.getCH_number());
                 startActivity(intent);
             }
         });
         setData();
-
     }
 
 
@@ -94,18 +97,5 @@ public class CompanyItemFragment extends Fragment {
             }
         });
     }
-//        mAd
 
-
-//    private void setData() {
-//
-//        for( int i = 0 ; i < 10 ; i ++){
-//            CompanyItemData c = new CompanyItemData();
-//            c.setCH_pick(20 + i);
-//            mAdatper.add(c);
-//            c.tag.add("태그1");
-//            c.tag.add("태그2");
-//        }
-//
-//    }
 }

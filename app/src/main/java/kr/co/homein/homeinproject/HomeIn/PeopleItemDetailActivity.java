@@ -80,22 +80,7 @@ public class PeopleItemDetailActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Request request, PeopleDetailItemData result) {
 //                mAdapter.clear();
-
-//            result.getPH_comment().get(0).comment_content="너무 이뻐요!!^^";
-//            result.getPH_tag().set("#한셈 인테리어");
             mAdapter.set(result);
-
-
-
-//            mAdapter.addComment(result.getPH_comment());
-//
-//                for(int i = 0 ; i< result.size() ; i++) {
-//                    pAdapter.addItem(result.get(i), i);
-////                    mAdapter.addAll(result);
-//                }
-//                Log.d("test7", "dhodho");
-//                Toast.makeText(PeopleItemDetailActivity.this, "server connected", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
@@ -103,13 +88,7 @@ public class PeopleItemDetailActivity extends AppCompatActivity {
 //                Toast.makeText(PeopleItemDetailActivity.this, "server disconnected", Toast.LENGTH_SHORT).show();
             }
         });
-//        mAdapter.clear();
-//        for (int i = 0; i < 10; i++) {
-//            TStoreCategory category = new TStoreCategory();
-//            category.setCategoryName("Category " + i);
-//            category.setCategoryCode("Code : " + i);
-//            mAdapter.set(category);
-//        }
+
     }
 
 

@@ -7,12 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.WishListData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 public class WishListActivity extends AppCompatActivity {
 
@@ -52,19 +56,27 @@ public class WishListActivity extends AppCompatActivity {
             }
         });
 
-
-        setWishList();
-    }
-
-    private void setWishList() {
-            //여기다 이미지 서버에서 받아서 설정해주기
-
-        for(int i = 0 ; i< 7 ; i++){
-            WishListData data = new WishListData();
-            data.setUrl("url넣기");
-            mAdapter.add(data);
-        }
+        setData();
 
     }
+
+
+    String general_number = "GM722";
+    private void setData() {
+        NetworkManager.getInstance().getMyWishList(this, general_number, new NetworkManager.OnResultListener<List<WishListData>>() {
+            @Override
+            public void onSuccess(Request request, List<WishListData> result) {
+//                mAdapter.clear();
+                mAdapter.addAll(result);
+                Toast.makeText(WishListActivity.this, "server connected", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(WishListActivity.this, "server disconnected", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 }

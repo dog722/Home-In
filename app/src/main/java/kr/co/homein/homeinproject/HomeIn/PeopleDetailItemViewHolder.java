@@ -56,12 +56,10 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
             tagLayout.addView(tv);
         }
 
-        if (peopleDetailItem.getPH_comment().size() > 0) {
+        if (peopleDetailItem.getPH_picture().size() > 0) {
             String url = peopleDetailItem.getPH_picture().get(0);
             Log.d("테스트url ", url);
             Glide.with(img.getContext()).load(url).into(img);
-        } else {
-
         }
 
     }

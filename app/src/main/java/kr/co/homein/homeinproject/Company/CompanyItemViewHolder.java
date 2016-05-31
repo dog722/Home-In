@@ -11,9 +11,8 @@ import com.wefika.flowlayout.FlowLayout;
 
 import java.util.List;
 
-import kr.co.homein.homeinproject.data.CompanyItemData;
-
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.CompanyItemData;
 
 /**
  * Created by seoeunbi on 2016. 5. 17..
@@ -56,6 +55,11 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+    public String getCompanyItemId(CompanyItemData companyItem){
+        this.companyItem = companyItem;
+        return companyItem.getCH_number();
+
+    }
 
     public void setCompanyItem(CompanyItemData companyItem) {
         this.companyItem = companyItem;

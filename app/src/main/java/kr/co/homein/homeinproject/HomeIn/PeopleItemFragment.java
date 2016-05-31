@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.matthewtamlin.sliding_intro_screen_library.DotIndicator;
-import com.poliveira.parallaxrecycleradapter.ParallaxRecyclerAdapter;
+import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import java.util.List;
 
 import kr.co.homein.homeinproject.MainActivity;
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.EventPageData;
 import kr.co.homein.homeinproject.data.PeopleItemData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
 import okhttp3.Request;
@@ -38,16 +39,11 @@ public class PeopleItemFragment extends Fragment {
     List<PeopleItemData> peopleItem = new ArrayList<>();
     RecyclerView listView;
     ViewPager viewPager;
+    DotIndicator infoIndicator;
     EventPageAdapter eventPageAdapter;
     String PH_number;
-
     final static String PH_NUMBER = "PH_number";
     ParallaxRecyclerAdapter<PeopleItemData>  pAdapter;
-
-
-//    final List<PeopleItemData> peopleItem = new ArrayList<>();
-//    ParallaxRecyclerAdapter mAdapter;
-
 
     public PeopleItemFragment() {
         // Required empty public constructor
@@ -57,15 +53,12 @@ public class PeopleItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        mAdapter = new MainPeopleItemListAdapter();
-//        setData();
 
 
         eventPageAdapter = new EventPageAdapter(getContext());
-        pAdapter = new ParallaxRecyclerAdapter<>(peopleItem);
-        pAdapter.implementRecyclerAdapterMethods(new ParallaxRecyclerAdapter.RecyclerAdapterMethods() {
+        pAdapter = new ParallaxRecyclerAdapter<PeopleItemData>(peopleItem) {
             @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+            public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<PeopleItemData> parallaxRecyclerAdapter, int i) {
                 PeoPleItemListViewHolder h = (PeoPleItemListViewHolder) viewHolder;
 
 //                h.tag.setOnClickListener(new View.OnClickListener() {
@@ -78,28 +71,28 @@ public class PeopleItemFragment extends Fragment {
 //                    }
 //                });
                 h.setPeopleItem(peopleItem.get(i));
-                PH_number= h.getItemId(peopleItem.get(i));
-
             }
 
             @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+            public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, ParallaxRecyclerAdapter<PeopleItemData> parallaxRecyclerAdapter, int i) {
                 View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.people_item_view, viewGroup, false);
-
                 return new PeoPleItemListViewHolder(view);
             }
 
             @Override
-            public int getItemCount() {
+            public int getItemCountImpl(ParallaxRecyclerAdapter<PeopleItemData> parallaxRecyclerAdapter) {
                 return peopleItem.size();
             }
-        });
+        };
+
+        pAdapter.setScrollMultiplier(1);
 
 
         pAdapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View view, int i) {
                 Intent intent = new Intent(getContext(), PeopleItemDetailActivity.class); //사용자 아이템 상세 페이지 이동
+                PH_number = peopleItem.get(i).getPH_number();
                 intent.putExtra(PH_NUMBER,  PH_number);
                 startActivity(intent);
             }
@@ -113,13 +106,16 @@ public class PeopleItemFragment extends Fragment {
         });
 
         setData();
+        setEventPage();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         listView.scrollToPosition(0);
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -131,11 +127,9 @@ public class PeopleItemFragment extends Fragment {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
 
-
         listView.setAdapter(pAdapter);
         listView.setLayoutManager(manager);
         listView.setHasFixedSize(true);
-
 
         listView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -173,13 +167,11 @@ public class PeopleItemFragment extends Fragment {
         //헤더 선언
         View v = LayoutInflater.from(getContext()).inflate(R.layout.homein_header_view, container , false);
 
-        final DotIndicator infoIndicator = (DotIndicator) v.findViewById(R.id.dot);
+        infoIndicator = (DotIndicator) v.findViewById(R.id.dot);
         infoIndicator.setSelectedDotColor(Color.parseColor("#013ADF"));
         infoIndicator.setUnselectedDotColor(Color.parseColor("#CFCFCF"));
 
         pAdapter.setParallaxHeader(v, listView);
-
-        infoIndicator.setNumberOfItems(eventPageAdapter.getCount());
         viewPager = (ViewPager)v.findViewById(R.id.eventPage);
         viewPager.setAdapter(eventPageAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -194,6 +186,7 @@ public class PeopleItemFragment extends Fragment {
                 Toast.makeText(getContext(), "dfsdf", Toast.LENGTH_SHORT).show();
                 // only one selected
                 infoIndicator.setSelectedItem(viewPager.getCurrentItem(), true);
+
             }
 
             @Override
@@ -206,19 +199,26 @@ public class PeopleItemFragment extends Fragment {
 
 
 
-//    private void setData() {
-//
-//        for( int i = 0 ; i < 10 ; i ++){
-//            PeopleItemData p = new PeopleItemData();
-//            p.setPH_pick(20 + i);
-////            p.getPH_number("")
-//
-//            peopleItem.set(p);
-//            p.getPH_tag().set("태그1");
-//            p.getPH_tag().set("태그2");
-//        }
-//
-//    }
+    private void setEventPage(){
+
+
+        NetworkManager.getInstance().getEventPage(getContext(), new NetworkManager.OnResultListener<List<EventPageData>>() {
+            @Override
+            public void onSuccess(Request request, List<EventPageData> result) {
+//                mAdapter.clear();
+
+                eventPageAdapter.addAll(result);
+//                    mAdapter.addAll(result);
+                infoIndicator.setNumberOfItems(eventPageAdapter.getCount());
+            }
+
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(getContext(), "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void setData() {
         NetworkManager.getInstance().getPeopleItemList(getContext(), new NetworkManager.OnResultListener<List<PeopleItemData>>() {
@@ -238,12 +238,6 @@ public class PeopleItemFragment extends Fragment {
                 Toast.makeText(getContext(), "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-//        mAdapter.clear();
-//        for (int i = 0; i < 10; i++) {
-//            TStoreCategory category = new TStoreCategory();
-//            category.setCategoryName("Category " + i);
-//            category.setCategoryCode("Code : " + i);
-//            mAdapter.set(category);
-//        }
+
     }
 }

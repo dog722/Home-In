@@ -4,22 +4,23 @@ package kr.co.homein.homeinproject.data;
  * Created by seoeunbi on 2016. 5. 24..
  */
 public class SearchData {
-    String companyName;
-    String SearchCount;
 
-    public String getCompanyName() {
-        return companyName;
+    String tag_name;
+    int count;
+
+    public String getTag_name() {
+        return tag_name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setTag_name(String tag_name) {
+        this.tag_name = tag_name;
     }
 
-    public String getSearchCount() {
-        return SearchCount;
+    public int getCount() {
+        return count;
     }
 
-    public void setSearchCount(String searchCount) {
-        SearchCount = searchCount;
+    public void setCount(int count) {
+        this.count = count;
     }
 }

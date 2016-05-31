@@ -1,111 +1,138 @@
 package kr.co.homein.homeinproject.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by seoeunbi on 2016. 5. 18..
  */
 public class CompanyDetailItemData {
-    public String url;
-    public String user_img;
-    public String user_id;
-    public String comment;
-    public String comment2;
-    public String adress;
-    public String style;
-    public String price;
-    public String period;
-    public String size;
+    String _id;
+    String office_name;
+    String office_sub_name;
+    String office_number;
 
-    public String getComment2() {
-        return comment2;
+    public String getOffice_number() {
+        return office_number;
     }
 
-    public void setComment2(String comment2) {
-        this.comment2 = comment2;
+    public void setOffice_number(String office_number) {
+        this.office_number = office_number;
     }
 
-    public String getAdress() {
-        return adress;
+    String CH_content1;
+    String CH_content2;
+    String CH_living;
+    String CH_price;
+    String CH_period;
+    String CH_location;
+    String CH_number;
+    List <String> CH_picture = new ArrayList<String>();
+    int CH_pick;
+    List <String> CH_tag = new ArrayList<String>();
+
+
+    public String get_id() {
+        return _id;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public String getStyle() {
-        return style;
+    public String getOffice_name() {
+        return office_name;
     }
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setOffice_name(String office_name) {
+        this.office_name = office_name;
     }
 
-    public String getPrice() {
-        return price;
+    public String getOffice_sub_name() {
+        return office_sub_name;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setOffice_sub_name(String office_sub_name) {
+        this.office_sub_name = office_sub_name;
     }
 
-    public String getPeriod() {
-        return period;
+    public String getCH_content1() {
+        return CH_content1;
     }
 
-    public void setPeriod(String period) {
-        this.period = period;
+    public void setCH_content1(String CH_content1) {
+        this.CH_content1 = CH_content1;
     }
 
-    public String getSize() {
-        return size;
+    public String getCH_content2() {
+        return CH_content2;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setCH_content2(String CH_content2) {
+        this.CH_content2 = CH_content2;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCH_living() {
+        return CH_living;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCH_living(String CH_living) {
+        this.CH_living = CH_living;
     }
 
-    public ArrayList<String> tag = new ArrayList<String>();
-
-
-    public String getUrl() {
-        return url;
+    public String getCH_price() {
+        return CH_price;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCH_price(String CH_price) {
+        this.CH_price = CH_price;
     }
 
-    public String getUser_img() {
-        return user_img;
+    public String getCH_period() {
+        return CH_period;
     }
 
-    public void setUser_img(String user_img) {
-        this.user_img = user_img;
+    public void setCH_period(String CH_period) {
+        this.CH_period = CH_period;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getCH_location() {
+        return CH_location;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setCH_location(String CH_location) {
+        this.CH_location = CH_location;
     }
 
-    public ArrayList<String> getTag() {
-        return tag;
+    public String getCH_number() {
+        return CH_number;
     }
 
-    public void setTag(ArrayList<String> tag) {
-        this.tag = tag;
+    public void setCH_number(String CH_number) {
+        this.CH_number = CH_number;
     }
 
+    public List<String> getCH_picture() {
+        return CH_picture;
+    }
+
+    public void setCH_picture(List<String> CH_picture) {
+        this.CH_picture = CH_picture;
+    }
+
+    public int getCH_pick() {
+        return CH_pick;
+    }
+
+    public void setCH_pick(int CH_pick) {
+        this.CH_pick = CH_pick;
+    }
+
+    public List<String> getCH_tag() {
+        return CH_tag;
+    }
+
+    public void setCH_tag(List<String> CH_tag) {
+        this.CH_tag = CH_tag;
+    }
 }

@@ -4,58 +4,51 @@ package kr.co.homein.homeinproject.data;
  * Created by seoeunbi on 2016. 5. 25..
  */
 public class MyInfoData {
-    String url;
-    String userId;
-    String userEmail;
-    String userPW;
-    String userPhoneNum;
-    String userAdress;
 
-    public String getUrl() {
-        return url;
+
+    String _id;
+    String general_id ;
+    String general_name;
+    String genral_location;
+    String general_picture;
+
+    public String get_id() {
+        return _id;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getGenral_location() {
+        return genral_location;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setGenral_location(String genral_location) {
+        this.genral_location = genral_location;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getGeneral_picture() {
+        return general_picture;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setGeneral_picture(String general_picture) {
+        this.general_picture = general_picture;
     }
 
-    public String getUserPW() {
-        return userPW;
+    public String getGeneral_id() {
+        return general_id;
     }
 
-    public void setUserPW(String userPW) {
-        this.userPW = userPW;
+    public void setGeneral_id(String general_id) {
+        this.general_id = general_id;
     }
 
-    public String getUserPhoneNum() {
-        return userPhoneNum;
+    public String getGeneral_name() {
+        return general_name;
     }
 
-    public void setUserPhoneNum(String userPhoneNum) {
-        this.userPhoneNum = userPhoneNum;
-    }
-
-    public String getUserAdress() {
-        return userAdress;
-    }
-
-    public void setUserAdress(String userAdress) {
-        this.userAdress = userAdress;
+    public void setGeneral_name(String general_name) {
+        this.general_name = general_name;
     }
 }
