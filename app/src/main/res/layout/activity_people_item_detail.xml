@@ -9,7 +9,8 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rv_list" />
+        android:id="@+id/rv_list"
+        android:layout_marginBottom="40dp" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -17,5 +18,34 @@
         android:layout_height="wrap_content"
         android:id="@+id/back_key"
         android:layout_margin="10dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/back_key"
+        android:layout_alignStart="@+id/back_key"
+        android:id="@+id/linearLayout3"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="263dp"
+            android:layout_height="60dp"
+            android:id="@+id/input_comment"
+            android:hint="눌러서 댓글 작성"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1.33" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전송"
+            android:id="@+id/input_btn" />
+
+    </LinearLayout>
 
 </RelativeLayout>

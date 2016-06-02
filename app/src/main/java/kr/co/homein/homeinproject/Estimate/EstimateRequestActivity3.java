@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import kr.co.homein.homeinproject.R;
+import kr.co.homein.homeinproject.data.EstimateDetailData;
 
 public class EstimateRequestActivity3 extends AppCompatActivity {
 
@@ -20,10 +21,17 @@ public class EstimateRequestActivity3 extends AppCompatActivity {
     ImageView plus;
     ImageView img;
 
+    final static String ESTIMATE_DATA = "estimate_data";
+    EstimateDetailData estimateDetailData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estimate_request3);
+
+        Intent intent = getIntent();
+        estimateDetailData = (EstimateDetailData) intent.getSerializableExtra(ESTIMATE_DATA);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -62,7 +70,11 @@ public class EstimateRequestActivity3 extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EstimateRequestActivity3.this, EstimateRequestActivity4.class)); //견적문의 2페이지로 이동
+
+                estimateDetailData.setEstimate_size(edit.getText().toString());
+                Intent intent = new Intent(EstimateRequestActivity3.this, EstimateRequestActivity4.class);
+                intent.putExtra(ESTIMATE_DATA, estimateDetailData);
+                startActivity(intent); //견적문의 2페이지로 이동
             }
         });
     }

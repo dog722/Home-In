@@ -10,7 +10,16 @@ public class WishListData {
     String _id;
     String posting_number;
     List <String> posting_picture ;
+    int category_number;
 
+
+    public int getCategory_number() {
+        return category_number;
+    }
+
+    public void setCategory_number(int category_number) {
+        this.category_number = category_number;
+    }
 
     public String get_id() {
         return _id;

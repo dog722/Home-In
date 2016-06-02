@@ -2,6 +2,7 @@ package kr.co.homein.homeinproject.HomeIn;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -76,9 +77,14 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
         for (String s : peopleItem.getPH_tag()) {
             TextView tv = new TextView(itemView.getContext());
             FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(20, 20, 20, 20);
+
+
+            lp.setMargins(30, 30, 30, 30);
+            lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
             tv.setLayoutParams(lp);
             tv.setTextSize(20);
+
+            tv.setPadding(30,30,30,30);
             tv.setTextColor(Color.WHITE);
             tv.setBackgroundColor(Color.BLUE);
             tv.setText(s);

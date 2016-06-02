@@ -49,7 +49,6 @@ public class PeopleItemFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,13 +86,12 @@ public class PeopleItemFragment extends Fragment {
 
         pAdapter.setScrollMultiplier(1);
 
-
         pAdapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View view, int i) {
                 Intent intent = new Intent(getContext(), PeopleItemDetailActivity.class); //사용자 아이템 상세 페이지 이동
                 PH_number = peopleItem.get(i).getPH_number();
-                intent.putExtra(PH_NUMBER,  PH_number);
+                intent.putExtra(PH_NUMBER, PH_number);
                 startActivity(intent);
             }
         });
@@ -102,11 +100,15 @@ public class PeopleItemFragment extends Fragment {
             @Override
             public void onParallaxScroll(float percentage, float offset, View parallax) {
                 //TODO: implement toolbar alpha. See README for details
+
             }
         });
 
+
         setData();
         setEventPage();
+
+
     }
 
     @Override
@@ -126,6 +128,7 @@ public class PeopleItemFragment extends Fragment {
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
+
 
         listView.setAdapter(pAdapter);
         listView.setLayoutManager(manager);
@@ -174,6 +177,7 @@ public class PeopleItemFragment extends Fragment {
         pAdapter.setParallaxHeader(v, listView);
         viewPager = (ViewPager)v.findViewById(R.id.eventPage);
         viewPager.setAdapter(eventPageAdapter);
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -183,8 +187,11 @@ public class PeopleItemFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 //indicater 구현
-                Toast.makeText(getContext(), "dfsdf", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "dfsdf", Toast.LENGTH_SHORT).show();
                 // only one selected
+
+
+                infoIndicator.setNumberOfItems(3);
                 infoIndicator.setSelectedItem(viewPager.getCurrentItem(), true);
 
             }
@@ -194,6 +201,9 @@ public class PeopleItemFragment extends Fragment {
 
             }
         });
+
+
+
         return view;
     }
 
@@ -209,7 +219,7 @@ public class PeopleItemFragment extends Fragment {
 
                 eventPageAdapter.addAll(result);
 //                    mAdapter.addAll(result);
-                infoIndicator.setNumberOfItems(eventPageAdapter.getCount());
+
             }
 
             @Override

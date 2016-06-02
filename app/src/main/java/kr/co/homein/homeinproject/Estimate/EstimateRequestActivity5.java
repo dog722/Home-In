@@ -7,12 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import kr.co.homein.homeinproject.R;
 
 public class EstimateRequestActivity5 extends AppCompatActivity implements DialogInterface.OnDismissListener, View.OnClickListener {
 
     Button nextBtn;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

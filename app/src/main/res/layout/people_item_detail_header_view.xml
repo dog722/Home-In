@@ -81,11 +81,11 @@
 
     </com.wefika.flowlayout.FlowLayout>
 
-    <ImageView
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher"
-        android:id="@+id/imageView3"
+        android:id="@+id/add_pick_btn"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_margin="20dp" />
 

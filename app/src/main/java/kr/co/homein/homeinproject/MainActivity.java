@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +72,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabHost = (FragmentTabHost)findViewById(R.id.tabhost);
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
-        //탭 등록
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("피플 홈인"), PeopleItemFragment.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("시공 홈인"), CompanyItemFragment.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("포스팅"), PostingFragment.class, null);
 
+
+
+//        tabHost.setBackground();
+        View tab1 = (View) getLayoutInflater().inflate(R.layout.tab1_layout, null,false);
+        View tab2 = (View) getLayoutInflater().inflate(R.layout.tab2_layout, null,false);
+        View tab3 = (View) getLayoutInflater().inflate(R.layout.tab3_layout, null,false);
+
+        //탭 등록
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator(tab1), PeopleItemFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator(tab2), CompanyItemFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator(tab3), PostingFragment.class, null);
 
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
@@ -120,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
 
         Toolbar toolbar = (Toolbar) headerView.findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_search);

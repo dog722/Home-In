@@ -15,7 +15,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#faf"
         />
 
     <com.matthewtamlin.sliding_intro_screen_library.DotIndicator
@@ -26,5 +25,4 @@
         android:paddingBottom="70dp">
     </com.matthewtamlin.sliding_intro_screen_library.DotIndicator>
     </FrameLayout>
-
 </RelativeLayout>

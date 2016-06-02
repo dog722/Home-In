@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import kr.co.homein.homeinproject.Company.CompanyDetailItemActivity;
 import kr.co.homein.homeinproject.Company.CompanyItemListAdapter;
 import kr.co.homein.homeinproject.Company.CompanyItemViewHolder;
@@ -19,13 +21,14 @@ import kr.co.homein.homeinproject.data.CompanyItemData;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchCompanyItemListFragment extends Fragment {
+public class SearchCompanyItemListFragment extends Fragment implements SearchResultActivity.OnNotifyDataUpdateListener {
 
 
 
     RecyclerView recyclerView;
     CompanyItemListAdapter mAdatper;
-
+    String CH_number;
+    final static String CH_NUMBER = "CH_number";
 
     public SearchCompanyItemListFragment() {
         // Required empty public constructor
@@ -41,10 +44,10 @@ public class SearchCompanyItemListFragment extends Fragment {
             @Override
             public void onItemClick(View view, CompanyItemData companyItemData) {
                 Intent intent = new Intent(getContext(), CompanyDetailItemActivity.class); //사용자 아이템 상세 페이지 이동
+                intent.putExtra(CH_NUMBER, companyItemData.getCH_number());
                 startActivity(intent);
             }
         });
-        setData();
 
     }
 
@@ -66,17 +69,31 @@ public class SearchCompanyItemListFragment extends Fragment {
         return view;
     }
 
-
-
-    private void setData() { ///여기서 다르게 검색해주기. 키워드 받아서 서버에서 값 받아오기.
-
-        for( int i = 0 ; i < 10 ; i ++){
-            CompanyItemData c = new CompanyItemData();
-            c.setCH_pick(20 + i);
-            mAdatper.add(c);
-            c.tag.add("태그1");
-            c.tag.add("태그2");
+    void updateData() {
+        List<CompanyItemData> list = ((SearchResultActivity)getActivity()).getCompanyItemData();
+        if (list != null) {
+            // ...
+            mAdatper.clear();
+            mAdatper.addAll(list);
         }
-
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateData();
+        ((SearchResultActivity)getActivity()).addOnNotifyDataUpdateListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((SearchResultActivity)getActivity()).removeNotifyDataUpdateListener(this);
+    }
+
+    @Override
+    public void onNotifyDataUpdate() {
+        updateData();
+    }
+
 }

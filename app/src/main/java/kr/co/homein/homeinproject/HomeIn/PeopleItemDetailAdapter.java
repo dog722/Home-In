@@ -37,12 +37,17 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
     }
 
 
+
+
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType){
             case VIEW_TYPE_HEADER :{
                 //이 부분 주의!!
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.people_item_detail_header_view, parent, false);
+
+
                 return new PeopleDetailItemViewHolder(view);
             }
             case VEIW_TYPE_BODY :{
@@ -80,6 +85,11 @@ public class PeopleItemDetailAdapter  extends RecyclerView.Adapter<RecyclerView.
         this.peopleDetailItemData = peopleDetailItemData;
         notifyDataSetChanged();
     }
+
+
+
+
+
 //
 //    public void addComment(PeopleDetailItemData peopleDetailItemData){
 //        this.peopleDetailItemData = peopleDetailItemData;

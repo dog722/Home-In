@@ -25,9 +25,9 @@ import kr.co.homein.homeinproject.data.CompanyItemData;
 import kr.co.homein.homeinproject.data.CompanyItemDataResult;
 import kr.co.homein.homeinproject.data.EventPageData;
 import kr.co.homein.homeinproject.data.EventPageResult;
+import kr.co.homein.homeinproject.data.InputCommentResult;
 import kr.co.homein.homeinproject.data.MyInfoData;
 import kr.co.homein.homeinproject.data.MyInfoDataResult;
-import kr.co.homein.homeinproject.data.PeopleAddWishList;
 import kr.co.homein.homeinproject.data.PeopleAddWishListResult;
 import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 import kr.co.homein.homeinproject.data.PeopleItemData;
@@ -35,10 +35,13 @@ import kr.co.homein.homeinproject.data.PeopleItemDataResult;
 import kr.co.homein.homeinproject.data.PeopleItemDetailResult;
 import kr.co.homein.homeinproject.data.PeopleItemWriteData;
 import kr.co.homein.homeinproject.data.PeopleItemWriteDataResult;
+import kr.co.homein.homeinproject.data.SearchDetailListResult;
+import kr.co.homein.homeinproject.data.SearchDetailListResults;
 import kr.co.homein.homeinproject.data.SearchListDataResult;
 import kr.co.homein.homeinproject.data.SearchResult;
 import kr.co.homein.homeinproject.data.WishListData;
 import kr.co.homein.homeinproject.data.WishListDataResult;
+import kr.co.homein.homeinproject.data.WishListResult;
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -517,7 +520,7 @@ public class NetworkManager {
 
     //피플 관심 목록 담기
     private static final String PEOPLE_ADD_WISHLIST = HOMEIN_SERVER + "/add_pick_list";
-    public Request addPeopleWishlist(Object tag, String PH_number,String general_number, OnResultListener<PeopleAddWishList> listener) {
+    public Request addPeopleWishlist(Object tag, String PH_number,String general_number, OnResultListener<PeopleAddWishListResult> listener) {
         String url = String.format(PEOPLE_ADD_WISHLIST);
         RequestBody body = new FormBody.Builder()
                 .add("PH_number", PH_number)
@@ -528,7 +531,7 @@ public class NetworkManager {
                 .url(url)
                 .post(body)
                 .build();
-        final NetworkResult<PeopleAddWishList> result = new NetworkResult<>();
+        final NetworkResult<PeopleAddWishListResult> result = new NetworkResult<>();
         result.request = request;
         result.listener = listener;
         mClient.newCall(request).enqueue(new Callback() {
@@ -542,7 +545,7 @@ public class NetworkManager {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     PeopleAddWishListResult data = gson.fromJson(response.body().charStream(), PeopleAddWishListResult.class);
-                    result.result = data.peopleAddWishList;
+                    result.result = data;
                     mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
                 } else {
                     throw new IOException(response.message());
@@ -627,5 +630,140 @@ public class NetworkManager {
         });
         return request;
     }
+
+    //댓글 달기
+    private static final String INPUT_COMMENT = HOMEIN_SERVER + "/people_homein_comment_write";
+    public Request addComment(Object tag, String posting_number, String comment_content, String member_number, OnResultListener<InputCommentResult> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("posting_number", posting_number)
+                .add("comment_content", comment_content)
+                .add("member_number", member_number)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(INPUT_COMMENT)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<InputCommentResult> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    InputCommentResult data = gson.fromJson(response.body().charStream(), InputCommentResult.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //관심 목록 삭제
+    private static final String WISHLIST_DELETE = HOMEIN_SERVER + "/pick_list_delete/";
+    public Request deleteMyWishList(Object tag, String general_number, List<String> delete_posting_number,
+                                   OnResultListener<WishListResult> listener) {
+        String url = String.format(WISHLIST_DELETE);
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("general_number", general_number);
+
+        for (int i = 0; i <delete_posting_number.size(); i++) {
+            String t = delete_posting_number.get(i);
+            builder.add("delete_posting_number["+i+"]", t);
+        }
+        RequestBody body = builder.build();
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+
+        final NetworkResult<WishListResult> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    WishListResult data = gson.fromJson(response.body().charStream(), WishListResult.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //검색 결과 리스트
+    private static final String SEARCH_RESULT = HOMEIN_SERVER + "/search_all";
+    public Request getSearchResultList(Object tag, String search_tag, OnResultListener< SearchDetailListResult> listener) {
+
+
+        RequestBody body = new FormBody.Builder()
+                .add("tag", search_tag)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(SEARCH_RESULT)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<SearchDetailListResult> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    SearchDetailListResults data = gson.fromJson(response.body().charStream(), SearchDetailListResults.class);
+                    result.result = data.searchDetailListResult;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
 
 }

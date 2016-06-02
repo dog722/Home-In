@@ -37,6 +37,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeIn.PeopleItemDetailActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Company.CompanyDetailItemActivity"

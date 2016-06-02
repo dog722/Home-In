@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
+import kr.co.homein.homeinproject.Company.CompanyDetailItemActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemDetailActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.WishListData;
@@ -27,6 +28,7 @@ public class WishListActivity2 extends AppCompatActivity {
     List<WishListData> wishListData;
     final static int DELETE = 1;
     final static String PH_NUMBER = "PH_number";
+    final static String CH_NUMBER = "CH_number";
 
 
     @Override
@@ -63,16 +65,31 @@ public class WishListActivity2 extends AppCompatActivity {
             }
         });
 
-
         mAdapter.setOnItemClickListener(new WishListViewHolder2.OnItemClickListener() {
 
             @Override
             public void onItemClick(View view, WishListData wishListData) {
 
+                Intent intent;
+                Toast.makeText(WishListActivity2.this, "posting_number : "+ wishListData.getPosting_number(), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(WishListActivity2.this, PeopleItemDetailActivity.class);
-                intent.putExtra(PH_NUMBER , wishListData.getPosting_number());
-                startActivity(new Intent(WishListActivity2.this, PeopleItemDetailActivity.class));
+                //피플 홈인
+                if(wishListData.getCategory_number() == 1){
+                    intent = new Intent(WishListActivity2.this, PeopleItemDetailActivity.class);
+                    intent.putExtra(PH_NUMBER , wishListData.getPosting_number());
+                    startActivity(intent);
+                //시공 홈인
+                }else if(wishListData.getCategory_number() == 2){
+                    intent = new Intent(WishListActivity2.this, CompanyDetailItemActivity.class);
+                    intent.putExtra(CH_NUMBER , wishListData.getPosting_number());
+                    startActivity(intent);
+                    //포스팅
+                }else if(wishListData.getCategory_number() == 3){
+                    //포스팅 화면으로 이동
+                }
+
+
+
             }
         });
 
@@ -87,6 +104,7 @@ public class WishListActivity2 extends AppCompatActivity {
             public void onSuccess(Request request, List<WishListData> result) {
 //                mAdapter.clear();
 //                wishListData= result;
+                wishListData = result;
                 mAdapter.addAll(result);
 
             }

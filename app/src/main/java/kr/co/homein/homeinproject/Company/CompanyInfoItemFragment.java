@@ -31,6 +31,8 @@ public class CompanyInfoItemFragment extends Fragment {
     final static String OF_NUMBER = "office_number";
     String officeNumber;
 
+    String CH_number;
+    final static String CH_NUMBER = "CH_number";
 
     public CompanyInfoItemFragment() {
         // Required empty public constructor
@@ -47,6 +49,7 @@ public class CompanyInfoItemFragment extends Fragment {
             @Override
             public void onItemClick(View view, CompanyItemData companyItemData) {
                 Intent intent = new Intent(getContext(), CompanyDetailItemActivity.class); //사용자 아이템 상세 페이지 이동
+                intent.putExtra(CH_NUMBER , companyItemData.getCH_number());
                 startActivity(intent);
             }
         });

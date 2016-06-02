@@ -47,12 +47,8 @@ public class SearchTagActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         listView = (RecyclerView) findViewById(R.id.rv_list4);
         mAdapter = new SearchAdapter();
-
         listView.setAdapter(mAdapter);
         listView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -75,6 +75,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListViewHolder>  i
     }
 
 
+
     public boolean isMore() {
 //        if (totalCount == 0) return false;
 //        if (totalCount > items.size()) return true;
@@ -102,6 +103,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListViewHolder>  i
     public void setItemCheck(int position, boolean check) {
         checkedItems.put(position, check);
         notifyDataSetChanged();
+    }
+
+    public WishListData getWishListdata(int position) {
+        return wishListdata.get(position);
     }
 }
 

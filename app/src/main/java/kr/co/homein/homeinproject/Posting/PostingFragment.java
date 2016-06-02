@@ -71,8 +71,8 @@ public class PostingFragment extends Fragment {
 
         for( int i = 0 ; i < 10 ; i ++){
             PostingItemData p = new PostingItemData();
-            p.setPostingTitle("눈 감고 할 수 있는 셀프 인테리어 10가지"+ i);
-            p.setGoocScore("2" + i);
+            p.setPost_name("눈 감고 할 수 있는 셀프 인테리어 10가지"+ i);
+//            p.set("2" + i);
             mAdatper.add(p);
         }
     }

@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import kr.co.homein.homeinproject.Posting.PostingAdapter;
 import kr.co.homein.homeinproject.Posting.PostingDetailActivity;
 import kr.co.homein.homeinproject.Posting.PostingViewHolder;
@@ -19,11 +21,12 @@ import kr.co.homein.homeinproject.data.PostingItemData;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchPostingFragment extends Fragment {
+public class SearchPostingFragment extends Fragment implements SearchResultActivity.OnNotifyDataUpdateListener {
 
 
     RecyclerView recyclerView;
     PostingAdapter mAdatper;
+
 
     public SearchPostingFragment() {
         // Required empty public constructor
@@ -41,7 +44,6 @@ public class SearchPostingFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        setData();
     }
 
 
@@ -63,14 +65,32 @@ public class SearchPostingFragment extends Fragment {
         return view;
     }
 
-    private void setData() { //키워드 넘겨서 서버에서 값 받아오기
 
-        for( int i = 0 ; i < 10 ; i ++){
-            PostingItemData p = new PostingItemData();
-            p.setPostingTitle("눈 감고 할 수 있는 셀프 인테리어 10가지"+ i);
-            p.setGoocScore("2" + i);
-            mAdatper.add(p);
+    void updateData() {
+        List<PostingItemData> list = ((SearchResultActivity)getActivity()).getPostingItemData();
+        if (list != null) {
+            // ...
+            mAdatper.clear();
+            mAdatper.addAll(list);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateData();
+        ((SearchResultActivity)getActivity()).addOnNotifyDataUpdateListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((SearchResultActivity)getActivity()).removeNotifyDataUpdateListener(this);
+    }
+
+    @Override
+    public void onNotifyDataUpdate() {
+        updateData();
     }
 
 

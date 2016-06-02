@@ -47,7 +47,7 @@ public class PostingViewHolder extends RecyclerView.ViewHolder {
 
     public void setPostingItem(PostingItemData postingItemData) {
         this.postingItemData = postingItemData;
-        postingTitle.setText(postingItemData.getPostingTitle());
+        postingTitle.setText(postingItemData.getPost_name());
 //        Glide.with(imageView.getContext()).load(url).into(imageView);
 
     }
