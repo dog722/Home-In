@@ -9,7 +9,6 @@ import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -29,6 +28,7 @@ import kr.co.homein.homeinproject.Company.CompanyItemFragment;
 import kr.co.homein.homeinproject.Estimate.MyEstimateListActivity;
 import kr.co.homein.homeinproject.HomeIn.AddPeopleImageActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemFragment;
+import kr.co.homein.homeinproject.Maps.HomeInMapActivity;
 import kr.co.homein.homeinproject.Menu.InformationRuleActivity;
 import kr.co.homein.homeinproject.Menu.MyInfoActivity;
 import kr.co.homein.homeinproject.Menu.NoticeActivity;
@@ -64,15 +64,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, HomeInMapActivity.class);
+                startActivity(intent);
             }
         });
 
         tabHost = (FragmentTabHost)findViewById(R.id.tabhost);
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
-
-
 
 
 //        tabHost.setBackground();
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         menuView.setNavigationItemSelectedListener(this);
         View headerView = menuView.getHeaderView(0);
         drawer = (DrawerLayout)findViewById(R.id.drawer);
-         menuBtn = (ImageButton)findViewById(R.id.btn_menu);
+        menuBtn = (ImageButton)findViewById(R.id.btn_menu);
         editBtn = (ImageButton) findViewById(R.id.btn_edit);
 
         menuBtn.setOnClickListener(new View.OnClickListener() {

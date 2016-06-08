@@ -68,6 +68,7 @@ public class CompanyInfoFragment extends Fragment {
 //                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 Intent intent = new Intent(getActivity(), CompanyMapActivity.class);
+                intent.putExtra(OF_NUMBER, officeNumber);
                 startActivity(intent);
             }
         });
@@ -86,6 +87,7 @@ public class CompanyInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EstimateRequestActivity.class); //포스팅 상세 페이지로 이동
+                intent.putExtra(OF_NUMBER, officeNumber);
                 startActivity(intent);
             }
         });

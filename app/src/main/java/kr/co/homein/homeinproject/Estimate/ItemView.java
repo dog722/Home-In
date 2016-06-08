@@ -1,4 +1,4 @@
-package kr.co.homein.homeinproject.User;
+package kr.co.homein.homeinproject.Estimate;
 
 /**
  * Created by seoeunbi on 2016. 5. 24..
@@ -7,6 +7,7 @@ package kr.co.homein.homeinproject.User;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -23,11 +24,14 @@ public class ItemView extends FrameLayout implements Checkable {
     }
 
     ImageView checkView;
+    ImageView selectImage;
+
     private void init() {
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setLayoutParams(params);
         inflate(getContext(), R.layout.wishlist_view, this);
         checkView = (ImageView)findViewById(R.id.checked);
+        selectImage = (ImageView) findViewById(R.id.select_img);
     }
 
     private void drawCheck() {
@@ -45,6 +49,10 @@ public class ItemView extends FrameLayout implements Checkable {
             isChecked = checked;
             drawCheck();
         }
+    }
+
+    public void setImage(int resID){
+        selectImage.setImageResource(resID);
     }
 
     @Override

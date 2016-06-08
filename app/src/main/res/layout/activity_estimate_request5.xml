@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textView30"
+                android:id="@+id/input_name"
                 android:hint="이름을 입력하세요." />
         </LinearLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_width="351dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textView31"
+                android:id="@+id/input_email"
                 android:hint="견적을 받아보실 이메일 주소를 입력하세요." />
         </LinearLayout>
 
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textView32"
+                android:id="@+id/input_call"
                 android:hint="견적을 받아보실 연락처를 입력하세요." />
 
         </LinearLayout>

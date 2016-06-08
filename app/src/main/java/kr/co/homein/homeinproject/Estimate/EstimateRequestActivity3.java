@@ -20,8 +20,6 @@ public class EstimateRequestActivity3 extends AppCompatActivity {
     EditText edit;
     ImageView plus;
     ImageView img;
-
-    final static String ESTIMATE_DATA = "estimate_data";
     EstimateDetailData estimateDetailData;
 
     @Override
@@ -30,7 +28,7 @@ public class EstimateRequestActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_estimate_request3);
 
         Intent intent = getIntent();
-        estimateDetailData = (EstimateDetailData) intent.getSerializableExtra(ESTIMATE_DATA);
+        estimateDetailData = (EstimateDetailData) intent.getSerializableExtra(EstimateRequestActivity.ESTIMATE_DATA);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -73,7 +71,7 @@ public class EstimateRequestActivity3 extends AppCompatActivity {
 
                 estimateDetailData.setEstimate_size(edit.getText().toString());
                 Intent intent = new Intent(EstimateRequestActivity3.this, EstimateRequestActivity4.class);
-                intent.putExtra(ESTIMATE_DATA, estimateDetailData);
+                intent.putExtra(EstimateRequestActivity.ESTIMATE_DATA, estimateDetailData);
                 startActivity(intent); //견적문의 2페이지로 이동
             }
         });

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity2_1">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/toolbar"
+        android:titleTextColor="@android:color/black"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="견적 문의(2/5)"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="90dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/gridView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:numColumns="3"
+        android:choiceMode="singleChoice"
+        android:layout_below="@+id/toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="세부 공간을 선택하세요."
+        android:id="@+id/textView14"
+        android:layout_below="@+id/gridView"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:textColor="#ffffff"
+            android:text="다음"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@color/colorPrimary"
+            android:id="@+id/next_btn"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+</RelativeLayout>

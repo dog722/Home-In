@@ -18,7 +18,6 @@ public class EstimateRequestActivity2 extends AppCompatActivity {
     Intent intent;
     EstimateDetailData estimateDetailData;
 
-    final static String ESTIMATE_DATA = "estimate_data";
     final static String ESTIMATE_SUB_SPACE = "estimate_sub_space";
     String estimate_sub_space;
 
@@ -30,8 +29,7 @@ public class EstimateRequestActivity2 extends AppCompatActivity {
 
 
         intent = getIntent();
-        estimateDetailData = (EstimateDetailData) intent.getSerializableExtra("ESTIMATE_DATA");
-
+        estimateDetailData = (EstimateDetailData) intent.getSerializableExtra(EstimateRequestActivity.ESTIMATE_DATA);
 
 
         radioGroup = (RadioGroup) findViewById(R.id.radio_group);
@@ -73,7 +71,7 @@ public class EstimateRequestActivity2 extends AppCompatActivity {
 
                 Intent intent = new Intent(EstimateRequestActivity2.this, EstimateRequestActivity3.class);
 //                intent.putExtra(ESTIMATE_SUB_SPACE, estimate_sub_space);
-                intent.putExtra(ESTIMATE_DATA , estimateDetailData);
+                intent.putExtra(EstimateRequestActivity.ESTIMATE_DATA , estimateDetailData);
                 startActivity(intent); //견적문의 2페이지로 이동
             }
         });

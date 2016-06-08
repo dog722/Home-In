@@ -5,20 +5,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.MyEstimateItemData;
+import kr.co.homein.homeinproject.data.EstimateListData;
 
 /**
  * Created by seoeunbi on 2016. 5. 19..
  */
 public class MystimateListViewHolder extends RecyclerView.ViewHolder {
 
-    MyEstimateItemData myEstimateItemData = new MyEstimateItemData();
+    EstimateListData myEstimateItemData = new EstimateListData();
     ImageView imageView;
     TextView myEstimateTitle;
 
     public interface OnItemClickListener {
-        public void onItemClick(View view, MyEstimateItemData myEstimateItemData);
+        public void onItemClick(View view, EstimateListData myEstimateItemData);
     }
 
     OnItemClickListener mListener;
@@ -46,10 +48,13 @@ public class MystimateListViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setEstimateItem(MyEstimateItemData myEstimateItemData) {
+    public void setEstimateItem(EstimateListData myEstimateItemData) {
         this.myEstimateItemData = myEstimateItemData;
-        myEstimateTitle.setText(myEstimateItemData.getEstimateTitle());
-//        Glide.with(imageView.getContext()).load(url).into(imageView);
+        myEstimateTitle.setText(myEstimateItemData.getInterior_info_content());
+        Glide.with(imageView.getContext()).load(myEstimateItemData.getInterior_picture().get(0)).into(imageView);
+
+
+//        myEstimateTitle.setText(myEstimateItemData.get);
 
     }
 }

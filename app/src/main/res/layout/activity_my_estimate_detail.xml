@@ -25,15 +25,30 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ㄴ"
+        android:id="@+id/rvlist"
         android:layout_weight="0.99" />
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/input_comment"
-        android:background="#ffffff"
-        android:hint="눌러서 댓글 작성"
-        android:gravity="center_vertical|center_horizontal" />
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="312dp"
+            android:layout_height="50dp"
+            android:id="@+id/input_comment"
+            android:background="#ffffff"
+            android:hint="눌러서 댓글 작성"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.71" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="등록"
+            android:id="@+id/upload_btn" />
+    </LinearLayout>
 
 </LinearLayout>

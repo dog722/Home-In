@@ -19,8 +19,18 @@ public class EstimateDetailData implements Serializable {
     String interior_info_content;
     int category_number;
     String estimate_regdate;
-    EstimateComment estimate_comment;
+    String office_number;
+    List<EstimateComment> estimate_comment;
     List<String> interior_picture;
+
+
+    public String getOffice_number() {
+        return office_number;
+    }
+
+    public void setOffice_number(String office_number) {
+        this.office_number = office_number;
+    }
 
     public String get_id() {
         return _id;
@@ -118,11 +128,11 @@ public class EstimateDetailData implements Serializable {
         this.estimate_regdate = estimate_regdate;
     }
 
-    public EstimateComment getEstimate_comment() {
+    public List<EstimateComment> getEstimate_comment() {
         return estimate_comment;
     }
 
-    public void setEstimate_comment(EstimateComment estimate_comment) {
+    public void setEstimate_comment(List<EstimateComment> estimate_comment) {
         this.estimate_comment = estimate_comment;
     }
 

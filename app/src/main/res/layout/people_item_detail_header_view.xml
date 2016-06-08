@@ -9,7 +9,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="360dp"
             android:src="@drawable/detail_item_dummy"
             android:scaleType="fitXY"
             android:id="@+id/item_image" />
@@ -21,7 +21,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_marginBottom="20dp">
 
         <ImageView
             android:layout_width="50dp"
@@ -29,7 +30,9 @@
             android:src="@mipmap/ic_launcher"
             android:id="@+id/icon"
             android:scaleType="fitXY"
-            android:layout_margin="20dp" />
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,46 +50,48 @@
             android:layout_weight="0.91" />
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src = "@mipmap/ic_launcher"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/share_bt"
             android:id="@+id/btn_share"
             android:scaleType="fitXY"
-            android:layout_margin="20dp" />
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:paddingBottom="40dp"
+        android:layout_marginRight="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="작은 내 방 모던하고 따뜻하게 :-)"
-            android:id="@+id/comment2"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp" />
+            android:id="@+id/comment2" />
     </LinearLayout>
 
     <com.wefika.flowlayout.FlowLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
         android:id="@+id/tag_layout"
-        android:paddingLeft="20dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingBottom="30dp">
 
     </com.wefika.flowlayout.FlowLayout>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/like_bt"
         android:id="@+id/add_pick_btn"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_margin="20dp" />
+        android:layout_gravity="center_horizontal|bottom" />
 
 </LinearLayout>

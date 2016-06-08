@@ -69,7 +69,7 @@ public class WishListViewHolder extends RecyclerView.ViewHolder implements Check
 
     public WishListViewHolder(View itemView) {
         super(itemView);
-        imageView = (ImageView) itemView.findViewById(R.id.wishImg);
+        imageView = (ImageView) itemView.findViewById(R.id.select_img);
         checkedImg = (ImageView)itemView.findViewById(R.id.checked);
 
         imageView.setOnClickListener(new View.OnClickListener() {

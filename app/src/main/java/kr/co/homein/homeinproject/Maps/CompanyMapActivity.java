@@ -1,6 +1,7 @@
 package kr.co.homein.homeinproject.Maps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.VisibleRegion;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -46,11 +50,30 @@ public class CompanyMapActivity extends AppCompatActivity implements
     GoogleApiClient mClient;
     TextView messageView;
     TextView infoView;
+    final static String OF_NUMBER = "office_number";
+    CompanyMapInfo companyMapInfo;
+
+    Intent intent;
+    String office_number;
+
+
+    ArrayAdapter<CurrentOffice> mAdapter;
+    Map<Marker, CurrentOffice> poiResolver = new HashMap<>();
+    Map<CurrentOffice, Marker> markerResolver = new HashMap<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_map);
+
+
+        mAdapter = new ArrayAdapter<CurrentOffice>(this, android.R.layout.simple_list_item_1);
+
+        intent = getIntent();
+        office_number = intent.getStringExtra(OF_NUMBER);
+
         messageView = (TextView) findViewById(R.id.text_message);
         infoView = (TextView)findViewById(R.id.text_info);
         mClient = new GoogleApiClient.Builder(this)
@@ -60,6 +83,11 @@ public class CompanyMapActivity extends AppCompatActivity implements
                 .build();
         SupportMapFragment fragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
         fragment.getMapAsync(this);
+
+        setData();
+
+
+
     }
 
     GoogleMap mMap;
@@ -100,18 +128,20 @@ public class CompanyMapActivity extends AppCompatActivity implements
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        addMarker(latLng.latitude, latLng.longitude);
+//        addMarker(latLng.latitude, latLng.longitude);
     }
 
-    private void addMarker(double lat, double lng) {
+    public void addMarker(CurrentOffice currentOffice) {
         MarkerOptions options = new MarkerOptions();
-        options.position(new LatLng(lat, lng));
-        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
-        options.anchor(0.5f, 1f);
-        options.title("MyMarker");
-        options.snippet("marker description");
-        options.draggable(true);
-        Marker m = mMap.addMarker(options);
+        options.position(new LatLng(currentOffice.getOffice_latitude(), currentOffice.getOffice_longitude()));
+        options.icon(BitmapDescriptorFactory.defaultMarker());
+        options.anchor(0.5f, 1);
+        options.title(currentOffice.getOffice_address1());
+//        options.snippet(aroundOffice.getOffice_sub_name());
+        Marker marker = mMap.addMarker(options);
+        mAdapter.add(currentOffice);
+        markerResolver.put(currentOffice, marker);
+        poiResolver.put(marker, currentOffice);
     }
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -121,8 +151,12 @@ public class CompanyMapActivity extends AppCompatActivity implements
         Location location = LocationServices.FusedLocationApi.getLastLocation(mClient);
         displayMessage(location);
         LocationRequest request = new LocationRequest();
-        request.setInterval(10000);
-        request.setFastestInterval(5000);
+
+//        location.getLongitude() //경도
+//        location.getLatitude() //위도
+
+//        request.setInterval(10000);
+//        request.setFastestInterval(5000);
         request.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         LocationServices.FusedLocationApi.requestLocationUpdates(mClient, request, mListener);
     }
@@ -177,4 +211,26 @@ public class CompanyMapActivity extends AppCompatActivity implements
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+
+
+    public void setData(){
+        NetworkManager.getInstance().getCompanyMapInfo(this, office_number , new NetworkManager.OnResultListener<CompanyMapInfo>() {
+            @Override
+            public void onSuccess(Request request, CompanyMapInfo result) {
+//                mAdapter.set(result);
+                companyMapInfo = result;
+//                Toast.makeText(CompanyMapActivity.this, "result : " + companyMapInfo.getAroundOffice().get(0).getOffice_name(), Toast.LENGTH_SHORT).show();
+
+                    addMarker(companyMapInfo.getCurrentOffice());
+                }
+
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(CompanyMapActivity.this, "server disconnected", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 }

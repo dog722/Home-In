@@ -86,6 +86,7 @@ public class PeopleItemFragment extends Fragment {
 
         pAdapter.setScrollMultiplier(1);
 
+
         pAdapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View view, int i) {

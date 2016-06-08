@@ -9,5 +9,6 @@ import java.util.List;
  */
 public class EstimateListDataResult {
     @SerializedName("result")
-    List  <EstimateListData> estimateListData;
+    public List  <EstimateListData> estimateListData;
+
 }

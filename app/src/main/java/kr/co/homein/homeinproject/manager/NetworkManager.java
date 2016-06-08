@@ -16,6 +16,10 @@ import java.util.concurrent.TimeUnit;
 
 import kr.co.homein.homeinproject.Maps.AddressInfo;
 import kr.co.homein.homeinproject.Maps.AddressInfoResult;
+import kr.co.homein.homeinproject.Maps.CompanyMapInfo;
+import kr.co.homein.homeinproject.Maps.CompanyMapResult;
+import kr.co.homein.homeinproject.Maps.HomeInMapData;
+import kr.co.homein.homeinproject.Maps.HomeInMapResult;
 import kr.co.homein.homeinproject.MyApplication;
 import kr.co.homein.homeinproject.data.CompanyDetailItemData;
 import kr.co.homein.homeinproject.data.CompanyDetailItemDataResult;
@@ -23,6 +27,11 @@ import kr.co.homein.homeinproject.data.CompanyInfoData;
 import kr.co.homein.homeinproject.data.CompanyInfoDataResult;
 import kr.co.homein.homeinproject.data.CompanyItemData;
 import kr.co.homein.homeinproject.data.CompanyItemDataResult;
+import kr.co.homein.homeinproject.data.EstimateDetailData;
+import kr.co.homein.homeinproject.data.EstimateDetailResult;
+import kr.co.homein.homeinproject.data.EstimateListData;
+import kr.co.homein.homeinproject.data.EstimateListDataResult;
+import kr.co.homein.homeinproject.data.EstimateWriteResult;
 import kr.co.homein.homeinproject.data.EventPageData;
 import kr.co.homein.homeinproject.data.EventPageResult;
 import kr.co.homein.homeinproject.data.InputCommentResult;
@@ -165,6 +174,7 @@ public class NetworkManager {
 
     //피플 아이템 리스트
     private static final String HOMEIN_SERVER = "http://52.79.170.110:80";
+//    private static final String HOMEIN_SERVER = "http://192.168.211.224:3000";
     private static final String PEOPLE_ITEM_LIST = HOMEIN_SERVER + "/people_homein_list";
     public Request getPeopleItemList(Object tag, OnResultListener<List<PeopleItemData>> listener) {
         Request request = new Request.Builder()
@@ -756,6 +766,272 @@ public class NetworkManager {
                 if (response.isSuccessful()) {
                     SearchDetailListResults data = gson.fromJson(response.body().charStream(), SearchDetailListResults.class);
                     result.result = data.searchDetailListResult;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //견적서 작성 페이지
+    private static final String ESTIMATE_WRITE = HOMEIN_SERVER + "/write_general_estimate/";
+    public Request sendEstimateWrite(Object tag, String general_number,
+                                     String office_number,
+                                     String estimate_space,
+                                     String estimate_sub_space,
+                                     String estimate_size,
+                                     List<File> interior_picture,
+                                     String general_real_name,
+                                     String general_email,
+                                     String general_tel,
+                                     String interior_info_content,
+                                   OnResultListener<EstimateWriteResult> listener) {
+
+
+        String url = String.format(ESTIMATE_WRITE);
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.addFormDataPart("general_number", general_number)
+                .addFormDataPart("office_number", office_number)
+                .addFormDataPart("estimate_space", estimate_space)
+                .addFormDataPart("estimate_sub_space", estimate_sub_space)
+                .addFormDataPart("estimate_size", estimate_size);
+        builder.setType(MultipartBody.FORM);
+        for (int i = 0; i <interior_picture.size(); i++) {
+                    builder.addFormDataPart("interior_picture", interior_picture.get(i).getName(),
+                            RequestBody.create(MediaType.parse("image/jpeg"), interior_picture.get(i)));
+        }
+
+        builder.addFormDataPart("general_real_name", general_real_name)
+                .addFormDataPart("general_email", general_email)
+                .addFormDataPart("general_tel", general_tel)
+                .addFormDataPart("interior_info_content", interior_info_content);
+
+        RequestBody body = builder.build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        final NetworkResult<EstimateWriteResult> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    EstimateWriteResult data = gson.fromJson(response.body().charStream(), EstimateWriteResult.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //내 견적서 상세 페이지
+
+    private static final String ESTIMATE_DETAIL = HOMEIN_SERVER + "/general_estimate_info";
+    public Request getEstimateDetailItem(Object tag, String general_estimate_number, String general_number, OnResultListener<EstimateDetailData> listener) {
+        String url = String.format(ESTIMATE_DETAIL);
+        RequestBody body = new FormBody.Builder()
+                .add("general_estimate_number", general_estimate_number)
+                .add("general_number", general_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<EstimateDetailData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    EstimateDetailResult data = gson.fromJson(response.body().charStream(), EstimateDetailResult.class);
+                    result.result = data.estimateDetailData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //견적서  댓글 달기
+    private static final String INPUT_ESTIMATE_COMMENT = HOMEIN_SERVER + "/write_estimate_comment";
+    public Request addEstimateComment(Object tag, String posting_number, String comment_content, String member_number, OnResultListener<InputCommentResult> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("member_number", member_number)
+                .add("posting_number", posting_number)
+                .add("comment_content", comment_content)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(INPUT_ESTIMATE_COMMENT)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<InputCommentResult> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    InputCommentResult data = gson.fromJson(response.body().charStream(), InputCommentResult.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //내 견적서 리스트
+    private static final String MYESTIMATE_LIST = HOMEIN_SERVER + "/general_estimate_list";
+    public Request getMyEstimateList(Object tag,String general_number, OnResultListener <List<EstimateListData>> listener) {
+
+
+        RequestBody body = new FormBody.Builder()
+                .add("general_number", general_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(MYESTIMATE_LIST)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<List<EstimateListData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    EstimateListDataResult data = gson.fromJson(response.body().charStream(), EstimateListDataResult.class);
+                    result.result = data.estimateListData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+    //업체 맵 정보
+    private static final String COMPANY_MAP_INFO = HOMEIN_SERVER + "/map_office";
+    public Request getCompanyMapInfo(Object tag, String office_number, OnResultListener<CompanyMapInfo> listener) {
+        String url = String.format(COMPANY_MAP_INFO);
+        RequestBody body = new FormBody.Builder()
+                .add("office_number", office_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<CompanyMapInfo> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    CompanyMapResult data = gson.fromJson(response.body().charStream(), CompanyMapResult.class);
+                    result.result = data.companyMapInfo;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //실시간 사용자 위치 맵 정보
+    private static final String PEOPLE_MAP_INFO = HOMEIN_SERVER + "/map_current";
+    public Request getPeopleMapData(Object tag, double general_latitude, double general_longitude, OnResultListener<HomeInMapData> listener) {
+        String url = String.format(PEOPLE_MAP_INFO);
+        RequestBody body = new FormBody.Builder()
+                .add("general_latitude", general_latitude+"")
+                .add("general_longitude", general_longitude+"")
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<HomeInMapData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    HomeInMapResult data = gson.fromJson(response.body().charStream(), HomeInMapResult.class);
+                    result.result = data.homeInMapData;
                     mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
                 } else {
                     throw new IOException(response.message());

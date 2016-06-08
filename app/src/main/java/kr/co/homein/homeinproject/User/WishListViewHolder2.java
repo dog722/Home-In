@@ -33,7 +33,7 @@ public class WishListViewHolder2 extends RecyclerView.ViewHolder {
 
     public WishListViewHolder2(View itemView) {
         super(itemView);
-        imageView = (ImageView) itemView.findViewById(R.id.wishImg);
+        imageView = (ImageView) itemView.findViewById(R.id.select_img);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

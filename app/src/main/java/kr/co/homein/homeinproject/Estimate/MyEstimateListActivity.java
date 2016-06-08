@@ -7,15 +7,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
 
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.MyEstimateItemData;
+import kr.co.homein.homeinproject.data.EstimateListData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 
 public class MyEstimateListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MyEstimateListAdapter mAdatper;
+    public final static String GENERAL_ESTIMATE_NUMBER ="general_estimate_number";
 
 
     @Override
@@ -40,8 +47,10 @@ public class MyEstimateListActivity extends AppCompatActivity {
         mAdatper = new MyEstimateListAdapter();
         mAdatper.setOnItemClickListener(new MystimateListViewHolder.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, MyEstimateItemData myEstimateItemData) {
+            public void onItemClick(View view, EstimateListData myEstimateItemData) {
                 Intent intent = new Intent(MyEstimateListActivity.this, MyEstimateDetailActivity.class); //내 견적서 문의 상세 페이지로 이동
+                intent.putExtra(GENERAL_ESTIMATE_NUMBER, myEstimateItemData.getGeneral_estimate_number());
+                Toast.makeText(MyEstimateListActivity.this, "general_estimate_number : "+ myEstimateItemData.getGeneral_estimate_number() , Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -56,15 +65,26 @@ public class MyEstimateListActivity extends AppCompatActivity {
 
         setData();
 
-
     }
 
+
+    String general_number = "GM722";
     private void setData() {
 
-        for( int i = 0 ; i < 10 ; i ++){
-            MyEstimateItemData me = new MyEstimateItemData();
-            me.setEstimateTitle("사진같이 러블리 핑크 스타일로 시공할 수 있나요?");
-            mAdatper.add(me);
-        }
+
+        NetworkManager.getInstance().getMyEstimateList(this, general_number,  new NetworkManager.OnResultListener<List<EstimateListData>>() {
+            @Override
+            public void onSuccess(Request request, List<EstimateListData> result) {
+//                mAdapter.clear();
+                mAdatper.addAll(result);
+            }
+
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(MyEstimateListActivity.this, "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }

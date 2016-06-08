@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.MyEstimateItemData;
+import kr.co.homein.homeinproject.data.EstimateListData;
 
 /**
  * Created by seoeunbi on 2016. 5. 19..
  */
 public class MyEstimateListAdapter extends  RecyclerView.Adapter<MystimateListViewHolder> {
-    List<MyEstimateItemData> myEstimateItem = new ArrayList<>();
+    List<EstimateListData> myEstimateItem = new ArrayList<>();
 
 
     MystimateListViewHolder.OnItemClickListener mListener;
@@ -79,12 +79,12 @@ public class MyEstimateListAdapter extends  RecyclerView.Adapter<MystimateListVi
     }
 
 
-    public void add(MyEstimateItemData product) {
+    public void add(EstimateListData product) {
         myEstimateItem.add(product);
         notifyDataSetChanged();
     }
 
-    public void addAll(List<MyEstimateItemData> items) {
+    public void addAll(List<EstimateListData> items) {
         this.myEstimateItem.addAll(items);
         notifyDataSetChanged();
     }

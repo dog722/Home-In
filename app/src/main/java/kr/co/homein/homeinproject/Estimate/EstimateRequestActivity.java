@@ -17,7 +17,9 @@ public class EstimateRequestActivity extends AppCompatActivity {
     RadioGroup groupView;
 
     final static  String  ESTIMATE_SPACE = "estimate_space";
-    final static String ESTIMATE_DATA = "estimate_data";
+    public static String ESTIMATE_DATA = "estimate_data";
+    final static String OF_NUMBER = "office_number";
+
     String estimate_space;
 
     EstimateDetailData estimateDetailData;
@@ -29,6 +31,8 @@ public class EstimateRequestActivity extends AppCompatActivity {
 
         estimateDetailData = new EstimateDetailData();
 
+        Intent intent = getIntent();
+        estimateDetailData.setOffice_number(intent.getStringExtra(OF_NUMBER));
 
         groupView = (RadioGroup) findViewById(R.id.radio_group);
         groupView.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -37,18 +41,20 @@ public class EstimateRequestActivity extends AppCompatActivity {
                 if(checkedId == R.id.rbtn_living) //주거공간
                 {
 
-                    estimateDetailData.setEstimate_sub_space("주거공간");
+                    estimateDetailData.setEstimate_space("주거공간");
 
                 }else if(checkedId == R.id.rbtn_company) //상업공간
                 {
-                    estimateDetailData.setEstimate_sub_space("상업공간");
+                    estimateDetailData.setEstimate_space("상업공간");
 
                 }else if(checkedId == R.id.r_btn_part){ //부분시공
 
-                    estimateDetailData.setEstimate_sub_space("부분시공");
+                    estimateDetailData.setEstimate_space("부분시공");
                 }
             }
         });
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -67,10 +73,11 @@ public class EstimateRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                Intent intent = new Intent(EstimateRequestActivity.this, EstimateRequestActivity2.class);
+                Intent intent = new Intent(EstimateRequestActivity.this, EstimateRequestActivity2_1.class);
 //                intent.putExtra(ESTIMATE_SPACE, estimate_space); //결과 다음창으로 전달
 //                startActivity(intent); //견적문의 2페이지로 이동
                 intent.putExtra(ESTIMATE_DATA, estimateDetailData);
+                startActivity(intent);
 
 
             }

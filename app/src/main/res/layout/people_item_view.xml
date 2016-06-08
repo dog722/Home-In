@@ -5,10 +5,10 @@
     android:layout_height="wrap_content">
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="290dp">
+        android:layout_height="400dp">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="360dp"
             android:id="@+id/item_image"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -20,8 +20,9 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_gravity="center_horizontal|top">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="100dp">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -35,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="4분 전"
-                    android:id="@+id/time_text" />
+                    android:id="@+id/time_text"
+                    android:layout_marginLeft="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName;
  */
 public class EstimateDetailResult {
     @SerializedName("result")
-    EstimateDetailData estimateDetailData;
+    public EstimateDetailData estimateDetailData;
 }
