@@ -14,9 +14,12 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +38,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.PeopleItemWriteData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -74,7 +78,7 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(R.drawable.back_bt_60dp);
         toolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,16 +95,48 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
         textCount = (TextView) findViewById(R.id.text_count);
         inputComment = (EditText) findViewById(R.id.input_comment);
         uploadBtn = (Button) findViewById(R.id.upload_btn);
-        uploadBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ////여기서  입력받은 글이랑 사진이랑 태그 서버로 보내주기
-                finish();
-            }
-        });
+//        uploadBtn.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ////여기서  입력받은 글이랑 사진이랑 태그 서버로 보내주기
+//                finish();
+//            }
+//        });
 
 
         inputTagBtn.setOnClickListener(this);
+
+
+
+//        inputComment.requestFocus();
+        inputComment.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        inputComment.setInputType(InputType.TYPE_CLASS_TEXT);
+
+//        //키보드 보이게 하는 부분
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+
+//        inputComment.requestFocus();
+        //키보드 보이게 하는 부분
+
+        inputComment.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_NEXT:
+                        Toast.makeText(getApplicationContext(), "다음", Toast.LENGTH_LONG).show();
+                        //키보드 내리기
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(inputComment.getWindowToken(), 0);
+
+                        break;
+                    default:
+                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
+                        return false;
+                }
+                return true;
+            }
+        });
 
 
         inputComment.addTextChangedListener(new TextWatcher() {
@@ -121,9 +157,10 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
+
+
 
 
         photoView.setOnClickListener(new OnClickListener() {
@@ -143,10 +180,11 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
             @Override
             public void onClick(View v) {
 
-                general_number = "GM722";
                 PH_content = inputComment.getText().toString();
                 category_number = 1;
+
                 sendPeopleItemWrite();
+                finish();
 
 
             }
@@ -236,13 +274,13 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
             PH_tag.add(tagText.getText().toString());
             explainTag.setVisibility(View.GONE);
 
-            if (count >= 2) {
+            if (count >= 10) {
                 //다이얼로그 띄어주기
                 inputTagBtn.setEnabled(false);
 
-                NoInputDialog dialog2 = new NoInputDialog(this);
+                NoInputDialog dialog2 = new NoInputDialog();
                 dialog2.setOnDismissListener(this);
-                dialog2.show();
+                dialog2.show(getSupportFragmentManager(), "dialog");
             }
         }
 
@@ -257,12 +295,15 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
         InputTagDialogFragment dialog = new InputTagDialogFragment(this);
         dialog.setOnDismissListener(this);
         dialog.show();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+
     }
 
     public void sendPeopleItemWrite() {
 
 
-        NetworkManager.getInstance().sendPeopleWrite(this, general_number, PH_content, PH_tag, path_temp, category_number, new NetworkManager.OnResultListener<PeopleItemWriteData>() {
+        NetworkManager.getInstance().sendPeopleWrite(this, PropertyManager.getInstance().getGeneralNumber(), PH_content, PH_tag, path_temp, category_number, new NetworkManager.OnResultListener<PeopleItemWriteData>() {
             @Override
             public void onSuccess(Request request, PeopleItemWriteData result) {
 //                mAdapter.set(result);

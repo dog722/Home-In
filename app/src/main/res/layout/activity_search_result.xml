@@ -5,16 +5,26 @@
     android:layout_height="match_parent"
     tools:context="kr.co.homein.homeinproject.search.SearchResultActivity">
 
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="@color/colorPrimary">
+        android:id="@+id/frameLayout">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/toolbar"
+            android:background="#01579B">
+
+        </android.support.v7.widget.Toolbar>
+
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/search_tag"
+            android:layout_marginLeft="80dp"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content" />
-        </android.support.v7.widget.Toolbar>
+    </FrameLayout>
 
 
     <android.support.v4.app.FragmentTabHost
@@ -31,8 +41,9 @@
 
             <TabWidget
                 android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="360dp"
+                android:divider="@null"
+                android:layout_height="60dp" />
 
             <FrameLayout
                 android:layout_width="match_parent"

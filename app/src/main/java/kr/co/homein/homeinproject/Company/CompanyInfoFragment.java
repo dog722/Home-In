@@ -3,11 +3,11 @@ package kr.co.homein.homeinproject.Company;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +25,7 @@ import okhttp3.Request;
  */
 public class CompanyInfoFragment extends Fragment {
 
-    FloatingActionButton fab;
+    ImageButton fab;
     TextView companyId;
     TextView companyTitle;
     TextView companyScore;
@@ -33,7 +33,8 @@ public class CompanyInfoFragment extends Fragment {
     TextView companyTel;
     TextView companyDomain;
     TextView comment;
-    TextView requestBtn;
+    ImageButton requestBtn;
+    ImageButton backKey;
     TextView companyAddress2;
     CompanyInfoData companyInfoData;
     final static String OF_NUMBER = "office_number";
@@ -50,6 +51,7 @@ public class CompanyInfoFragment extends Fragment {
 //        Bundle extra = getArguments();
         officeNumber = ((CompanyInfoActivity)getActivity()).getOfficeNumber();
         Toast.makeText(getContext(), "officeNumber : "+ officeNumber, Toast.LENGTH_SHORT).show();
+
         setData();
     }
 
@@ -61,7 +63,7 @@ public class CompanyInfoFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_company_info, container, false);
         // Inflate the layout for this fragment
-        fab = (FloatingActionButton) view.findViewById(R.id.fab2);
+        fab = (ImageButton) view.findViewById(R.id.fab2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +75,14 @@ public class CompanyInfoFragment extends Fragment {
             }
         });
 
+        backKey = (ImageButton) view.findViewById(R.id.back_key);
+        backKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getActivity().finish();
+            }
+        });
         companyId = (TextView) view.findViewById(R.id.company_id);
         companyTitle = (TextView) view.findViewById(R.id.company_title);
         companyScore = (TextView) view.findViewById(R.id.score);
@@ -81,7 +91,7 @@ public class CompanyInfoFragment extends Fragment {
         companyTel = (TextView) view.findViewById(R.id.tel);
         companyDomain = (TextView) view.findViewById(R.id.domain);
         comment = (TextView) view.findViewById(R.id.comment);
-        requestBtn = (TextView) view.findViewById(R.id.request);
+        requestBtn = (ImageButton) view.findViewById(R.id.estim_btn);
 
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override

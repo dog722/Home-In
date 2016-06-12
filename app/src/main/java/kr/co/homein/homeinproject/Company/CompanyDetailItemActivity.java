@@ -5,19 +5,25 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.matthewtamlin.sliding_intro_screen_library.DotIndicator;
 import com.wefika.flowlayout.FlowLayout;
 
 import java.io.IOException;
 import java.util.List;
 
+import kr.co.homein.homeinproject.Estimate.EstimateRequestActivity;
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyDetailItemData;
+import kr.co.homein.homeinproject.data.PeopleAddWishListResult;
 import kr.co.homein.homeinproject.manager.NetworkManager;
 import okhttp3.Request;
 
@@ -40,6 +46,12 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
     ImageButton backKey;
     TextView subName;
 
+    ImageButton btnCall;
+    ImageButton btnEstimate;
+
+    ImageView iconLogo;
+    ImageButton pickBtn;
+
     CompanyItemPageAdapter mAdapter; //
 
     @Override
@@ -59,7 +71,48 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
         price = (TextView) findViewById(R.id.price);
         period = (TextView) findViewById(R.id.period);
         backKey = (ImageButton) findViewById(R.id.back_key);
+        backKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+        pickBtn = (ImageButton) findViewById(R.id.pick_btn);
+        pickBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickWishList();
+            }
+        });
+
         style = (TextView) findViewById(R.id.style);
+
+        iconLogo = (ImageView) findViewById(R.id.icon);
+
+        btnCall = (ImageButton) findViewById(R.id.call_btn);
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:010-1111-2222"));
+//                startActivity(intent);
+            }
+        });
+        btnEstimate = (ImageButton) findViewById(R.id.estim_btn);
+        btnEstimate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CompanyDetailItemActivity.this, EstimateRequestActivity.class);
+                intent.putExtra(OF_NUMBER,officeNumber);
+                startActivity(intent);
+
+            }
+        });
+
+
+
 
         intent= getIntent();
         CH_number = intent.getStringExtra(CH_NUMBER);
@@ -131,6 +184,25 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
 //
 //    }
 
+    private void pickWishList() {
+        NetworkManager.getInstance().addPeopleWishlist(this, companyDetailItemData.getCH_number(),  PropertyManager.getInstance().getGeneralNumber(), new NetworkManager.OnResultListener<PeopleAddWishListResult>() {
+            @Override
+            public void onSuccess(Request request, PeopleAddWishListResult result) {
+                if(result.isSuccess == 0){
+                    Toast.makeText(CompanyDetailItemActivity.this, "이미 관심목록에 존재합니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(CompanyDetailItemActivity.this, "목록에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onFail(Request request, IOException exception) {
+            }
+        });
+
+    }
+
     private void setData() {
 
         NetworkManager.getInstance().getCompanyItemDetail(this, CH_number, new NetworkManager.OnResultListener<CompanyDetailItemData>() {
@@ -153,18 +225,24 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
                 for (String s : companyDetailItemData.getCH_tag()) {
                     TextView tv = new TextView(CompanyDetailItemActivity.this);
                     FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(20, 20, 20, 20);
+                    lp.setMargins(0, 0, 30, 30);
+                    lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
                     tv.setLayoutParams(lp);
-                    tv.setTextSize(20);
+                    tv.setTextSize(15);
+
+                    tv.setPadding(21, 21, 21, 21);
                     tv.setTextColor(Color.WHITE);
-                    tv.setBackgroundColor(Color.BLUE);
+                    tv.setBackgroundColor(0XFF01579B);
                     tv.setText(s);
                     layout.addView(tv);
                 }
 
-                List<String> url = companyDetailItemData.getCH_picture();
-//                Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);
+                List<String> url = companyDetailItemData.getOffice_picture();
+                Glide.with(iconLogo.getContext()).load(url.get(0)).into(iconLogo);
 
+
+
+                mAdapter.addAll(companyDetailItemData.getCH_picture());
             }
 
             @Override

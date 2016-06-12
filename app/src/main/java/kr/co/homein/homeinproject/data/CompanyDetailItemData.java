@@ -11,6 +11,7 @@ public class CompanyDetailItemData {
     String office_name;
     String office_sub_name;
     String office_number;
+    public List<String> office_picture;
 
     public String getOffice_number() {
         return office_number;
@@ -22,6 +23,15 @@ public class CompanyDetailItemData {
 
     String CH_content1;
     String CH_content2;
+
+    public List<String> getOffice_picture() {
+        return office_picture;
+    }
+
+    public void setOffice_picture(List<String> office_picture) {
+        this.office_picture = office_picture;
+    }
+
     String CH_living;
     String CH_price;
     String CH_period;

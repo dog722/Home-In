@@ -9,9 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
 
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.PostingItemData;
+import kr.co.homein.homeinproject.data.PostingListData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 
 /**
@@ -32,7 +38,7 @@ public class PostingFragment extends Fragment {
         mAdatper = new PostingAdapter();
         mAdatper.setOnItemClickListener(new PostingViewHolder.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, PostingItemData postingItemData) {
+            public void onItemClick(View view, PostingListData postingItemData) {
                 Intent intent = new Intent(getContext(), PostingDetailActivity.class); //포스팅 상세 페이지로 이동
                 startActivity(intent);
             }
@@ -67,14 +73,30 @@ public class PostingFragment extends Fragment {
         return view;
     }
 
-    private void setData() {
+//    private void setData() {
+//
+//        for( int i = 0 ; i < 10 ; i ++){
+//            PostingItemData p = new PostingItemData();
+//            p.setPost_name("눈 감고 할 수 있는 셀프 인테리어 10가지"+ i);
+////            p.set("2" + i);
+//            mAdatper.add(p);
+//        }
+//    }
 
-        for( int i = 0 ; i < 10 ; i ++){
-            PostingItemData p = new PostingItemData();
-            p.setPost_name("눈 감고 할 수 있는 셀프 인테리어 10가지"+ i);
-//            p.set("2" + i);
-            mAdatper.add(p);
-        }
+
+    private void setData() {
+        NetworkManager.getInstance().getPostingList(getContext(), new NetworkManager.OnResultListener<List<PostingListData>>() {
+            @Override
+            public void onSuccess(Request request, List<PostingListData> result) {
+//                mAdapter.clear();
+                mAdatper.addAll(result);
+            }
+
+            @Override
+            public void onFail(Request request, IOException exception) {
+                Toast.makeText(getContext(), "exception : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

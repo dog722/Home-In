@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.EstimateDetailData;
 import kr.co.homein.homeinproject.data.InputCommentResult;
@@ -67,6 +68,7 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(input_comment.getWindowToken(), 0);
                 comment_content = input_comment.getText().toString();
                 addComment();
+                setData();
                 listView.scrollToPosition(0);
             }
         });
@@ -81,7 +83,7 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
     String general_number = "GM722";
     public void addComment() {
         // String posting_number, String comment_content, String member_number,
-        NetworkManager.getInstance().addEstimateComment(this, general_estimate_number, comment_content, general_number, new NetworkManager.OnResultListener<InputCommentResult>() {
+        NetworkManager.getInstance().addEstimateComment(this, general_estimate_number, comment_content, PropertyManager.getInstance().getGeneralNumber(), new NetworkManager.OnResultListener<InputCommentResult>() {
             @Override
             public void onSuccess(Request request, InputCommentResult result) {
 
@@ -91,6 +93,8 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MyEstimateDetailActivity.this, "댓글 입력에 성공하였습니다.", Toast.LENGTH_SHORT).show();
                     input_comment.setText("");
+                    setData();
+
                 }
             }
 
@@ -105,7 +109,7 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
 
 
     public void setData(){
-        NetworkManager.getInstance().getEstimateDetailItem(this, general_estimate_number, general_number,  new NetworkManager.OnResultListener<EstimateDetailData>() {
+        NetworkManager.getInstance().getEstimateDetailItem(this, general_estimate_number,  PropertyManager.getInstance().getGeneralNumber(),  new NetworkManager.OnResultListener<EstimateDetailData>() {
             @Override
             public void onSuccess(Request request, EstimateDetailData result) {
                 estimateDetailData = result;

@@ -16,7 +16,7 @@ import kr.co.homein.homeinproject.Posting.PostingAdapter;
 import kr.co.homein.homeinproject.Posting.PostingDetailActivity;
 import kr.co.homein.homeinproject.Posting.PostingViewHolder;
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.PostingItemData;
+import kr.co.homein.homeinproject.data.PostingListData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +39,7 @@ public class SearchPostingFragment extends Fragment implements SearchResultActiv
         mAdatper = new PostingAdapter();
         mAdatper.setOnItemClickListener(new PostingViewHolder.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, PostingItemData postingItemData) {
+            public void onItemClick(View view, PostingListData postingItemData) {
                 Intent intent = new Intent(getContext(), PostingDetailActivity.class); //포스팅 상세 페이지로 이동
                 startActivity(intent);
             }
@@ -67,7 +67,7 @@ public class SearchPostingFragment extends Fragment implements SearchResultActiv
 
 
     void updateData() {
-        List<PostingItemData> list = ((SearchResultActivity)getActivity()).getPostingItemData();
+        List<PostingListData> list = ((SearchResultActivity)getActivity()).getPostingItemData();
         if (list != null) {
             // ...
             mAdatper.clear();

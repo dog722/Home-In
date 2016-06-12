@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -29,14 +30,15 @@
             </com.matthewtamlin.sliding_intro_screen_library.DotIndicator>
 
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:id="@+id/back_key"
-                android:src="@mipmap/ic_launcher"
+                android:background="@drawable/back_bt"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_margin="10dp" />
+
         </RelativeLayout>
 
 
@@ -46,33 +48,38 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
 
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/icon"
-            android:scaleType="fitXY"
-            android:layout_margin="20dp" />
+            app:civ_border_width="0dp"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp" />
+
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="eunbi722"
-                    android:id="@+id/user_id"
-                    android:paddingTop="30dp"
-                    android:paddingLeft="10dp" />
+                    android:id="@+id/user_id" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="서브네임"
-                    android:id="@+id/sub_name" />
+                    android:id="@+id/sub_name"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <TextView
@@ -82,12 +89,13 @@
             android:layout_weight="0.91" />
 
             <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src = "@mipmap/ic_launcher"
-            android:id="@+id/btn_share"
-            android:layout_margin="20dp"
-            android:scaleType="fitXY" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background = "@drawable/share_bt"
+                android:scaleType="fitXY"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/share_btn" />
 
         </LinearLayout>
 
@@ -95,7 +103,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -117,7 +127,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:columnCount="2"
-        android:padding="20dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -144,36 +156,51 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="한샘 마일드 블랙 스타일은 꾸미지 않은 듯 자연스러운 분위기 속에서, 세련된 감각이 묻어나는 스타일입니다."
-                android:id="@+id/comment3" />
+                android:id="@+id/comment3"
+                android:layout_marginBottom="30dp" />
+
+            <com.wefika.flowlayout.FlowLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tag_layout"
+                android:layout_marginBottom="20dp">
+            </com.wefika.flowlayout.FlowLayout>
         </LinearLayout>
 
-        <com.wefika.flowlayout.FlowLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:id="@+id/tag_layout"
-            android:paddingLeft="20dp">
-        </com.wefika.flowlayout.FlowLayout>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/pick_btn"
+            android:background="@drawable/like_bt"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp" />
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
-                android:src="@mipmap/ic_launcher"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp" />
+                android:layout_width="178dp"
+                android:layout_height="60dp"
+                android:id="@+id/call_btn"
+                android:background="@drawable/call_bt"
+                android:layout_marginRight="4dp" />
+
+            <ImageButton
+                android:layout_width="178dp"
+                android:layout_height="60dp"
+                android:id="@+id/estim_btn"
+                android:background="@drawable/info_bt"
+                android:layout_gravity="right" />
         </LinearLayout>
 
     </LinearLayout>

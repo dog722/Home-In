@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import kr.co.homein.homeinproject.R;
 
 /**
@@ -16,7 +21,7 @@ import kr.co.homein.homeinproject.R;
  */
 public class CompanyItemPageAdapter extends PagerAdapter {
 
-//    List<String> items = new ArrayList<String>();
+    List<String> items = new ArrayList<String>();
 //
 //    List<View> scrapped = new ArrayList<View>();
 
@@ -35,9 +40,16 @@ public class CompanyItemPageAdapter extends PagerAdapter {
         options = new BitmapFactory.Options();
     }
 
+
+    public void addAll(List<String> items){
+        this.items.addAll(items);
+        notifyDataSetChanged();
+
+    }
+    
     @Override
     public int getCount() {
-        return galImages.length;
+        return items.size();
     }
 
     @Override
@@ -51,11 +63,12 @@ public class CompanyItemPageAdapter extends PagerAdapter {
 //            int padding = context.getResources().getDimensionPixelSize();
 //            imageView.setPadding(padding, padding, padding, padding);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        options.inSampleSize = 4;
-        galImage = BitmapFactory.decodeResource(context.getResources(), galImages[position], options);
-
-        imageView.setImageBitmap(galImage);
+//        options.inSampleSize = 4;
+//        galImage = BitmapFactory.decodeResource(context.getResources(), items.get(position), options);
+//
+//        imageView.setImageBitmap(galImage);
         ((ViewPager) container).addView(imageView, 0);
+        Glide.with(imageView.getContext()).load(items.get(position)).into(imageView);
         return imageView;
     }
 

@@ -37,6 +37,10 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
         mListener = listener;
     }
 
+
+
+
+
     public PeoPleItemListViewHolder(final View itemView) {
         super(itemView);
 
@@ -78,15 +82,14 @@ public class PeoPleItemListViewHolder extends RecyclerView.ViewHolder {
             TextView tv = new TextView(itemView.getContext());
             FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
 
-
-            lp.setMargins(30, 30, 30, 30);
+            lp.setMargins(0, 0, 30, 30);
             lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
             tv.setLayoutParams(lp);
-            tv.setTextSize(20);
+            tv.setTextSize(15);
 
-            tv.setPadding(30,30,30,30);
+            tv.setPadding(21, 21, 21, 21);
             tv.setTextColor(Color.WHITE);
-            tv.setBackgroundColor(Color.BLUE);
+            tv.setBackgroundColor(0XFF01579B);
             tv.setText(s);
             tagLayout.addView(tv);
         }

@@ -60,18 +60,17 @@ public class EventPageAdapter extends PagerAdapter {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             ImageView imageView = new ImageView(context);
-//            int padding = context.getResources().getDimensionPixelSize();
-//            imageView.setPadding(padding, padding, padding, padding);
+
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-//            options.inSampleSize = 4;
-//            galImage = BitmapFactory.decodeResource(context.getResources(), galImages[position], options);
-//
-//            imageView.setImageBitmap(galImage);
-//               if (eventPageData.size() > 0) {
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                      //eventPageData.get(position)
+                }
+            });
+
                 Glide.with(imageView.getContext()).load(eventPageData.get(position).getEvent_picture().get(0)).into(imageView);
 //            }
-
-//            imageView.setBackgroundColor(Color.RED);
             ((ViewPager) container).addView(imageView);
             return imageView;
         }

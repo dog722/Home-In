@@ -3,8 +3,10 @@ package kr.co.homein.homeinproject;
 import android.app.Application;
 import android.content.Context;
 
+//import com.facebook.FacebookSdk;
+
 /**
- * Created by dongja94 on 2016-05-12.
+ * Created by dongja94 on 2016-05-09.
  */
 public class MyApplication extends Application {
     private static Context context;
@@ -13,6 +15,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+//        FacebookSdk.sdkInitialize(this);
     }
 
     public static Context getContext() {

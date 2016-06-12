@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.matthewtamlin.sliding_intro_screen_library.DotIndicator;
@@ -39,8 +40,9 @@ public class PeopleItemFragment extends Fragment {
     List<PeopleItemData> peopleItem = new ArrayList<>();
     RecyclerView listView;
     ViewPager viewPager;
+    ImageView imgBack;
     DotIndicator infoIndicator;
-    EventPageAdapter eventPageAdapter;
+    EventPageAdapter    eventPageAdapter;
     String PH_number;
     final static String PH_NUMBER = "PH_number";
     ParallaxRecyclerAdapter<PeopleItemData>  pAdapter;
@@ -55,6 +57,9 @@ public class PeopleItemFragment extends Fragment {
 
 
         eventPageAdapter = new EventPageAdapter(getContext());
+
+
+
         pAdapter = new ParallaxRecyclerAdapter<PeopleItemData>(peopleItem) {
             @Override
             public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<PeopleItemData> parallaxRecyclerAdapter, int i) {
@@ -87,6 +92,31 @@ public class PeopleItemFragment extends Fragment {
         pAdapter.setScrollMultiplier(1);
 
 
+
+//        public interface OnItemScrollListener {
+//            public void onItemClick(View view, PeopleItemData peopleItem);
+//        }
+//
+//        OnItemClickListener mListener;
+//        public void setOnItemClickListener(OnItemClickListener listener) {
+//            mListener = listener;
+//        }
+
+
+
+
+        pAdapter.setOnParallaxScroll(new ParallaxRecyclerAdapter.OnParallaxScroll() {
+            @Override
+            public void onParallaxScroll(float percentage, float offset, View parallax) {
+                //TODO: implement toolbar alpha. See README for details
+//                Drawable c = imgBack.getBackground();
+//                c.setAlpha(Math.round(percentage * 255));
+//                imgBack.setBackground(c);
+            }
+        });
+
+
+
         pAdapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View view, int i) {
@@ -94,14 +124,6 @@ public class PeopleItemFragment extends Fragment {
                 PH_number = peopleItem.get(i).getPH_number();
                 intent.putExtra(PH_NUMBER, PH_number);
                 startActivity(intent);
-            }
-        });
-
-        pAdapter.setOnParallaxScroll(new ParallaxRecyclerAdapter.OnParallaxScroll() {
-            @Override
-            public void onParallaxScroll(float percentage, float offset, View parallax) {
-                //TODO: implement toolbar alpha. See README for details
-
             }
         });
 
@@ -116,6 +138,10 @@ public class PeopleItemFragment extends Fragment {
     public void onResume() {
         super.onResume();
         listView.scrollToPosition(0);
+        for(int i = 0 ; i <peopleItem.size() ; i++)
+        pAdapter.removeItem(peopleItem.get(i));
+
+        setData();
 
     }
 
@@ -129,6 +155,10 @@ public class PeopleItemFragment extends Fragment {
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
+
+
+//        View view2 =  inflater.inflate(R.layout.homein_header_view, container, false);
+//        imgBack = (ImageView) view2.findViewById(R.id.img_back);
 
 
         listView.setAdapter(pAdapter);
@@ -190,8 +220,6 @@ public class PeopleItemFragment extends Fragment {
                 //indicater 구현
 //                Toast.makeText(getContext(), "dfsdf", Toast.LENGTH_SHORT).show();
                 // only one selected
-
-
                 infoIndicator.setNumberOfItems(3);
                 infoIndicator.setSelectedItem(viewPager.getCurrentItem(), true);
 
@@ -202,8 +230,6 @@ public class PeopleItemFragment extends Fragment {
 
             }
         });
-
-
 
         return view;
     }

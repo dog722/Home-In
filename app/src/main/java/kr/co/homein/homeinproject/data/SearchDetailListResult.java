@@ -16,6 +16,6 @@ public class SearchDetailListResult {
     public List<CompanyItemData> companyItemData;
 
     @SerializedName("Posting")
-    public List<PostingItemData> postingItemData;
+    public List<PostingListData> postingItemData;
 
 }

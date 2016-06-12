@@ -31,6 +31,7 @@ public class SearchTagActivity extends AppCompatActivity {
     RecyclerView listView;
     SearchAdapter mAdapter;
     String tag;
+    int totalCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,13 @@ public class SearchTagActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_tag);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(R.drawable.back_bt_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "center toolbar navigation click", Toast.LENGTH_SHORT).show();
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                 finish();
             }
         });
@@ -79,8 +82,10 @@ public class SearchTagActivity extends AppCompatActivity {
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_SEARCH:
                         Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                         //여기서 검색 키워드 서버에 보내주기
-                        tag = editText.getText().toString();
+                         tag = editText.getText().toString();
                         setData();
                         break;
                     default:
@@ -98,9 +103,15 @@ public class SearchTagActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Request request,SearchListDataResult result) {
                 Toast.makeText(SearchTagActivity.this, " tag:" + tag, Toast.LENGTH_SHORT).show();
-                mAdapter.clear();
-                mAdapter.addAll(result.getSearchData());
-                mAdapter.addHeader(result.getTotal_count()+"");
+
+                if(result.getSearchData().size() !=0) {
+
+                    mAdapter.clear();
+                    mAdapter.addAll(result.getSearchData());
+                }
+
+                mAdapter.addHeader(result.getTotal_count() + "");
+
             }
 
             @Override

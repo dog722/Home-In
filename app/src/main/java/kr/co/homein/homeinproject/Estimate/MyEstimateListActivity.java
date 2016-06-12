@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.EstimateListData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -68,11 +69,10 @@ public class MyEstimateListActivity extends AppCompatActivity {
     }
 
 
-    String general_number = "GM722";
     private void setData() {
 
 
-        NetworkManager.getInstance().getMyEstimateList(this, general_number,  new NetworkManager.OnResultListener<List<EstimateListData>>() {
+        NetworkManager.getInstance().getMyEstimateList(this, PropertyManager.getInstance().getGeneralNumber(),  new NetworkManager.OnResultListener<List<EstimateListData>>() {
             @Override
             public void onSuccess(Request request, List<EstimateListData> result) {
 //                mAdapter.clear();

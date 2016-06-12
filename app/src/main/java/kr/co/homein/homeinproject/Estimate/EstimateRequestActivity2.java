@@ -25,6 +25,7 @@ public class EstimateRequestActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_estimate_request2);
+        EstimateRequestActivity.at.add(this);
 
 
 

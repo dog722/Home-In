@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ public class EstimateRequestActivity4 extends AppCompatActivity {
     final static int REQUEST_IMAGE_CHOICE = 1;
     EstimateDetailData estimateDetailData;
     ImageView uploadImg;
+    GridView gridView;
+    GalleryAdapter mApdater;
 
     String general_bumer;
     String office_number;
@@ -37,9 +40,15 @@ public class EstimateRequestActivity4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estimate_request4);
+        EstimateRequestActivity.at.add(this);
 
         Intent intent = getIntent();
         estimateDetailData = (EstimateDetailData) intent.getSerializableExtra(EstimateRequestActivity.ESTIMATE_DATA);
+        mApdater = new GalleryAdapter();
+
+        gridView = (GridView) findViewById(R.id.gridView);
+        gridView.setAdapter(mApdater);
+
 
 
 
@@ -55,7 +64,7 @@ public class EstimateRequestActivity4 extends AppCompatActivity {
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(R.drawable.back_bt_60dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,17 +90,21 @@ public class EstimateRequestActivity4 extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_IMAGE_CHOICE && resultCode == Activity.RESULT_OK){
-            ArrayList<ImageItem> list = data.getParcelableArrayListExtra(GalleryChoiceActivity.RESULT_LIST);
 
+            ArrayList<ImageItem> list = data.getParcelableArrayListExtra(GalleryChoiceActivity.RESULT_LIST);
             //resultImage는 얻어온 uri
             ArrayList<String> resultImage = new ArrayList<String>();
-            for(int i = 0 ; i < list.size() ; i++){
-                resultImage.add(list.get(i).path);
+
+
+            if(list.size() != 0) {
+                for (int i = 0; i < list.size(); i++) {
+                    resultImage.add(list.get(i).path);
 //                estimateDetailData.getInterior_picture().set(list.get(i).uri.toString());
 //                interior_picture.add(new File(imagName));
+                }
+                mApdater.addAll(resultImage);
+                estimateDetailData.setInterior_picture(resultImage);
             }
-
-            estimateDetailData.setInterior_picture(resultImage);
 
 //            Toast.makeText(EstimateRequestActivity4.this, "얻어온 url[0] : " + resultImage.get(0), Toast.LENGTH_SHORT).show();
 

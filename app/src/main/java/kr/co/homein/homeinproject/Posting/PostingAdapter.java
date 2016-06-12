@@ -10,13 +10,14 @@ import java.util.List;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.PostingItemData;
+import kr.co.homein.homeinproject.data.PostingListData;
 
 /**
  * Created by seoeunbi on 2016. 5. 19..
  */
 public class PostingAdapter extends  RecyclerView.Adapter<PostingViewHolder>{
 
-    List<PostingItemData> postItem = new ArrayList<>();
+    List<PostingListData> postItem = new ArrayList<>();
 
 
     PostingViewHolder.OnItemClickListener mListener;
@@ -80,12 +81,12 @@ public class PostingAdapter extends  RecyclerView.Adapter<PostingViewHolder>{
     }
 
 
-    public void add(PostingItemData product) {
+    public void add(PostingListData product) {
         postItem.add(product);
         notifyDataSetChanged();
     }
 
-    public void addAll(List<PostingItemData> items) {
+    public void addAll(List<PostingListData> items) {
         this.postItem.addAll(items);
         notifyDataSetChanged();
     }

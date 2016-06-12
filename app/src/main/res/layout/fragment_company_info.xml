@@ -10,68 +10,76 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:layout_height="360dp">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:src="@drawable/company_dummy"
                 android:id="@+id/imageView"
                 android:scaleType="fitXY" />
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton2"
-                android:src="@mipmap/ic_launcher"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/back_key"
+                android:background="@drawable/back_bt"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="left|top"
+                android:layout_marginTop="10dp" />
+
         </RelativeLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:id="@+id/fab2"
-            android:src="@android:drawable/ic_dialog_map"
-            android:layout_marginRight="42dp"
-            android:layout_marginEnd="30dp"
+            android:background="@drawable/place_icon"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_gravity="right"
-            android:layout_marginTop="-30dp" />
+            android:layout_gravity="bottom|right"
+            android:layout_marginTop="-45dp" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            android:layout_marginTop="-25dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="한샘인테리어"
-                android:id="@+id/company_id" />
+                android:id="@+id/company_id"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="논현홈아이엔티키친프라자점"
-                android:id="@+id/company_title" />
+                android:id="@+id/company_title"
+                android:layout_marginLeft="20dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageButton
+                <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:id="@+id/imageButton3" />
+                    android:src="@drawable/like_bt_up"
+                    android:id="@+id/imageButton3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -86,7 +94,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -134,7 +143,10 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,39 +159,22 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="1">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="170dp"
-                android:layout_height="50dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="전화하기"
-                android:background="@color/colorPrimary"
-                android:textColor="#ffffff"
-                android:id="@+id/textView4"
-                android:gravity="center_vertical|center_horizontal" />
+            <ImageButton
+                android:layout_width="178dp"
+                android:layout_height="60dp"
+                android:id="@+id/call_btn"
+                android:background="@drawable/call_bt"
+                android:layout_marginRight="4dp" />
 
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView27"
-                android:text="            "
-                android:layout_weight="0.68" />
-
-            <TextView
-                android:layout_width="170dp"
-                android:layout_height="50dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="견적문의"
-                android:textColor="#ffffff"
-                android:background="@color/colorPrimary"
-                android:id="@+id/request"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="0.32" />
-
+            <ImageButton
+                android:layout_width="178dp"
+                android:layout_height="60dp"
+                android:id="@+id/estim_btn"
+                android:background="@drawable/info_bt"
+                android:layout_gravity="right" />
         </LinearLayout>
-
     </LinearLayout>
 
     </ScrollView>

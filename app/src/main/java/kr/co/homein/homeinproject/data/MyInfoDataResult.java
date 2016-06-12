@@ -9,4 +9,22 @@ public class MyInfoDataResult {
     @SerializedName("result")
     public MyInfoData myInfoData;
 
+    @SerializedName("success")
+    int isSuccess;
+
+    public MyInfoData getMyInfoData() {
+        return myInfoData;
+    }
+
+    public void setMyInfoData(MyInfoData myInfoData) {
+        this.myInfoData = myInfoData;
+    }
+
+    public int getIsSuccess() {
+        return isSuccess;
+    }
+
+    public void setIsSuccess(int isSuccess) {
+        this.isSuccess = isSuccess;
+    }
 }

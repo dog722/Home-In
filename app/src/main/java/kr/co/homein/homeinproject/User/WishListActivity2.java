@@ -15,6 +15,7 @@ import java.util.List;
 
 import kr.co.homein.homeinproject.Company.CompanyDetailItemActivity;
 import kr.co.homein.homeinproject.HomeIn.PeopleItemDetailActivity;
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.WishListData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -42,6 +43,7 @@ public class WishListActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "center toolbar navigation click", Toast.LENGTH_SHORT).show();
+
                 finish();
             }
         });
@@ -51,7 +53,6 @@ public class WishListActivity2 extends AppCompatActivity {
         mAdapter = new WishListAdapter2();
         listView.setAdapter(mAdapter);
 
-        setData();
 
         listView.setLayoutManager(new GridLayoutManager(this, 3));
         editBtn = (TextView) findViewById(R.id.btn_edit);
@@ -61,7 +62,7 @@ public class WishListActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(WishListActivity2.this, WishListActivity.class), DELETE);
-
+                finish();
             }
         });
 
@@ -96,10 +97,15 @@ public class WishListActivity2 extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.clear();
+        setData();
+    }
 
-    String general_number = "GM722";
     private void setData() {
-        NetworkManager.getInstance().getMyWishList(this, general_number, new NetworkManager.OnResultListener<List<WishListData>>() {
+        NetworkManager.getInstance().getMyWishList(this, PropertyManager.getInstance().getGeneralNumber(), new NetworkManager.OnResultListener<List<WishListData>>() {
             @Override
             public void onSuccess(Request request, List<WishListData> result) {
 //                mAdapter.clear();

@@ -2,6 +2,7 @@ package kr.co.homein.homeinproject.Company;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -69,17 +70,35 @@ public class CompanyItemViewHolder extends RecyclerView.ViewHolder {
         distance.setText(companyItem.getDistance());
         tagLayout.removeAllViews();
 
-        for (String s : companyItem.getCH_tag()) {
+//        for (String s : companyItem.getCH_tag()) {
+//            TextView tv = new TextView(itemView.getContext());
+//            FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+//            lp.setMargins(20, 20, 20, 20);
+//            tv.setLayoutParams(lp);
+//            tv.setTextSize(20);
+//            tv.setTextColor(Color.WHITE);
+//            tv.setBackgroundColor(Color.BLUE);
+//            tv.setText(s);
+//            tagLayout.addView(tv);
+//        }
+
+
+                for (String s : companyItem.getCH_tag()) {
             TextView tv = new TextView(itemView.getContext());
-            FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(20, 20, 20, 20);
-            tv.setLayoutParams(lp);
-            tv.setTextSize(20);
-            tv.setTextColor(Color.WHITE);
-            tv.setBackgroundColor(Color.BLUE);
-            tv.setText(s);
+                    FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(0, 0, 30, 30);
+                    lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
+                    tv.setLayoutParams(lp);
+                    tv.setTextSize(15);
+
+                    tv.setPadding(21, 21, 21, 21);
+                    tv.setTextColor(Color.WHITE);
+                    tv.setBackgroundColor(0XFF01579B);
+                    tv.setText(s);
             tagLayout.addView(tv);
         }
+
+
 
         if (companyItem.getCH_picture().size() > 0) {
             List<String> url = companyItem.getCH_picture();

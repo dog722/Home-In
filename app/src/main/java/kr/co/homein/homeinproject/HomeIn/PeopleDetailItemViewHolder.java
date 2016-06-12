@@ -3,6 +3,7 @@ package kr.co.homein.homeinproject.HomeIn;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import com.wefika.flowlayout.FlowLayout;
 
 import java.io.IOException;
 
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.PeopleAddWishListResult;
 import kr.co.homein.homeinproject.data.PeopleDetailItemData;
@@ -57,9 +59,8 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    String general_number = "GM722";
     private void pickWishList() {
-        NetworkManager.getInstance().addPeopleWishlist(this, peopleDetailItem.getPH_number(), "GM722", new NetworkManager.OnResultListener<PeopleAddWishListResult>() {
+        NetworkManager.getInstance().addPeopleWishlist(this, peopleDetailItem.getPH_number(),  PropertyManager.getInstance().getGeneralNumber(), new NetworkManager.OnResultListener<PeopleAddWishListResult>() {
             @Override
             public void onSuccess(Request request, PeopleAddWishListResult result) {
                 if(result.isSuccess == 0){
@@ -88,11 +89,14 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
         for (String s : peopleDetailItem.getPH_tag()) {
             TextView tv = new TextView(itemView.getContext());
             FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(20, 20, 20, 20);
+            lp.setMargins(0, 0, 30, 30);
+            lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
             tv.setLayoutParams(lp);
-            tv.setTextSize(20);
+            tv.setTextSize(15);
+
+            tv.setPadding(21, 21, 21, 21);
             tv.setTextColor(Color.WHITE);
-            tv.setBackgroundColor(Color.BLUE);
+            tv.setBackgroundColor(0XFF01579B);
             tv.setText(s);
             tagLayout.addView(tv);
         }

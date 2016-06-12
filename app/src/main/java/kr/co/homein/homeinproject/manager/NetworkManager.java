@@ -20,6 +20,8 @@ import kr.co.homein.homeinproject.Maps.CompanyMapInfo;
 import kr.co.homein.homeinproject.Maps.CompanyMapResult;
 import kr.co.homein.homeinproject.Maps.HomeInMapData;
 import kr.co.homein.homeinproject.Maps.HomeInMapResult;
+import kr.co.homein.homeinproject.Maps.SearchMapData;
+import kr.co.homein.homeinproject.Maps.SearchMapDataResult;
 import kr.co.homein.homeinproject.MyApplication;
 import kr.co.homein.homeinproject.data.CompanyDetailItemData;
 import kr.co.homein.homeinproject.data.CompanyDetailItemDataResult;
@@ -44,6 +46,9 @@ import kr.co.homein.homeinproject.data.PeopleItemDataResult;
 import kr.co.homein.homeinproject.data.PeopleItemDetailResult;
 import kr.co.homein.homeinproject.data.PeopleItemWriteData;
 import kr.co.homein.homeinproject.data.PeopleItemWriteDataResult;
+import kr.co.homein.homeinproject.data.PostingListData;
+import kr.co.homein.homeinproject.data.PostingListResult;
+import kr.co.homein.homeinproject.data.ReceiveResultData;
 import kr.co.homein.homeinproject.data.SearchDetailListResult;
 import kr.co.homein.homeinproject.data.SearchDetailListResults;
 import kr.co.homein.homeinproject.data.SearchListDataResult;
@@ -245,12 +250,18 @@ public class NetworkManager {
 
     //회사 아이템 리스트
     private static final String COMPANY_ITEM = HOMEIN_SERVER + "/construction_homein_list";
-    public Request getCompanyItemList(Object tag, OnResultListener<List<CompanyItemData>> listener) {
-        Request request = new Request.Builder()
-                .url(COMPANY_ITEM)
-                .header("Accept", "application/json")
-                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+    public Request getCompanyItemList(Object tag, double general_latitude, double general_longitude, OnResultListener<List<CompanyItemData>> listener) {
+        String url = String.format(COMPANY_ITEM);
+        RequestBody body = new FormBody.Builder()
+                .add("general_latitude", general_latitude+"")
+                .add("general_longitude", general_longitude + "")
                 .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
         final NetworkResult<List<CompanyItemData>> result = new NetworkResult<>();
         result.request = request;
         result.listener = listener;
@@ -695,7 +706,8 @@ public class NetworkManager {
 
         for (int i = 0; i <delete_posting_number.size(); i++) {
             String t = delete_posting_number.get(i);
-            builder.add("delete_posting_number["+i+"]", t);
+//            builder.add("delete_posting_number["+i+"]", t);
+            builder.add("delete_posting_number", t);
         }
         RequestBody body = builder.build();
 
@@ -790,24 +802,23 @@ public class NetworkManager {
                                      String interior_info_content,
                                    OnResultListener<EstimateWriteResult> listener) {
 
-
         String url = String.format(ESTIMATE_WRITE);
-        MultipartBody.Builder builder = new MultipartBody.Builder();
+        MultipartBody.Builder builder = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM);
         builder.addFormDataPart("general_number", general_number)
                 .addFormDataPart("office_number", office_number)
                 .addFormDataPart("estimate_space", estimate_space)
                 .addFormDataPart("estimate_sub_space", estimate_sub_space)
                 .addFormDataPart("estimate_size", estimate_size);
-        builder.setType(MultipartBody.FORM);
-        for (int i = 0; i <interior_picture.size(); i++) {
-                    builder.addFormDataPart("interior_picture", interior_picture.get(i).getName(),
-                            RequestBody.create(MediaType.parse("image/jpeg"), interior_picture.get(i)));
-        }
-
         builder.addFormDataPart("general_real_name", general_real_name)
                 .addFormDataPart("general_email", general_email)
                 .addFormDataPart("general_tel", general_tel)
                 .addFormDataPart("interior_info_content", interior_info_content);
+        for (int i = 0; i <interior_picture.size(); i++) {
+                    builder.addFormDataPart("interior_picture", interior_picture.get(i).getName(),
+                            RequestBody.create(MediaType.parse("image/jpg"), interior_picture.get(i)));
+        }
+
 
         RequestBody body = builder.build();
 
@@ -1010,7 +1021,7 @@ public class NetworkManager {
         String url = String.format(PEOPLE_MAP_INFO);
         RequestBody body = new FormBody.Builder()
                 .add("general_latitude", general_latitude+"")
-                .add("general_longitude", general_longitude+"")
+                .add("general_longitude", general_longitude + "")
                 .build();
 
         Request request = new Request.Builder()
@@ -1042,4 +1053,165 @@ public class NetworkManager {
     }
 
 
+    //내 정보 사진 수정
+    private static final String UPDATE_PROFILE_IMG = HOMEIN_SERVER + "/my_picture_update/";
+    public Request uploadProfileImg(Object tag, String general_number, File file,
+                                   OnResultListener<ReceiveResultData> listener) {
+        String url = String.format(UPDATE_PROFILE_IMG);
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.addFormDataPart("general_number", general_number);
+
+        builder.setType(MultipartBody.FORM)
+                .addFormDataPart("general_pic", file.getName(),
+                        RequestBody.create(MediaType.parse("image/jpeg"), file));
+
+
+        RequestBody body = builder.build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        final NetworkResult<ReceiveResultData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    ReceiveResultData data = gson.fromJson(response.body().charStream(), ReceiveResultData.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+    //맵 내에서 태그 검색 결과
+    private static final String MAP_SEARCH_TAG = HOMEIN_SERVER + "/map_search/";
+    public Request getSearchMapTag(Object tag, double general_latitude, double general_longitude, String tag_name, OnResultListener<SearchMapData> listener) {
+        String url = String.format(MAP_SEARCH_TAG);
+        RequestBody body = new FormBody.Builder()
+                .add("general_latitude", general_latitude+"")
+                .add("general_longitude", general_longitude + "")
+                .add("tag", tag_name + "")
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<SearchMapData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String text = response.body().string();
+
+                    SearchMapDataResult data = gson.fromJson(text, SearchMapDataResult.class);
+                    result.result = data.searchMapData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //로그인
+    private static final String SIGNIN = HOMEIN_SERVER + "/general_login/";
+    public Request signin(Object tag, String general_id, String general_pw, OnResultListener<MyInfoData> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("general_id", general_id)
+                .add("general_pw", general_pw)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(SIGNIN)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<MyInfoData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    MyInfoDataResult data = gson.fromJson(response.body().charStream(), MyInfoDataResult.class);
+                    result.result = data.myInfoData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //posting 리스트
+    private static final String POSTING_LIST = HOMEIN_SERVER + "/posting_list/";
+    public Request getPostingList(Object tag, OnResultListener<List<PostingListData>> listener) {
+        Request request = new Request.Builder()
+                .url(POSTING_LIST)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .build();
+        final NetworkResult<List<PostingListData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    PostingListResult data = gson.fromJson(response.body().charStream(), PostingListResult.class);
+                    result.result = data.postingListData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
 }

@@ -7,4 +7,9 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="dialog_width">200dp</dimen>
     <dimen name="dialog_height">300dp</dimen>
+
+    <dimen name="register_dialog_width">250dp</dimen>
+    <dimen name="register_dialog_Height">190dp</dimen>
+
+
 </resources>

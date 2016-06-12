@@ -80,6 +80,5 @@ public class CurrentOffice {
     public void setOffice_longitude(float office_longitude) {
         this.office_longitude = office_longitude;
     }
-
 }
 

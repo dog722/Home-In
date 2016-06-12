@@ -48,7 +48,7 @@ public class CategoryAdapter  extends BaseAdapter {
         } else {
             itemView = (ItemView)convertView;
         }
-        itemView.setImage(items.get(position).resId);
+        itemView.setImage(items.get(position).resId1, items.get(position).resId2);
         return itemView;
     }
 

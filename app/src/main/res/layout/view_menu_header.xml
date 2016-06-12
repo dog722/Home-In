@@ -7,44 +7,46 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:id="@+id/toolbar"
         android:background="#ffffff" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="204dp"
+        android:layout_height="260dp"
+        android:orientation="vertical"
         android:layout_weight="0.16"
         android:background="#bbbaba">
 
         <com.mikhaellopez.circularimageview.CircularImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/ic_launcher"
-            app:civ_border_color="#EEEEEE"
-            app:civ_border_width="4dp"
-            app:civ_shadow="true"
+            app:civ_border_width="0dp"
+            app:civ_shadow="false"
             app:civ_shadow_radius="10"
-            app:civ_shadow_color="#8BC34A"
             android:id="@+id/profile_img"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3"
-            android:id="@+id/count2"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_centerVertical="true" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:src="@drawable/circle"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBottom="@+id/profile_img"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="eunbi722"
             android:id="@+id/user_id"
-            android:layout_below="@+id/count2"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp" />
+
     </RelativeLayout>
 
 

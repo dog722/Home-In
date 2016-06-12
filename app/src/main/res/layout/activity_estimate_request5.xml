@@ -3,89 +3,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#dcdcdc"
     tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity5">
 
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"
-        android:titleTextColor="@android:color/black"
-        android:background="#ffffff">
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/toolbar"
+            android:titleTextColor="@android:color/black"
+            android:background="@drawable/tab_bg">
 
+
+        </android.support.v7.widget.Toolbar>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="견적 문의(5/5)"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="90dp" />
+            android:textColor="@android:color/black" />
+    </FrameLayout>
 
-    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_marginTop="110dp">
 
         <LinearLayout
             android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView11" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/input_name"
-                android:hint="이름을 입력하세요." />
+                android:imeOptions="actionNext"
+                android:background="#ffffff"
+                android:nextFocusDown="@+id/input_email"
+                android:hint="이름을 입력하세요."
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView12" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_2"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp" />
 
             <EditText
                 android:layout_width="351dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/input_email"
-                android:hint="견적을 받아보실 이메일 주소를 입력하세요." />
+                android:imeOptions="actionNext"
+                android:background="#ffffff"
+                android:nextFocusDown="@+id/input_call"
+                android:hint="견적을 받아보실 이메일 주소를 입력하세요."
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView13" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_3"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/input_call"
-                android:hint="견적을 받아보실 연락처를 입력하세요." />
+                android:imeOptions="actionNext"
+                android:background="#ffffff"
+                android:nextFocusDown="@+id/input_comment"
+                android:hint="견적을 받아보실 연락처를 입력하세요."
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
         </LinearLayout>
 
@@ -93,33 +127,37 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView14" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_4"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/input_content"
-                android:hint="문의할 내용을 입력하세요." />
+                android:imeOptions="actionDone"
+                android:background="#ffffff"
+                android:hint="문의할 내용을 입력하세요."
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
         </LinearLayout>
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:textColor="#ffffff"
-        android:text="등록"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/registration_bt"
         android:id="@+id/next_btn"
-        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

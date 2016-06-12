@@ -6,7 +6,7 @@ package kr.co.homein.homeinproject.Maps;
 public class OfficeAddressNumber {
 
     float office_latitude;
-    float office_longitude;
+    float office_logitude;
 
     public float getOffice_latitude() {
         return office_latitude;
@@ -16,11 +16,11 @@ public class OfficeAddressNumber {
         this.office_latitude = office_latitude;
     }
 
-    public float getOffice_longitude() {
-        return office_longitude;
+    public float getOffice_logitude() {
+        return office_logitude;
     }
 
-    public void setOffice_longitude(float office_longitude) {
-        this.office_longitude = office_longitude;
+    public void setOffice_logitude(float office_logitude) {
+        this.office_logitude = office_logitude;
     }
 }

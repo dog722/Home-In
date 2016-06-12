@@ -13,6 +13,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar.CustomToolbar">
+        <item name="toolbarNavigationButtonStyle">@style/MyNavigationButtonStyle</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -20,5 +24,12 @@
     <style name="MyDIalogTheme" parent="Theme.AppCompat.Dialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
+
+    </style>
+    <style name="MyNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:width">60dp</item>
+        <item name="android:height">60dp</item>
     </style>
 </resources>

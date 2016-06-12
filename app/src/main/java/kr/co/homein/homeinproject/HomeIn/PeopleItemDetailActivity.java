@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.InputCommentResult;
 import kr.co.homein.homeinproject.data.PeopleDetailItemData;
@@ -119,7 +120,7 @@ public class PeopleItemDetailActivity extends AppCompatActivity {
     }
 
     private void addComment(){
-        NetworkManager.getInstance().addComment(this, PH_number, comment_content , "GM722", new NetworkManager.OnResultListener<InputCommentResult>() {
+        NetworkManager.getInstance().addComment(this, PH_number, comment_content , PropertyManager.getInstance().getGeneralNumber(), new NetworkManager.OnResultListener<InputCommentResult>() {
             @Override
             public void onSuccess(Request request, InputCommentResult result) {
 

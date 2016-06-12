@@ -3,26 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.begentgroup.samplegooglelocation.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/text_message" />
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:id="@+id/map_fragment"
-        android:layout_below="@+id/text_message"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/toolbar"
+            android:background="@color/colorPrimary">
+
+        </android.support.v7.widget.Toolbar>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:imeOptions="actionSearch"
+            android:background="@color/colorPrimary"
+            android:id="@+id/company_name_tag"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="80dp"
+            android:clickable="true"
+            android:focusableInTouchMode="true">
+            <requestFocus />
+        </EditText>
+
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,4 +49,72 @@
         android:id="@+id/text_info"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="90dp"
+        android:id="@+id/company_info"
+        android:visibility="gone"
+        android:background="@drawable/card"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/company_logo"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="업체명"
+            android:id="@+id/company_name"
+            android:layout_above="@+id/company_sub_name"
+            android:layout_toRightOf="@+id/company_logo"
+            android:layout_toEndOf="@+id/company_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="서브네임"
+            android:id="@+id/company_sub_name"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/company_logo"
+            android:layout_toEndOf="@+id/company_logo"
+            android:layout_marginBottom="20dp" />
+    </RelativeLayout>
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/btn_back"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/back_bt"
+        android:layout_alignTop="@+id/map_fragment"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:nestedScrollingEnabled="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/change_loc"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/place_bt_on"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

@@ -6,34 +6,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#DCDCDC"
         android:orientation="vertical">
 
 
-        <android.support.v7.widget.Toolbar
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:id="@+id/toolbar"
-            android:titleTextColor="@android:color/black"
-            android:background="#ffffff">
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/tab_bg"
+                android:id="@+id/toolbar"
+                android:titleTextColor="@android:color/black">
+
+
+            </android.support.v7.widget.Toolbar>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="게시물 등록"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="90dp" />
-        </android.support.v7.widget.Toolbar>
+                android:textColor="@android:color/black" />
+        </FrameLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="360dp"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="match_parent"
             android:id="@+id/picture"
-            android:src="@drawable/take_picture"
+            android:src="@drawable/image_bg"
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
@@ -43,14 +51,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:paddingBottom="20dp"
-            android:background="#ffffff">
+            android:background="@drawable/space1"
+            android:layout_marginBottom="1dp">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:weightSum="1">
 
                 <TextView
@@ -82,24 +91,30 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:focusable="true"
                 android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="match_parent"
                     android:inputType="textMultiLine"
                     android:ems="10"
                     android:id="@+id/input_comment"
                     android:background="@android:color/white"
                     android:outlineProvider="none"
                     android:autoText="false"
-                    android:maxLength="300"
+                    android:imeOptions="actionNext"
                     android:hint="텍스트를 입력하세요."
-                    android:gravity="center_vertical|center_horizontal" />
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="1dp" >
+
+                </EditText>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -108,16 +123,19 @@
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
+                android:background="@drawable/space2"
                 android:layout_height="match_parent">
 
                 <com.wefika.flowlayout.FlowLayout
                     android:layout_width="match_parent"
                     android:id="@+id/tag_layout"
-                    android:layout_height="110dp"
+                    android:layout_height="100dp"
                     android:gravity="start|top"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,24 +149,22 @@
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:src="@android:drawable/ic_input_add"
+            android:layout_height="50dp"
+            android:background="@drawable/space3"
             android:id="@+id/input_tag_btn"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginTop="1dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:textColor="#ffffff"
-                android:text="등록"
+                android:layout_height="60dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/registration_bt"
                 android:id="@+id/upload_btn" />
         </LinearLayout>
 

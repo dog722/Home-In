@@ -16,7 +16,7 @@ import java.util.List;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyItemData;
 import kr.co.homein.homeinproject.data.PeopleItemData;
-import kr.co.homein.homeinproject.data.PostingItemData;
+import kr.co.homein.homeinproject.data.PostingListData;
 import kr.co.homein.homeinproject.data.SearchDetailListResult;
 import kr.co.homein.homeinproject.manager.NetworkManager;
 import okhttp3.Request;
@@ -29,7 +29,7 @@ public class SearchResultActivity extends AppCompatActivity {
     String tag;
     List<PeopleItemData> peopleItemData;
     List<CompanyItemData> companyItemData;
-    List<PostingItemData> postingItemData;
+    List<PostingListData> postingItemData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class SearchResultActivity extends AppCompatActivity {
         setData();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(R.drawable.back_bt_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,11 +58,15 @@ public class SearchResultActivity extends AppCompatActivity {
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
 
+        View tab1 = (View) getLayoutInflater().inflate(R.layout.search_tab1_layout, null,false);
+        View tab2 = (View) getLayoutInflater().inflate(R.layout.search_tab2_layout, null,false);
+        View tab3 = (View) getLayoutInflater().inflate(R.layout.search_tab3_layout, null,false);
+
 
         //탭 등록
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("피플 홈인"), SearchPeopleItemListFragment.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("시공 홈인"), SearchCompanyItemListFragment.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("포스팅"), SearchPostingFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator(tab1), SearchPeopleItemListFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator(tab2), SearchCompanyItemListFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator(tab3), SearchPostingFragment.class, null);
 
     }
 
@@ -93,7 +97,7 @@ public class SearchResultActivity extends AppCompatActivity {
         return companyItemData;
     }
 
-    public List <PostingItemData> getPostingItemData(){
+    public List <PostingListData> getPostingItemData(){
         return postingItemData;
     }
 

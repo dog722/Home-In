@@ -5,7 +5,6 @@ package kr.co.homein.homeinproject.Estimate;
  */
 
 import android.content.Context;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Checkable;
@@ -36,9 +35,14 @@ public class ItemView extends FrameLayout implements Checkable {
 
     private void drawCheck() {
         if (isChecked) {
-            checkView.setVisibility(View.VISIBLE);
+//            checkView.setVisibility(View.VISIBLE);
+            selectImage.setImageResource(selectId);
+
+
         } else {
-            checkView.setVisibility(View.GONE);
+//            checkView.setVisibility(View.GONE);
+            selectImage.setImageResource(unselectedId);
+
         }
     }
 
@@ -51,8 +55,11 @@ public class ItemView extends FrameLayout implements Checkable {
         }
     }
 
-    public void setImage(int resID){
-        selectImage.setImageResource(resID);
+    int selectId, unselectedId;
+    public void setImage(int resID1 , int resID2){
+            selectImage.setImageResource(resID2);
+            selectId = resID1;
+            unselectedId = resID2;
     }
 
     @Override

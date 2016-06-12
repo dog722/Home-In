@@ -4,43 +4,44 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="#dcdcdc"
     tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity3"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:weightSum="1">
 
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"
-        android:titleTextColor="@android:color/black"
-        android:background="#ffffff">
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/toolbar"
+            android:titleTextColor="@android:color/black"
+            android:background="@drawable/tab_bg">
 
+
+        </android.support.v7.widget.Toolbar>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="견적 문의(3/5)"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="90dp" />
+            android:textColor="@android:color/black" />
+    </FrameLayout>
 
-    </android.support.v7.widget.Toolbar>
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"></LinearLayout>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="175dp">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/plus_bt_bg"
             android:focusable="false"
             android:id="@+id/img"
             android:layout_above="@+id/linearLayout2"
@@ -52,11 +53,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/plus"
-            android:src="@android:drawable/ic_input_add"
+            android:src="@drawable/plus_icon"
             android:layout_above="@+id/linearLayout2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="33dp"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="bottom" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -65,6 +65,7 @@
             android:layout_alignTop="@+id/plus"
             android:layout_alignLeft="@+id/plus"
             android:layout_alignStart="@+id/plus"
+            android:imeOptions="actionSearch"
             android:layout_gravity="center">
         <requestFocus />
         </EditText>
@@ -78,7 +79,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout2"
-        android:layout_weight="1.02">
+        android:layout_weight="1.02"
+        android:layout_marginTop="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -87,17 +89,14 @@
             android:text="버튼을 눌러 공사면적을 입력하세요."
             android:id="@+id/textView26"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
-
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:textColor="#ffffff"
-        android:text="다음"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/next_bt"
         android:id="@+id/next_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

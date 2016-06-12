@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#ffffff"
     android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -87,11 +88,19 @@
 
     </com.wefika.flowlayout.FlowLayout>
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/like_bt"
-        android:id="@+id/add_pick_btn"
-        android:layout_gravity="center_horizontal|bottom" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/bg1"
+        android:gravity="center_vertical|center_horizontal">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/like_bt"
+            android:id="@+id/add_pick_btn"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
 </LinearLayout>

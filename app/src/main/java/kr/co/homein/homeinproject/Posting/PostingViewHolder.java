@@ -5,19 +5,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import kr.co.homein.homeinproject.R;
-import kr.co.homein.homeinproject.data.PostingItemData;
+import kr.co.homein.homeinproject.data.PostingListData;
 
 /**
  * Created by seoeunbi on 2016. 5. 19..
  */
 public class PostingViewHolder extends RecyclerView.ViewHolder {
-    PostingItemData postingItemData = new PostingItemData();
+    PostingListData postingItemData = new PostingListData();
     ImageView imageView;
     TextView postingTitle;
+    TextView score;
 
     public interface OnItemClickListener {
-        public void onItemClick(View view, PostingItemData postingItemData);
+        public void onItemClick(View view, PostingListData postingItemData);
     }
 
     OnItemClickListener mListener;
@@ -32,7 +35,7 @@ public class PostingViewHolder extends RecyclerView.ViewHolder {
 
         imageView = (ImageView) itemView.findViewById(R.id.posting_img);
         postingTitle = (TextView) itemView.findViewById(R.id.posting_title);
-
+        score = (TextView) itemView.findViewById(R.id.score);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,10 +48,12 @@ public class PostingViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setPostingItem(PostingItemData postingItemData) {
+    public void setPostingItem(PostingListData postingItemData) {
         this.postingItemData = postingItemData;
         postingTitle.setText(postingItemData.getPost_name());
-//        Glide.with(imageView.getContext()).load(url).into(imageView);
+//        score.setText(postingItemData.get);
+        if(postingItemData.getPost_picture().size() != 0)
+        Glide.with(imageView.getContext()).load(postingItemData.getPost_picture().get(0)).into(imageView);
 
     }
 }

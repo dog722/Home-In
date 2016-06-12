@@ -6,11 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/lunchericon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -65,7 +66,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeIn.AddPeopleImageActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.CustomToolbar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -91,19 +92,19 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Estimate.EstimateRequestActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.CustomToolbar" />
         <activity
             android:name=".Estimate.EstimateRequestActivity2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.CustomToolbar" />
         <activity
             android:name=".Estimate.EstimateRequestActivity3"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.CustomToolbar" />
         <activity
             android:name=".Estimate.EstimateRequestActivity4"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.CustomToolbar" />
         <activity
             android:name=".Estimate.EstimateRequestActivity5"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.CustomToolbar" />
         <activity
             android:name=".Login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -115,9 +116,16 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Estimate.GalleryChoiceActivity" />
-        <activity android:name=".Estimate.EstimateRequestActivity2_1" />
-        <activity android:name=".Maps.HomeInMapActivity"></activity>
+        <activity
+            android:name=".Estimate.GalleryChoiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Estimate.EstimateRequestActivity2_1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Maps.HomeInMapActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HomeIn.EventPageDetailActivity"></activity>
     </application>
 
 </manifest>

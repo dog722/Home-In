@@ -3,35 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#dcdcdc"
     tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity2_1">
 
-
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"
-        android:titleTextColor="@android:color/black"
-        android:background="#ffffff">
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/toolbar"
+            android:titleTextColor="@android:color/black"
+            android:background="@drawable/tab_bg">
 
+        </android.support.v7.widget.Toolbar>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="견적 문의(2/5)"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="90dp" />
+            android:textColor="@android:color/black" />
+    </FrameLayout>
 
-    </android.support.v7.widget.Toolbar>
 
     <GridView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/gridView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:numColumns="3"
         android:choiceMode="singleChoice"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/frameLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="118dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,13 +58,14 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:textColor="#ffffff"
-            android:text="다음"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/next_bt"
             android:id="@+id/next_btn"
-            android:layout_gravity="bottom" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </LinearLayout>
 
 </RelativeLayout>

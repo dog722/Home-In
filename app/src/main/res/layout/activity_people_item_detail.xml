@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv_list"
-        android:layout_marginBottom="40dp" />
+        android:layout_above="@+id/linearLayout3" />
 
     <ImageButton
         android:layout_width="60dp"
@@ -34,6 +34,7 @@
             android:layout_height="60dp"
             android:id="@+id/input_comment"
             android:hint="눌러서 댓글 작성"
+            android:background="#ffffff"
             android:gravity="center_vertical|center_horizontal"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="250dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="250dp"
+    android:layout_height="190dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -9,19 +11,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="등록 완료"
         android:id="@+id/textView"
+        android:textColor="#01579b"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="40dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="닫기"
-        android:id="@+id/exit"
-        android:layout_below="@+id/textView29"
-        android:layout_alignRight="@+id/textView29"
-        android:layout_alignEnd="@+id/textView29" />
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,8 +25,23 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="문의한 견적서에서 확인하실 수 있습니다."
         android:id="@+id/textView29"
+        android:textColor="#a0a0a0"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp" />
 
-</RelativeLayout>
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/exit"
+        android:background="@drawable/close_popup"
+        android:layout_below="@+id/textView29"
+        android:layout_alignRight="@+id/textView29"
+        android:layout_alignEnd="@+id/textView29"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="22dp"
+        android:layout_marginRight="27dp" />
+
+</LinearLayout>

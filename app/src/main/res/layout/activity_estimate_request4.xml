@@ -1,57 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="#dcdcdc"
     tools:context="kr.co.homein.homeinproject.Estimate.EstimateRequestActivity3">
 
-    <android.support.v7.widget.Toolbar
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"
-        android:titleTextColor="@android:color/black"
-        android:background="#ffffff">
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/toolbar"
+                android:titleTextColor="@android:color/black"
+                android:background="@drawable/tab_bg">
+
+
+            </android.support.v7.widget.Toolbar>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="견적 문의(4/5)"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/black" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/plus"
+            android:src="@drawable/camera_bt"
+            android:layout_marginTop="51dp"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="견적 문의(4/5)"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="90dp" />
+            android:text="버튼을 눌러 공사하실 장소 사진을 등록하세요.\n(최대 6장까지 등록 가능합니다.)"
+            android:id="@+id/textView26"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/plus"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="51dp"
+            android:layout_gravity="center_horizontal" />
 
-    </android.support.v7.widget.Toolbar>
+        <GridView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gridView"
+            android:layout_below="@+id/textView26"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/next_btn"
+            android:numColumns="3"
+            android:choiceMode="none" />
+    </LinearLayout>
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/plus"
-        android:src="@mipmap/ic_launcher"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="134dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="버튼을 눌러 공사하실 장소 사진을 등록하세요.\n(최대 4장까지 등록 가능합니다.)"
-        android:id="@+id/textView26"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/plus"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:gravity="center_horizontal" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:textColor="#ffffff"
-        android:text="다음"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/next_bt"
         android:id="@+id/next_btn"
-        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
+        android:layout_alignParentStart="true"
+        android:gravity="bottom"
+        android:layout_gravity="bottom" />
+
+</FrameLayout>

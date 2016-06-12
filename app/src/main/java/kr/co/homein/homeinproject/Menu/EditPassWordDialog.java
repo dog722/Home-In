@@ -17,6 +17,8 @@ public class EditPassWordDialog extends Dialog {
 
     EditText inputCurrent, inputNewPw1 ,inputNewPw2;
     Button exit , ok;
+    String currentPW, newPW1, newPW2;
+    int isSuccess;
 
     private OnDismissListener _listener ;
     public EditPassWordDialog(Context context) {
@@ -32,8 +34,25 @@ public class EditPassWordDialog extends Dialog {
         inputNewPw1 = (EditText) findViewById(R.id.new_pw);
         inputNewPw2 = (EditText) findViewById(R.id.new_pw2);
 
+        currentPW= inputCurrent.getText().toString();
+        newPW1 = inputNewPw1.getText().toString();
+        newPW2 = inputNewPw2.getText().toString();
 
         ///여기서 비밀번호 서로 비교해주는 알고리즘 추가하기.
+
+
+//        public void comparePw(){
+//            currentPW =  inputCurrent.getText().toString();
+//            newPW1 = inputNewPw1.getText().toString();
+//            newPW2 = inputNewPw2.getText().toString();
+//
+//
+//        if((currentPW != newPW1) || (currentPW != newPW2) || (newPW1 != newPW2) ){
+//
+//        }
+
+//        }
+
 
         exit = (Button)findViewById(R.id.exit);
         exit.setOnClickListener(new View.OnClickListener() {

@@ -15,6 +15,7 @@ public class CompanyItemData {
     List<String> CH_picture = new ArrayList<String>();
     int CH_pick;
 
+
     public String getDistance() {
         return distance;
     }

@@ -1,5 +1,6 @@
 package kr.co.homein.homeinproject.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.WishListData;
 import kr.co.homein.homeinproject.data.WishListResult;
@@ -51,8 +53,6 @@ public class WishListActivity extends AppCompatActivity {
         listView.setLayoutManager(new GridLayoutManager(this, 3));
 
 
-
-        setData();
         deleteBtn.setOnClickListener(new View.OnClickListener() { //삭제 버튼
             @Override
             public void onClick(View v) {
@@ -72,20 +72,31 @@ public class WishListActivity extends AppCompatActivity {
                 }
                 Toast.makeText(WishListActivity.this, "delete바로전 ", Toast.LENGTH_SHORT).show();
 
-                deleteWishList(select);
+
+                if(select.size() != 0) {
+                    deleteWishList(select);
+                }
+                startActivity(new Intent(WishListActivity.this, WishListActivity2.class));
+                finish();
             }
         });
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.clear();
+        setData();
 
-    String general_number = "GM722";
+    }
+
     private void deleteWishList(List<String> select) {
 
         Toast.makeText(WishListActivity.this, "select 첫 원소 : +" + select.get(0), Toast.LENGTH_SHORT).show();
 
             /////여기다가 삭제 구현!
-        NetworkManager.getInstance().deleteMyWishList(this, general_number, select, new NetworkManager.OnResultListener<WishListResult>() {
+        NetworkManager.getInstance().deleteMyWishList(this, PropertyManager.getInstance().getGeneralNumber(), select, new NetworkManager.OnResultListener<WishListResult>() {
             @Override
             public void onSuccess(Request request, WishListResult result) {
 
@@ -106,7 +117,7 @@ public class WishListActivity extends AppCompatActivity {
 
 
     private void setData() {
-        NetworkManager.getInstance().getMyWishList(this, general_number, new NetworkManager.OnResultListener<List<WishListData>>() {
+        NetworkManager.getInstance().getMyWishList(this, PropertyManager.getInstance().getGeneralNumber(), new NetworkManager.OnResultListener<List<WishListData>>() {
             @Override
             public void onSuccess(Request request, List<WishListData> result) {
 
