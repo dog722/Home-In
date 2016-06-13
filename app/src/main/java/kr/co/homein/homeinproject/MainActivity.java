@@ -319,7 +319,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (id == R.id.my_estimate) { //문의한 견적서
             startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class));
 
-        }else if (id == R.id.notice) { //공지사항
+        }else if (id == R.id.my_item) { //내 게시물
+            startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class));
+        }
+        else if (id == R.id.notice) { //공지사항
             startActivity(new Intent(MainActivity.this, NoticeActivity.class));
 
         } else if (id == R.id.guide) { //서비스 이용약관

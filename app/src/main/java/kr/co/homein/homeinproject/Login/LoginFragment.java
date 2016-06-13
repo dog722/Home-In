@@ -11,7 +11,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
 import java.io.IOException;
+import java.util.Arrays;
 
 import kr.co.homein.homeinproject.MainActivity;
 import kr.co.homein.homeinproject.R;
@@ -29,7 +38,7 @@ public class LoginFragment extends Fragment {
         // Required empty public constructor
     }
 
-    ImageButton SignInButton , signUpButton;
+    ImageButton SignInButton , signUpButton , facebookLoginButton;
     EditText emailView, passwordView;
 
     String email;
@@ -38,7 +47,68 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        callbackManager = CallbackManager.Factory.create();
+        loginManager = LoginManager.getInstance();
+    }
 
+    private boolean isLogin() {
+        AccessToken token = AccessToken.getCurrentAccessToken();
+        return token!=null;
+    }
+
+    private void login() {
+        if (!isLogin()) {
+            loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    loginServer();
+                }
+
+                @Override
+                public void onCancel() {
+
+                }
+
+                @Override
+                public void onError(FacebookException error) {
+
+                }
+            });
+
+            loginManager.logInWithReadPermissions(this, Arrays.asList("email"));
+        } else {
+//            loginManager.logOut();
+            loginServer();
+        }
+    }
+
+    private void loginServer() {
+        AccessToken token = AccessToken.getCurrentAccessToken();
+        NetworkManager.getInstance().facebookSignIn(getContext(), token.getToken(),
+                new NetworkManager.OnResultListener<MyInfoData>(){
+                    @Override
+                    public void onSuccess(Request request, MyInfoData result) {
+                        if (result.getGeneral_login_yn() == 1) {
+                            PropertyManager.getInstance().setLogin(true);
+                            PropertyManager.getInstance().setUser(result);
+                            PropertyManager.getInstance().setEmail(email);
+                            PropertyManager.getInstance().setPassword(password);
+                            PropertyManager.getInstance().setGeneralNumber(result.getGeneral_number());
+                            goMainActivity();
+                        }
+                    }
+
+                    @Override
+                    public void onFail(Request request, IOException exception) {
+                        Toast.makeText(getContext(), "error : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -52,8 +122,13 @@ public class LoginFragment extends Fragment {
 
         SignInButton = (ImageButton) view.findViewById(R.id.signin);
 
-
-
+        facebookLoginButton = (ImageButton) view.findViewById(R.id.facebook_btn);
+        facebookLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
         SignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +150,12 @@ public class LoginFragment extends Fragment {
 
         return view;
     }
+
+
+    CallbackManager callbackManager;
+    LoginManager loginManager;
+    AccessTokenTracker tokenTracker;
+
 
     private void goMainActivity() {
         startActivity(new Intent(getContext(), MainActivity.class));

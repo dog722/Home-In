@@ -1254,4 +1254,49 @@ public class NetworkManager {
         });
         return request;
     }
+
+
+
+    //페이스북 로그인
+    private static final String FACEBOOK_LOGIN = HOMEIN_SERVER + "/general_facebook_login/";
+    public Request facebookSignIn(Object tag,  String access_token,OnResultListener<MyInfoData> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("access_token", access_token)
+                .build();
+
+
+        Request request = new Request.Builder()
+                .url(FACEBOOK_LOGIN)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<MyInfoData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String text = response.body().string();
+                    MyInfoDataResult data = gson.fromJson(text, MyInfoDataResult.class);
+                    result.result = data.myInfoData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
 }

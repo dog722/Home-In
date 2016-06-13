@@ -48,6 +48,7 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
 
     ImageButton btnCall;
     ImageButton btnEstimate;
+    ImageButton btnShare;
 
     ImageView iconLogo;
     ImageButton pickBtn;
@@ -112,7 +113,17 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
         });
 
 
+        btnShare =  (ImageButton) findViewById(R.id.share_btn);
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                ///여기다 전달한 데이터 넣어주기!
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("image/*");
+                startActivity(intent);
+            }
+        });
 
         intent= getIntent();
         CH_number = intent.getStringExtra(CH_NUMBER);

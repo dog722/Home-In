@@ -33,6 +33,7 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
     TextView tag;
     FlowLayout tagLayout;
     ImageButton add_pick_btn;
+    ImageButton shareBtn;
 
     int isBtn = 0 ;
     int result;
@@ -48,7 +49,13 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
        img = (ImageView) view.findViewById(R.id.item_image);
        add_pick_btn = (ImageButton)  view.findViewById(R.id.add_pick_btn);
 
-
+       shareBtn = (ImageButton) view.findViewById(R.id.share_btn);
+       shareBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+//               Intent intent = new Intent(Intent.Act)
+           }
+       });
        //관심목록 담기
        add_pick_btn.setOnClickListener(new View.OnClickListener() {
            @Override

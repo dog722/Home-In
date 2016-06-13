@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.facebook.login.LoginManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -138,6 +139,8 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
                                 PropertyManager.getInstance().setGeneralNumber("");
                                 PropertyManager.getInstance().setPassword("");
                                 PropertyManager.getInstance().setEmail("");
+
+                                LoginManager.getInstance().logOut();
 
                                 Intent intent = new Intent(MyInfoActivity.this, LoginActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

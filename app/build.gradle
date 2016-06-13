@@ -24,6 +24,8 @@ repositories {
     maven {
         url "https://jitpack.io"
     }
+    mavenCentral()
+
 }
 
 dependencies {
@@ -49,4 +51,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.wefika:flowlayout:0.4.1'
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
 }

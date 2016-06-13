@@ -3,6 +3,8 @@ package kr.co.homein.homeinproject;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.FacebookSdk;
+
 //import com.facebook.FacebookSdk;
 
 /**
@@ -15,7 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-//        FacebookSdk.sdkInitialize(this);
+        FacebookSdk.sdkInitialize(this);
     }
 
     public static Context getContext() {

@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -120,26 +122,54 @@ public class SplashActivity extends AppCompatActivity {
 //                email ="dog722@gmail.com";
 //                password = "dog722";
 
-                NetworkManager.getInstance().signin(this, email, password,
-                        new NetworkManager.OnResultListener<MyInfoData>(){
+            NetworkManager.getInstance().signin(this, email, password,
+                    new NetworkManager.OnResultListener<MyInfoData>() {
+                        @Override
+                        public void onSuccess(Request request, MyInfoData result) {
+                            if (result.getGeneral_login_yn() == 1) {
+                                PropertyManager.getInstance().setLogin(true);
+                                PropertyManager.getInstance().setUser(result);
+                                goMainActivity();
+                            }
+                        }
+
+                        @Override
+                        public void onFail(Request request, IOException exception) {
+                            Toast.makeText(SplashActivity.this, "error : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                            goLoginActivity();
+                        }
+                    });
+
+        } else {
+                AccessToken token = AccessToken.getCurrentAccessToken();
+                if (token == null) {
+                    PropertyManager.getInstance().setFacebookId("");
+                    goLoginActivity();
+                } else {
+                        NetworkManager.getInstance().facebookSignIn(this, token.getToken(), new NetworkManager.OnResultListener<MyInfoData>() {
                             @Override
                             public void onSuccess(Request request, MyInfoData result) {
                                 if (result.getGeneral_login_yn() == 1) {
                                     PropertyManager.getInstance().setLogin(true);
                                     PropertyManager.getInstance().setUser(result);
                                     goMainActivity();
+                                } else {
+                                    PropertyManager.getInstance().setFacebookId("");
+                                    LoginManager.getInstance().logOut();
+                                    goLoginActivity();
                                 }
+
                             }
 
                             @Override
                             public void onFail(Request request, IOException exception) {
-                                Toast.makeText(SplashActivity.this, "error : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                                PropertyManager.getInstance().setFacebookId("");
+                                LoginManager.getInstance().logOut();
                                 goLoginActivity();
                             }
                         });
+                }
 
-        } else {
-            goLoginActivity();
         }
     }
 
