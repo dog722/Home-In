@@ -11,8 +11,10 @@ import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import com.bumptech.glide.Glide;
 import java.io.File;
 import java.io.IOException;
 
+import kr.co.homein.homeinproject.Login.LoginActivity;
 import kr.co.homein.homeinproject.Login.PropertyManager;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.MyInfoData;
@@ -38,6 +41,7 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
     MyInfoData myInfoData;
     Uri mFileUri;
     File path_temp;
+    ImageButton btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,14 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
         editPW= (TextView) findViewById(R.id.edit_pw);
         userPhone= (TextView) findViewById(R.id.user_phone_num);
         inputAdress = (TextView) findViewById(R.id.input_adress);
+        btnLogout = (ImageButton) findViewById(R.id.btn_logout);
+
+        btnLogout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doLogOut();
+            }
+        });
 
         editPW.setOnClickListener(this);
         inputAdress.setOnClickListener(this);
@@ -107,6 +119,45 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
         setData();
 
     }
+
+
+    private void doLogOut(){
+
+        String email = PropertyManager.getInstance().getEmail();
+        if (!TextUtils.isEmpty(email)) {
+            String password = PropertyManager.getInstance().getPassword();
+
+
+            NetworkManager.getInstance().signOut(this, PropertyManager.getInstance().getGeneralNumber(),
+                    new NetworkManager.OnResultListener<MyInfoData>() {
+                        @Override
+                        public void onSuccess(Request request, MyInfoData result) {
+                            if (result.getGeneral_login_yn() == 0) {
+                                PropertyManager.getInstance().setLogin(false);
+                                PropertyManager.getInstance().setUser(null);
+                                PropertyManager.getInstance().setGeneralNumber("");
+                                PropertyManager.getInstance().setPassword("");
+                                PropertyManager.getInstance().setEmail("");
+
+                                Intent intent = new Intent(MyInfoActivity.this, LoginActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        }
+
+                        @Override
+                        public void onFail(Request request, IOException exception) {
+                            Toast.makeText(MyInfoActivity.this, "error : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+        }
+    }
+
+
 
 
     private static final int RC_GALLERY = 1;

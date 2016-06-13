@@ -66,6 +66,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
     final static String OF_NUMBER = "office_number";
     CompanyMapInfo companyMapInfo;
     SearchMapData searchTagData;
+    CompanyInfoDialogFragment companyInfoDialogFragment;
 
 
     Intent intent;
@@ -133,6 +134,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
                     removeCircle();
 
                     isPushed = 1;
+                    changeLoc.setImageResource(R.drawable.place_bt_on);
                     outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(500)
                             .strokeWidth(10)
@@ -147,6 +149,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
 
                     moveMap(x_current, y_current, 15f);
                 } else if (isPushed == 1) {
+                    changeLoc.setImageResource(R.drawable.place_bt_off);
                     isPushed = 0;
                     removeCircle();
                 }
@@ -259,12 +262,12 @@ public class CompanyMapActivity extends AppCompatActivity implements
 
 
         CurrentOffice cO = poiResolver.get(marker);
-        office_number = cO.getOffice_number();
-        companyName.setText(cO.getOffice_name());
-        companySubName.setText(cO.getOffice_sub_name());
-        relativeLayout.setVisibility(View.VISIBLE);
-
-
+        CompanyInfoDialogFragment companyInfoDialogFragment = new CompanyInfoDialogFragment();
+        Bundle b = new Bundle();
+        b.putSerializable("arg1", cO);
+//        companyInfoDialogFragment.setData(cO);
+        companyInfoDialogFragment.setArguments(b);
+        companyInfoDialogFragment.show(getSupportFragmentManager(), "dialog");
         return true;
     }
 

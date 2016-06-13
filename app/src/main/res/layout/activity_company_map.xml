@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:id="@+id/toolbar"
-            android:background="@color/colorPrimary">
+            android:background="#01579b">
 
         </android.support.v7.widget.Toolbar>
 
@@ -31,12 +31,13 @@
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:imeOptions="actionSearch"
-            android:background="@color/colorPrimary"
+            android:text="#"
+            android:background="#01579b"
             android:id="@+id/company_name_tag"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="80dp"
+            android:layout_gravity="center_vertical|right"
             android:clickable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:layout_marginLeft="80dp">
             <requestFocus />
         </EditText>
 

@@ -11,5 +11,7 @@
     <dimen name="register_dialog_width">250dp</dimen>
     <dimen name="register_dialog_Height">190dp</dimen>
 
+    <dimen name="map_dialog_width">320dp</dimen>
+    <dimen name="map_dialog_Height">90dp</dimen>
 
 </resources>

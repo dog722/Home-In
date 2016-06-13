@@ -38,7 +38,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupSignIn();
 
     }
 
@@ -55,15 +54,15 @@ public class LoginFragment extends Fragment {
 
 
 
-//        SignInButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                email = emailView.getText().toString();
-//                password = passwordView.getText().toString();
-//
-//                setupSignIn();
-//            }
-//        });
+        SignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                email = emailView.getText().toString();
+                password = passwordView.getText().toString();
+
+                setupSignIn();
+            }
+        });
 
 
         signUpButton = (ImageButton) view.findViewById(R.id.signup);
@@ -92,8 +91,7 @@ public class LoginFragment extends Fragment {
 //        email = emailView.getText().toString();
 //        password = passwordView.getText().toString();
 
-        email ="dog722@gmail.com";
-        password = "dog722";
+
         NetworkManager.getInstance().signin(getContext(), email, password,
                 new NetworkManager.OnResultListener<MyInfoData>(){
                     @Override

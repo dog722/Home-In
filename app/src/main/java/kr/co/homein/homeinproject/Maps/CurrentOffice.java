@@ -1,11 +1,12 @@
 package kr.co.homein.homeinproject.Maps;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by seoeunbi on 2016. 6. 7..
  */
-public class CurrentOffice {
+public class CurrentOffice implements Serializable{
 
     float office_latitude;
     float office_longitude;

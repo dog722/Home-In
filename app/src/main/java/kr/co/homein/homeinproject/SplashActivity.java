@@ -1,5 +1,6 @@
 package kr.co.homein.homeinproject;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
@@ -7,12 +8,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.io.IOException;
+
 import kr.co.homein.homeinproject.Login.LoginActivity;
+import kr.co.homein.homeinproject.Login.PropertyManager;
+import kr.co.homein.homeinproject.data.MyInfoData;
+import kr.co.homein.homeinproject.manager.NetworkManager;
+import okhttp3.Request;
 
 public class SplashActivity extends AppCompatActivity {
     Handler mHandler = new Handler(Looper.getMainLooper());
@@ -24,34 +34,56 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        doRealStart();
 
 //        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
 //            @Override
 //            public void onReceive(Context context, Intent intent) {
-//                doRealStart();
 //            }
 //        };
+//        setUpIfNeeded();
 
-        goLoginActivity();
 
-//        mHandler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() { //로그인 되어 있지 않을 때
-//                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//                finish();
-//            }
-//        }, 2000);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+//                new IntentFilter(RegistrationIntentService.REGISTRATION_COMPLETE));
+    }
+
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PLAY_SERVICES_RESOLUTION_REQUEST &&
+                resultCode == Activity.RESULT_OK) {
+            setUpIfNeeded();
+        }
+    }
+
+    private void setUpIfNeeded() {
+        if (checkPlayServices()) {
+            String regId = PropertyManager.getInstance().getRegistrationToken();
+            if (!regId.equals("")) {
+                doRealStart();
+            } else {
+//                Intent intent = new Intent(this, RegistrationIntentService.class);
+//                startService(intent);
+            }
+        }
     }
 
     private void doRealStart() {
-//        startSplash();
-        goLoginActivity();
-    }
+        startSplash();
 
-
-    private void goMainActivity() {
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-        finish();
     }
 
     private boolean checkPlayServices() {
@@ -76,6 +108,45 @@ public class SplashActivity extends AppCompatActivity {
         return true;
     }
 
+    private void startSplash() {
+
+
+        String email = PropertyManager.getInstance().getEmail();
+        if (!TextUtils.isEmpty(email)) {
+            String password = PropertyManager.getInstance().getPassword();
+//
+//        email = emailView.getText().toString();
+//        password = passwordView.getText().toString();
+//                email ="dog722@gmail.com";
+//                password = "dog722";
+
+                NetworkManager.getInstance().signin(this, email, password,
+                        new NetworkManager.OnResultListener<MyInfoData>(){
+                            @Override
+                            public void onSuccess(Request request, MyInfoData result) {
+                                if (result.getGeneral_login_yn() == 1) {
+                                    PropertyManager.getInstance().setLogin(true);
+                                    PropertyManager.getInstance().setUser(result);
+                                    goMainActivity();
+                                }
+                            }
+
+                            @Override
+                            public void onFail(Request request, IOException exception) {
+                                Toast.makeText(SplashActivity.this, "error : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                                goLoginActivity();
+                            }
+                        });
+
+        } else {
+            goLoginActivity();
+        }
+    }
+
+    private void goMainActivity() {
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        finish();
+    }
 
     private void goLoginActivity() {
         mHandler.postDelayed(new Runnable() {
@@ -86,58 +157,4 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 2000);
     }
-
-
-//    private void startSplash() {
-//        String email = PropertyManager.getInstance().getEmail();
-//        if (!TextUtils.isEmpty(email)) {
-//            String password = PropertyManager.getInstance().getPassword();
-//            NetworkManager.getInstance().signin(this, email, password, new NetworkManager.OnResultListener<MyInfoData>() {
-//                @Override
-//                public void onSuccess(Request request, MyInfoData result) {
-//                    if (result.getGeneral_login_yn() == 1) { //로그인이 됬으면
-//                        PropertyManager.getInstance().setLogin(true);
-//                        PropertyManager.getInstance().setUser(result);
-//                        goMainActivity();
-//                    }
-//                    else{
-//                        goMainActivity();
-//                    }
-//                }
-//
-//                @Override
-//                public void onFail(Request request, IOException exception) {
-//                    Toast.makeText(SplashActivity.this, "error : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-//                    goLoginActivity();
-//                }
-//            });
-//        }
-//    }
-
-
-    /*
-            NetworkManager.getInstance().getMyInfo(this, general_number, new NetworkManager.OnResultListener<MyInfoData>() {
-            @Override
-            public void onSuccess(Request request, MyInfoData result) {
-//                mAdapter.set(result);
-
-                String path =result.getGeneral_picture().get(0);
-                Toast.makeText(MyInfoActivity.this, "사진 :" + result.getGeneral_picture().get(0), Toast.LENGTH_SHORT).show();
-                Glide.with(MyInfoActivity.this).load(path).into(profileImg);
-
-                userId.setText(result.getGeneral_name());
-                email.setText(result.getGeneral_id());
-                userPhone.setText(result.getGeneral_tel());
-//                userPhone.setText(result.get);
-
-            }
-
-            @Override
-            public void onFail(Request request, IOException exception) {
-                Toast.makeText(MyInfoActivity.this, "server disconnected", Toast.LENGTH_SHORT).show();
-            }
-        });
-     */
-
-
 }

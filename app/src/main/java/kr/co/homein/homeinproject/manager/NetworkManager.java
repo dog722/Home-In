@@ -1214,4 +1214,44 @@ public class NetworkManager {
         });
         return request;
     }
+
+    //로그이웃
+    private static final String SIGNOUT = HOMEIN_SERVER + "/general_logout/";
+    public Request signOut(Object tag, String general_number, OnResultListener<MyInfoData> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("general_number", general_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(SIGNOUT)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<MyInfoData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    MyInfoDataResult data = gson.fromJson(response.body().charStream(), MyInfoDataResult.class);
+                    result.result = data.myInfoData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
 }

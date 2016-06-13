@@ -1,11 +1,12 @@
 package kr.co.homein.homeinproject.Maps;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by seoeunbi on 2016. 6. 7..
  */
-public class AroundOffice {
+public class AroundOffice implements Serializable {
 
     String office_number;
     String office_name;

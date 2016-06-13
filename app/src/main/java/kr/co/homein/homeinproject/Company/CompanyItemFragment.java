@@ -82,15 +82,15 @@ public class CompanyItemFragment extends Fragment implements
 //        setData();
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        recyclerView.scrollToPosition(0);
-        mAdatper.clear();
-        setData();
-    }
-
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        recyclerView.scrollToPosition(0);
+//        mAdatper.clear();
+//        setData();
+//    }
+//
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -119,7 +119,10 @@ public class HomeInMapActivity extends AppCompatActivity implements
             }
         });
 
-        isPushed = 0;
+
+
+
+        isPushed = 1;
         //내 위치 활성화 하기
         changeLoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +131,7 @@ public class HomeInMapActivity extends AppCompatActivity implements
                     removeCircle();
 
                     isPushed= 1;
+                    changeLoc.setImageResource(R.drawable.place_bt_on);
                     outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(500)
                             .strokeWidth(10)
@@ -143,7 +147,8 @@ public class HomeInMapActivity extends AppCompatActivity implements
                     moveMap(x_current, y_current, 15f);
                 }else if(isPushed == 1){
                         isPushed =0;
-                        removeCircle();
+                    changeLoc.setImageResource(R.drawable.place_bt_off);
+                    removeCircle();
                     }
                 }
 
@@ -243,6 +248,7 @@ public class HomeInMapActivity extends AppCompatActivity implements
         mMap.setOnMarkerClickListener(this);
         mMap.setOnInfoWindowClickListener(this);
         mMap.setOnCameraChangeListener(this);
+
     }
 
 
@@ -265,13 +271,13 @@ public class HomeInMapActivity extends AppCompatActivity implements
 //        infoView.setText(marker.getTitle() + "\n\r" + marker.getSnippet());
         marker.showInfoWindow();
 
-
         AroundOffice aO = poiResolver.get(marker);
-        office_number = aO.getOffice_number();
-        companyName.setText(aO.getOffice_name());
-        companySubName.setText(aO.getOffice_sub_name());
-        relativeLayout.setVisibility(View.VISIBLE);
-//      Glide.with(imageMain.getContext()).load(p.getPackage_mainpicture()).into(imageMain);
+        CompanyInfoDialogFragment companyInfoDialogFragment = new CompanyInfoDialogFragment();
+        Bundle b = new Bundle();
+        b.putSerializable("arg2", aO);
+//        companyInfoDialogFragment.setData(cO);
+        companyInfoDialogFragment.setArguments(b);
+        companyInfoDialogFragment.show(getSupportFragmentManager(), "dialog");
         return true;
     }
 
@@ -329,6 +335,18 @@ public class HomeInMapActivity extends AppCompatActivity implements
             y_current = location.getLongitude();
 
             setData();
+
+            outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
+                    .radius(500)
+                    .strokeWidth(10)
+                    .strokeColor(Color.BLUE)
+                    .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
+
+            inner = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
+                    .radius(30)
+                    .strokeWidth(2)
+                    .strokeColor(Color.BLUE)
+                    .fillColor(Color.BLUE));
 
 //            mMap.addCircle(new CircleOptions().center(new LatLng(location.getLatitude(), location.getLongitude()))
 //                    .radius(500)

@@ -2,6 +2,7 @@ package kr.co.homein.homeinproject.Company;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,8 +36,10 @@ public class CompanyInfoFragment extends Fragment {
     TextView comment;
     ImageButton requestBtn;
     ImageButton backKey;
+    ImageButton callBtn;
     TextView companyAddress2;
     CompanyInfoData companyInfoData;
+    String companyNumber;
     final static String OF_NUMBER = "office_number";
     String officeNumber;
 
@@ -102,6 +105,18 @@ public class CompanyInfoFragment extends Fragment {
             }
         });
 
+        //전화하기
+        callBtn = (ImageButton) view.findViewById(R.id.call_btn);
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+companyNumber));
+                startActivity(intent);
+
+            }
+        });
+
 
         return view;
     }
@@ -122,6 +137,8 @@ public class CompanyInfoFragment extends Fragment {
                 companyDomain.setText(companyInfoData.getOffice_website());
                 comment.setText(companyInfoData.getOffice_info_content());
                 companyAddress2.setText(companyInfoData.getOffice_address2());
+
+                companyNumber = companyInfoData.getOffice_tel();
 
 //                List<String> url = companyDetailItemData.getCH_picture();
 //                Glide.with(imageView.getContext()).load(url.get(0)).into(imageView);

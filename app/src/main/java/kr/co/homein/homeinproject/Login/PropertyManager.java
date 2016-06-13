@@ -76,6 +76,7 @@ public class PropertyManager {
     }
 
     private MyInfoData user = null;
+
     public void setUser(MyInfoData user) {
         this.user = user;
     }

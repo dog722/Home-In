@@ -173,13 +173,13 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="로그아웃"
         android:textColor="#ffffff"
         android:background="@color/colorPrimary"
-        android:id="@+id/btn_delete"
+        android:id="@+id/btn_logout"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="center_vertical|center_horizontal"
         android:layout_gravity="center_horizontal"

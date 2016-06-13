@@ -3,6 +3,7 @@ package kr.co.homein.homeinproject.HomeIn;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -87,7 +88,10 @@ public class PeopleItemFragment extends Fragment {
             public int getItemCountImpl(ParallaxRecyclerAdapter<PeopleItemData> parallaxRecyclerAdapter) {
                 return peopleItem.size();
             }
+
+
         };
+
 
         pAdapter.setScrollMultiplier(1);
 
@@ -128,10 +132,9 @@ public class PeopleItemFragment extends Fragment {
         });
 
 
-        setData();
         setEventPage();
 
-
+        setData();
     }
 
     @Override
@@ -155,7 +158,6 @@ public class PeopleItemFragment extends Fragment {
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
-
 
 //        View view2 =  inflater.inflate(R.layout.homein_header_view, container, false);
 //        imgBack = (ImageView) view2.findViewById(R.id.img_back);
@@ -206,6 +208,9 @@ public class PeopleItemFragment extends Fragment {
         infoIndicator.setUnselectedDotColor(Color.parseColor("#CFCFCF"));
 
         pAdapter.setParallaxHeader(v, listView);
+
+        imgBack = (ImageView) v.findViewById(R.id.img_back);
+
         viewPager = (ViewPager)v.findViewById(R.id.eventPage);
         viewPager.setAdapter(eventPageAdapter);
 
@@ -230,6 +235,17 @@ public class PeopleItemFragment extends Fragment {
 
             }
         });
+
+
+        pAdapter.setOnParallaxScroll(new ParallaxRecyclerAdapter.OnParallaxScroll() {
+            @Override
+            public void onParallaxScroll(float v, float v1, View view) {
+                Drawable c = imgBack.getBackground();
+                c.setAlpha(Math.round(v * 255));
+                imgBack.setBackground(c);
+            }
+        });
+
 
         return view;
     }

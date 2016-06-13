@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -256,16 +257,36 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
         InputTagDialogFragment dialog = (InputTagDialogFragment) $dialog;
         String tag = dialog.getTag();
 
+        /*
+                   FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+
+            lp.setMargins(0, 0, 30, 30);
+            lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
+            tv.setLayoutParams(lp);
+            tv.setTextSize(15);
+
+            tv.setPadding(21, 21, 21, 21);
+            tv.setTextColor(Color.WHITE);
+            tv.setBackgroundColor(0XFF01579B);
+            tv.setText(s);
+            tagLayout.addView(tv);
+         */
+
+
 
         FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
         lp.setMargins(20, 20, 20, 20);
 
         TextView tagText = new TextView(this);
-        tagText.setText(tag);
+        lp.setMargins(0, 0, 30, 30);
+        lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
         tagText.setLayoutParams(lp);
-        tagText.setTextSize(20);
+        tagText.setTextSize(15);
+
+        tagText.setPadding(21, 21, 21, 21);
         tagText.setTextColor(Color.WHITE);
-        tagText.setBackgroundColor(Color.BLUE);
+        tagText.setBackgroundColor(0XFF01579B);
+        tagText.setText(tag);
 //        tagText.setPadding(20,20,20,20);
 
         layout.addView(tagText);

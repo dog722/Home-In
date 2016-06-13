@@ -134,8 +134,7 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" />
+                    android:layout_margin="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
