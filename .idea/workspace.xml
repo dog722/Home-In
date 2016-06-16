@@ -11,120 +11,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d819599-992b-49a1-8b37-9562083c5aa9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/back_bt_70.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/choice.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/homein_id.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon111.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon222.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon333.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon444.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon555.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ionc000.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/logout_bt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/pi_p_bt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/posting_bt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/profile_icon_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/splash2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab1_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab1_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab1_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab2_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab2_2.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab3_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_70.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/choice.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab1_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon222.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/write_bt2222.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemActivity1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemActivity2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab2_1.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListAdapter1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListAdapter2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/pi_p_bt.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/MyItemListData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/MyItemListResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListViewHolder1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListViewHolder2.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PostingDetailResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/WebViewActivity.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_item1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_item2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon555.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/logout_bt.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemActivity2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/posting_bt.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemActivity1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/WebViewActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/homein_id.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab1_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/splash2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ionc000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListAdapter2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListViewHolder1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/profile_icon_0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon333.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab1_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_70.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_web_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab3_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab3_3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_off.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_on.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_off.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_on.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_off.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_on.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/write_bt.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/write_bt.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/AddPeopleImageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/AddPeopleImageActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/CommentData.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/CommentData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyDetailItemActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyDetailItemActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyItemFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyItemFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/EditPassWordDialog.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/EditPassWordDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/EstimateRequestActivity2_1.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/EstimateRequestActivity2_1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryChoiceActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryChoiceActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/InputTagDialogFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/InputTagDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateDetailActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/MyInfoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/MyInfoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/manager/NetworkManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/manager/NetworkManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PeopleDetailItemData.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PeopleDetailItemData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleDetailItemViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleDetailItemViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleItemFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleItemFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingDetailActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PostingItemData.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PostingItemData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/WishListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/WishListActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/back_bt_70.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/MyItemListViewHolder2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/MyItemListResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_item2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab2_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon444.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon111.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/WishListActivity2.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/WishListActivity2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_company_map.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_company_map.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_estimate_request4.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_estimate_request4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gallery_choice.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gallery_choice.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_estimate_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_estimate_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_off.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleItemFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleItemFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_estimate_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_estimate_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_people_item_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_people_item_detail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_posting_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_posting_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/comment_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/comment_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PostingItemData.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PostingItemData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab3_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab3_3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingViewHolder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_company_map.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_company_map.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/write_bt.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/write_bt.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_1.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradlew.bat" afterPath="$PROJECT_DIR$/gradlew.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_item_checked.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grid_item_checked.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/homein_header_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/homein_header_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/input_tag_dialog_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/input_tag_dialog_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/people_item_detail_header_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/people_item_detail_header_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/tab1_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tab1_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/tab2_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tab2_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/CommentData.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/CommentData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/AddPeopleImageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/AddPeopleImageActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/tab3_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tab3_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_menu_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_menu_header.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapResult.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/homein_header_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/homein_header_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_estimate_request4.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_estimate_request4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/manager/NetworkManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/manager/NetworkManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/HomeInMapActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_on.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/wishlist_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/wishlist_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/EditPassWordDialog.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/EditPassWordDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/comment_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/comment_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gallery_choice.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gallery_choice.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyItemFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyItemFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_off.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/people_item_detail_header_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/people_item_detail_header_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingDetailActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/InputTagDialogFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/InputTagDialogFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_wish_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_estimate_header_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_menu_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_menu_header.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateListActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleDetailItemViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/HomeIn/PeopleDetailItemViewHolder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryChoiceActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/GalleryChoiceActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_info.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapResult.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/WishListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/User/WishListActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/input_tag_dialog_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/input_tag_dialog_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/MyEstimateDetailActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Posting/PostingFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradlew.bat" afterPath="$PROJECT_DIR$/gradlew.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Maps/CompanyMapActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/outputFileStates.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PeopleDetailItemData.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/data/PeopleDetailItemData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_up.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_3_on.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/tab2_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tab2_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/EstimateRequestActivity2_1.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Estimate/EstimateRequestActivity2_1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_off.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_people_item_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_people_item_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_item_checked.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grid_item_checked.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/tab1_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tab1_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_2_up.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_estimate_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_estimate_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab2_2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/MyInfoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Menu/MyInfoActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyDetailItemActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/co/homein/homeinproject/Company/CompanyDetailItemActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab1_3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tab_1_on.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" />
     </list>
     <ignored path="Home-In.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -171,7 +171,7 @@
       <file leaf-file-name="input_tag_dialog_view.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/input_tag_dialog_view.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.178572">
+            <state vertical-scroll-proportion="0.0">
               <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding />
             </state>
@@ -190,9 +190,6 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#686#687#0" expanded="true" />
                 <element signature="e#738#739#0" expanded="true" />
-                <element signature="e#891#958#0" expanded="true" />
-                <element signature="e#1507#2104#0" expanded="true" />
-                <element signature="e#2103#2104#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -201,8 +198,8 @@
       <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49234137">
-              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.32188842">
+              <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -2109,7 +2106,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="x" value="-13" />
+    <option name="y" value="40" />
     <option name="width" value="1440" />
     <option name="height" value="816" />
   </component>
@@ -2136,18 +2134,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Home-In" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2168,7 +2155,18 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Home-In" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2406,7 +2404,13 @@
       <option name="project" value="LOCAL" />
       <updated>1465812190521</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2016.06.13. 최종 발표 전날">
+      <created>1466044475031</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1466044475031</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2419,37 +2423,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1440" height="816" extended-state="0" />
-    <editor active="false" />
+    <frame x="-13" y="40" width="1440" height="816" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41597795" sideWeight="0.81759655" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33569404" sideWeight="0.6108727" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3362963" sideWeight="0.50429183" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.49713877" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4162963" sideWeight="0.18240343" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33333334" sideWeight="0.48712447" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.48712447" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07439199" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30686694" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1969697" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30686694" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1969697" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33569404" sideWeight="0.6108727" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2458,15 +2462,15 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4162963" sideWeight="0.81759655" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3362963" sideWeight="0.50429183" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4162963" sideWeight="0.18240343" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.49713877" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4162963" sideWeight="0.18240343" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32761088" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32592592" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32592592" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2481,8 +2485,8 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3362963" sideWeight="0.48712447" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07439199" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07439199" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2663,7 +2667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2682,7 +2685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2690,7 +2692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2720,7 +2721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2739,7 +2739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2758,7 +2757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2951,7 +2949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3052,7 +3049,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/input_tag_dialog_view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.178572">
+        <state vertical-scroll-proportion="0.0">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding />
         </state>
@@ -3091,17 +3088,14 @@
             <element signature="imports" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
             <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#891#958#0" expanded="true" />
-            <element signature="e#1507#2104#0" expanded="true" />
-            <element signature="e#2103#2104#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49234137">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.32188842">
+          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
           <folding />
         </state>
       </provider>
