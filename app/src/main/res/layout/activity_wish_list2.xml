@@ -7,7 +7,7 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:id="@+id/toolbar"
         android:titleTextColor="@android:color/black"
         android:background="#ffffff">
@@ -28,7 +28,8 @@
         android:id="@+id/rv_list"
         android:layout_below="@+id/toolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_margin="1dp" />
 
     <TextView
         android:layout_width="match_parent"

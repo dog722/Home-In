@@ -29,6 +29,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import java.io.IOException;
 import java.util.List;
 
+import kr.co.homein.homeinproject.MainActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.CompanyItemData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -72,6 +73,8 @@ public class CompanyItemFragment extends Fragment implements
             }
         });
 
+
+
         //        infoView = (TextView)findViewById(R.id.text_info);
         mClient = new GoogleApiClient.Builder(getContext())
                 .addApi(LocationServices.API)
@@ -106,6 +109,33 @@ public class CompanyItemFragment extends Fragment implements
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
+
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+
+                    ((MainActivity) getActivity()).visibleMenuBtn();
+                    ((MainActivity) getActivity()).visibleMapBtn();
+
+                } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    ((MainActivity) getActivity()).goneMenuBtn();
+                    ((MainActivity) getActivity()).goneMapBtn();
+                }
+
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+            }
+        });
+
 
         return view;
     }

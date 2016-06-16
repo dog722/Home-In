@@ -97,7 +97,7 @@ public class CompanyDetailItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:010-1111-2222"));
+//                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:010-profile_icon_0-2222"));
 //                startActivity(intent);
             }
         });

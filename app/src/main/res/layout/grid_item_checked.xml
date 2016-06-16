@@ -12,19 +12,20 @@
 
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
         android:id="@+id/image_thumbnail"
         android:layout_gravity="center_horizontal"
         android:src="@mipmap/ic_launcher"
         android:scaleType="centerCrop" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="118dp"
+            android:layout_height="118dp"
             android:src="@drawable/check"
             android:visibility="gone"
-            android:id="@+id/checked"/>
+            android:id="@+id/checked"
+            android:scaleType="fitXY" />
     </RelativeLayout>
 
 </kr.co.homein.homeinproject.Estimate.CheckedLinearLayout>

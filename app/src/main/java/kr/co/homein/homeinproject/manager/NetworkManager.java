@@ -39,6 +39,8 @@ import kr.co.homein.homeinproject.data.EventPageResult;
 import kr.co.homein.homeinproject.data.InputCommentResult;
 import kr.co.homein.homeinproject.data.MyInfoData;
 import kr.co.homein.homeinproject.data.MyInfoDataResult;
+import kr.co.homein.homeinproject.data.MyItemListData;
+import kr.co.homein.homeinproject.data.MyItemListResult;
 import kr.co.homein.homeinproject.data.PeopleAddWishListResult;
 import kr.co.homein.homeinproject.data.PeopleDetailItemData;
 import kr.co.homein.homeinproject.data.PeopleItemData;
@@ -46,6 +48,8 @@ import kr.co.homein.homeinproject.data.PeopleItemDataResult;
 import kr.co.homein.homeinproject.data.PeopleItemDetailResult;
 import kr.co.homein.homeinproject.data.PeopleItemWriteData;
 import kr.co.homein.homeinproject.data.PeopleItemWriteDataResult;
+import kr.co.homein.homeinproject.data.PostingDetailResult;
+import kr.co.homein.homeinproject.data.PostingItemData;
 import kr.co.homein.homeinproject.data.PostingListData;
 import kr.co.homein.homeinproject.data.PostingListResult;
 import kr.co.homein.homeinproject.data.ReceiveResultData;
@@ -499,7 +503,7 @@ public class NetworkManager {
     }
 
 
-    //피플 홈인 관심 목록 담기
+    //피플 홈인 관심 목록 리스트
     private static final String PICK_LIST = HOMEIN_SERVER + "/pick_list/";
     public Request getMyWishList(Object tag, String general_number, OnResultListener<List<WishListData>> listener) {
 
@@ -1298,5 +1302,225 @@ public class NetworkManager {
         });
         return request;
     }
+
+    //내 게시물 리스트
+    private static final String MY_ITEM_LIST = HOMEIN_SERVER + "/my_people_homein_list/";
+    public Request getMyItemList(Object tag, String general_number, OnResultListener<List<MyItemListData>> listener) {
+
+        RequestBody body = new FormBody.Builder()
+                .add("general_number", general_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(MY_ITEM_LIST)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+        final NetworkResult<List<MyItemListData>> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    MyItemListResult data = gson.fromJson(response.body().charStream(), MyItemListResult.class);
+                    result.result = data.myItemListData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+
+    //내 게시물 삭제
+    private static final String MYITEM_LIST_DELETE = HOMEIN_SERVER + "/my_people_homein_delete/";
+    public Request deleteMyITemList(Object tag, String general_number, List<String> PH_number,
+                                    OnResultListener<ReceiveResultData> listener) {
+        String url = String.format(MYITEM_LIST_DELETE);
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("general_number", general_number);
+
+        for (int i = 0; i <PH_number.size(); i++) {
+            String t = PH_number.get(i);
+//            builder.add("delete_posting_number["+i+"]", t);
+            builder.add("PH_number", t);
+        }
+        RequestBody body = builder.build();
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+
+        final NetworkResult<ReceiveResultData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    ReceiveResultData data = gson.fromJson(response.body().charStream(), ReceiveResultData.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //사용자 비밀번호 수정
+    private static final String UPDATE_PW = HOMEIN_SERVER + "/my_pw_update/";
+    public Request  updatePassword(Object tag, String general_number, String general_pw, String new_general_pw, String new_general_pw_confirm
+                                      , OnResultListener<ReceiveResultData> listener) {
+        String url = String.format(UPDATE_PW);
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("general_number", general_number)
+                .add("general_pw",general_pw)
+                .add("new_general_pw",new_general_pw)
+                .add("new_general_pw_confirm", new_general_pw_confirm);
+
+        RequestBody body = builder.build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+
+        final NetworkResult<ReceiveResultData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    ReceiveResultData data = gson.fromJson(response.body().charStream(), ReceiveResultData.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+    //사용자 거주지역 수정
+    private static final String UPDATE_LOCATION = HOMEIN_SERVER + "/my_location_update/";
+    public Request  v(Object tag, String general_number, String general_location,
+                      OnResultListener<ReceiveResultData> listener) {
+        String url = String.format(UPDATE_LOCATION);
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("general_number", general_number)
+                .add("general_location", general_location);
+
+        RequestBody body = builder.build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .header("Accept", "application/json")
+                .header("appKey", "458a10f5-c07e-34b5-b2bd-4a891e024c2a")
+                .post(body)
+                .build();
+
+
+
+        final NetworkResult<ReceiveResultData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    ReceiveResultData data = gson.fromJson(response.body().charStream(), ReceiveResultData.class);
+                    result.result = data;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
+
+    //포스팅상세 페이지
+    private static final String POSTING_DETAIL = HOMEIN_SERVER + "/posting_info/";
+    public Request getPostingDetail(Object tag, String post_number, OnResultListener<PostingItemData> listener) {
+        String url = String.format(POSTING_DETAIL);
+        RequestBody body = new FormBody.Builder()
+                .add("post_number", post_number)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        final NetworkResult<PostingItemData> result = new NetworkResult<>();
+        result.request = request;
+        result.listener = listener;
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.excpetion = e;
+                mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_FAIL, result));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    PostingDetailResult data = gson.fromJson(response.body().charStream(), PostingDetailResult.class);
+                    result.result = data.postingItemData;
+                    mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_SUCCESS, result));
+                } else {
+                    throw new IOException(response.message());
+                }
+            }
+        });
+        return request;
+    }
+
 
 }

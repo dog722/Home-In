@@ -2,200 +2,212 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Menu.MyInfoActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"
-        android:titleTextColor="@android:color/black"
-        android:background="#ffffff">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="내 정보"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="110dp" />
-
-    </android.support.v7.widget.Toolbar>
+    tools:context=".Menu.MyInfoActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="1">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:layout_below="@+id/toolbar">
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="224dp"
-            android:background="#bbbaba"
-            android:layout_below="@+id/toolbar">
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/profile_img"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:scaleType="centerCrop" />
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/imageView4"
-                android:src="@mipmap/ic_launcher"
-                android:layout_alignBottom="@+id/profile_img"
-                android:layout_alignRight="@+id/profile_img"
-                android:layout_alignEnd="@+id/profile_img" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout">
+        android:layout_weight="1.43">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/toolbar"
+                android:titleTextColor="@android:color/black"
+                android:background="@drawable/tab_bg">
+
+
+            </android.support.v7.widget.Toolbar>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="내 정보 수정"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/black" />
+        </FrameLayout>
+
+
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp">
+            android:id="@+id/linearLayout">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView5" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="아이디"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/user_id"
-                android:layout_marginLeft="20dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#dcdcdc"
+                android:layout_below="@+id/toolbar">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/profile_icon_0"
+                    android:id="@+id/profile_img"
+                    android:layout_centerVertical="true"
+                    app:civ_border_width="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop" />
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView4"
+                    android:src="@drawable/pi_p_bt"
+                    android:layout_alignBottom="@+id/profile_img"
+                    android:layout_alignRight="@+id/profile_img"
+                    app:civ_border_width="0dp"
+                    android:layout_alignEnd="@+id/profile_img" />
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp">
+            android:layout_below="@+id/linearLayout">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView6" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="이메일"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/user_email"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icon111"
+                    android:id="@+id/imageView5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아이디"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/user_id"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icon222"
+                    android:id="@+id/imageView6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이메일"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/user_email"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icon333"
+                    android:id="@+id/imageView7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호 변경"
+                    android:textColor="#01579B"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/edit_pw"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icon444"
+                    android:id="@+id/imageView8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="전화번호"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/user_phone_num"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icon555"
+                    android:id="@+id/imageView9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="거주지역 입력"
+                    android:textColor="#01579B"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/input_adress"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView7" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="비밀번호 변경"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/edit_pw"
-                android:layout_marginLeft="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView8" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="전화번호"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/user_phone_num"
-                android:layout_marginLeft="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView9" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="거주지역 입력"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/input_adress"
-                android:layout_marginLeft="20dp" />
-        </LinearLayout>
     </LinearLayout>
 
     <ImageButton
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:text="로그아웃"
+
         android:textColor="#ffffff"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/logout_bt"
         android:id="@+id/btn_logout"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_gravity="center_horizontal"
+        android:gravity="bottom"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New CheckBox"
-        android:id="@+id/checkBox"
-        android:layout_alignTop="@+id/btn_delete"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="362dp"
-        android:layout_marginStart="362dp" />
 
 </RelativeLayout>

@@ -57,6 +57,7 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
     String strCur;
     Button uploadBtn;
     TextView explainTag;
+    int isSuccess =0;
     PeopleItemWriteData peopleItemWriteData;
 
 
@@ -70,13 +71,14 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+    InputTagDialogFragment dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_people_image);
 
+        dialog= new InputTagDialogFragment();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.back_bt_60dp);
@@ -184,8 +186,14 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
                 PH_content = inputComment.getText().toString();
                 category_number = 1;
 
-                sendPeopleItemWrite();
-                finish();
+
+                if(isSuccess != 0 ) {
+                    sendPeopleItemWrite();
+                    finish();
+                }
+                else{
+                    Toast.makeText(AddPeopleImageActivity.this, "사진이 등록되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                }
 
 
             }
@@ -240,7 +248,9 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
 //                    opts.inSampleSize = 4;
 //                    Bitmap bm = BitmapFactory.decodeFile(path, opts);
 //                    photoView.setImageBitmap(bm);
+
                     Glide.with(this).load(fileUri).into(photoView);
+                    isSuccess = 1;
                 }
                 c.close();
 //                Glide.with(this).load(mFileUri).into(photoView);
@@ -254,8 +264,7 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
     @Override
     public void onDismiss(DialogInterface $dialog) {
         // TODO Auto-generated method stub
-        InputTagDialogFragment dialog = (InputTagDialogFragment) $dialog;
-        String tag = dialog.getTag();
+        String tag = dialog.getInputTag();
 
         /*
                    FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
@@ -313,9 +322,8 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
     @Override
     public void onClick(View v) {
 
-        InputTagDialogFragment dialog = new InputTagDialogFragment(this);
         dialog.setOnDismissListener(this);
-        dialog.show();
+        dialog.show(getSupportFragmentManager(), "dialog");
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 

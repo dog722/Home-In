@@ -46,7 +46,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="right|top"
                     android:layout_margin="10dp"
-                    android:background="@drawable/write_bt" />
+                    android:background="@drawable/write_bt2222" />
             </FrameLayout>
 
         </LinearLayout>

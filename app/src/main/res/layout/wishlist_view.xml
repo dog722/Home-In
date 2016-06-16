@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="2dp">
+    android:layout_margin="1dp"
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
         android:id="@+id/select_img"
         android:src="@drawable/peopleitemdummy"
         android:scaleType="fitXY" />
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/check"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:src="@drawable/check_image"
         android:id="@+id/checked"
         android:visibility="gone" />
 </RelativeLayout>

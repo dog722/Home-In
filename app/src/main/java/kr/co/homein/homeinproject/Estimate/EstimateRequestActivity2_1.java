@@ -125,11 +125,11 @@ public class  EstimateRequestActivity2_1 extends AppCompatActivity {
 
     public static final CategoryItem[] category3 = {
 //        new CategoryItem("a", R.mipmap.i)
-            new CategoryItem("확장", R.drawable.bt_4_1_on,R.drawable.bt_3_1),
-            new CategoryItem("도배, 장판",R.drawable.bt_4_2_on,R.drawable.bt_3_2),
-            new CategoryItem("바닥",R.drawable.bt_4_3_on,R.drawable.bt_3_3),
-            new CategoryItem("가구",R.drawable.bt_4_4_on,R.drawable.bt_3_4),
-            new CategoryItem("기타", R.drawable.bt_4_5_on,R.drawable.bt_3_5),
+            new CategoryItem("확장", R.drawable.bt_4_1_on,R.drawable.bt_4_1),
+            new CategoryItem("도배, 장판",R.drawable.bt_4_2_on,R.drawable.bt_4_2),
+            new CategoryItem("바닥",R.drawable.bt_4_3_on,R.drawable.bt_4_3),
+            new CategoryItem("가구",R.drawable.bt_4_4_on,R.drawable.bt_4_4),
+            new CategoryItem("기타", R.drawable.bt_4_5_on,R.drawable.bt_4_5),
     };
 
 }

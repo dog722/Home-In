@@ -135,14 +135,14 @@ public class HomeInMapActivity extends AppCompatActivity implements
                     outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(500)
                             .strokeWidth(10)
-                            .strokeColor(Color.BLUE)
+                            .strokeColor(R.color.homeinColor)
                             .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
 
                     inner = mMap.addCircle(new CircleOptions().center( new LatLng(x_current,y_current))
                             .radius(30)
                             .strokeWidth(2)
-                            .strokeColor(Color.BLUE)
-                            .fillColor(Color.BLUE));
+                            .strokeColor(R.color.homeinColor)
+                            .fillColor(R.color.homeinColor));
 
                     moveMap(x_current, y_current, 15f);
                 }else if(isPushed == 1){
@@ -156,13 +156,15 @@ public class HomeInMapActivity extends AppCompatActivity implements
 
         editText = (EditText) findViewById(R.id.company_name_tag);
 
-        editText.requestFocus();
+        editText.setCursorVisible(false);
         editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
 
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                editText.setCursorVisible(true);
                 //키보드 보이게 하는 부분
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -447,15 +449,17 @@ public class HomeInMapActivity extends AppCompatActivity implements
 //                mAdapter.set(result);
                 searchTagData = result;
                 Toast.makeText(HomeInMapActivity.this, "result : " + searchTagData.getAround_office().size(),Toast.LENGTH_SHORT).show();
-                for (int i = 0; i < searchTagData.getAround_office().size(); i++) {
-                    Toast.makeText(HomeInMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
-                    addMarker(searchTagData.getAround_office().get(i));
+
+                if(searchTagData.getAround_office().get(0).getOffice_name() != null) {
+                    for (int i = 0; i < searchTagData.getAround_office().size(); i++) {
+                        Toast.makeText(HomeInMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
+                        addMarker(searchTagData.getAround_office().get(i));
+                    }
+
+                    moveMap(searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_latitude(),
+                            searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_logitude(), 15f);
+
                 }
-
-                moveMap(searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_latitude(),
-                        searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_logitude(), 15f);
-
-
             }
 
             @Override

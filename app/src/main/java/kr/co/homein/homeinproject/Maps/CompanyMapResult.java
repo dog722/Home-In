@@ -17,5 +17,7 @@ public class CompanyMapResult {
         this.companyMapInfo = companyMapInfo;
     }
 
+    @SerializedName("success")
+    public int isResult;
 
 }

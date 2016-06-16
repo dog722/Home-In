@@ -57,14 +57,14 @@ public class GalleryAdapter  extends BaseAdapter {
         }
 
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(360, 360));
+//        imageView.setLayoutParams(new LinearLayout.LayoutParams(360, 360));
 
-
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
-        params.width = 354;
-        params.height = 354;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(354, 354);
+//        params.height = 354;
 
         imageView.setLayoutParams(params);
+
+
                 /*
                 ImageView img = (ImageView) findViewById(R.id.imgView);
 LayoutParams params = (LayoutParams) img.getLayoutParams();

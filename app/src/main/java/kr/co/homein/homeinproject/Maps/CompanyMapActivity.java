@@ -138,14 +138,14 @@ public class CompanyMapActivity extends AppCompatActivity implements
                     outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(500)
                             .strokeWidth(10)
-                            .strokeColor(Color.BLUE)
+                            .strokeColor(R.color.homeinColor)
                             .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
 
                     inner = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(30)
                             .strokeWidth(2)
-                            .strokeColor(Color.BLUE)
-                            .fillColor(Color.BLUE));
+                            .strokeColor(R.color.homeinColor)
+                            .fillColor(R.color.homeinColor));
 
                     moveMap(x_current, y_current, 15f);
                 } else if (isPushed == 1) {
@@ -159,7 +159,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
 
         editText = (EditText) findViewById(R.id.company_name_tag);
 
-        editText.requestFocus();
+        editText.setCursorVisible(false);
         editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
 
@@ -167,9 +167,10 @@ public class CompanyMapActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 //키보드 보이게 하는 부분
+                editText.requestFocus();
+                editText.setCursorVisible(true);
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
 
             }
         });
@@ -378,14 +379,14 @@ public class CompanyMapActivity extends AppCompatActivity implements
 
 
     public void setData(){
-        NetworkManager.getInstance().getCompanyMapInfo(this, office_number , new NetworkManager.OnResultListener<CompanyMapInfo>() {
+        NetworkManager.getInstance().getCompanyMapInfo(this, office_number, new NetworkManager.OnResultListener<CompanyMapInfo>() {
             @Override
             public void onSuccess(Request request, CompanyMapInfo result) {
 //                mAdapter.set(result);
                 companyMapInfo = result;
 //                Toast.makeText(CompanyMapActivity.this, "result : " + companyMapInfo.getAroundOffice().get(0).getOffice_name(), Toast.LENGTH_SHORT).show();
 
-                    addMarker(companyMapInfo.getCurrentOffice());
+                addMarker(companyMapInfo.getCurrentOffice());
 
                 moveMap(companyMapInfo.getCurrentOffice().getOffice_latitude(), companyMapInfo.getCurrentOffice().getOffice_longitude(), 15f);
 
@@ -404,15 +405,19 @@ public class CompanyMapActivity extends AppCompatActivity implements
             public void onSuccess(Request request, SearchMapData result) {
 //                mAdapter.set(result);
                 searchTagData = result;
+
                 Toast.makeText(CompanyMapActivity.this, "result : " + searchTagData.getAround_office().size(), Toast.LENGTH_SHORT).show();
-                for (int i = 0; i < searchTagData.getAround_office().size(); i++) {
-                    Toast.makeText(CompanyMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
-                    addMarker2(searchTagData.getAround_office().get(i));
+
+                if(searchTagData.getAround_office().get(0).getOffice_name() != null) {
+                    for (int i = 0; i < searchTagData.getAround_office().size(); i++) {
+                        Toast.makeText(CompanyMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
+                        addMarker2(searchTagData.getAround_office().get(i));
+                    }
+
+
+                    moveMap(searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_latitude(),
+                            searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_logitude(), 15f);
                 }
-
-                moveMap(searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_latitude(),
-                        searchTagData.getAround_office().get(0).getOffice_address_number().getOffice_logitude(), 15f);
-
 
             }
 

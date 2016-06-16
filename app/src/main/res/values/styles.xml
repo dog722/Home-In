@@ -17,6 +17,12 @@
         <item name="toolbarNavigationButtonStyle">@style/MyNavigationButtonStyle</item>
     </style>
 
+
+    <style name="AppTheme.NoActionBar.CustomToolbar2">
+        <item name="toolbarNavigationButtonStyle">@style/MyNavigationButtonStyle2</item>
+    </style>
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -31,5 +37,10 @@
     <style name="MyNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="android:width">60dp</item>
         <item name="android:height">60dp</item>
+    </style>
+
+    <style name="MyNavigationButtonStyle2" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:width">70dp</item>
+        <item name="android:height">70dp</item>
     </style>
 </resources>

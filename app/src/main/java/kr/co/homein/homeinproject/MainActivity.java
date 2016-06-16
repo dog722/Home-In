@@ -38,6 +38,7 @@ import kr.co.homein.homeinproject.Menu.NoticeActivity;
 import kr.co.homein.homeinproject.Menu.ServiceInfoActivity;
 import kr.co.homein.homeinproject.Menu.VersionInfoActivity;
 import kr.co.homein.homeinproject.Posting.PostingFragment;
+import kr.co.homein.homeinproject.User.MyItemActivity1;
 import kr.co.homein.homeinproject.User.WishListActivity2;
 import kr.co.homein.homeinproject.data.MyInfoData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -320,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class));
 
         }else if (id == R.id.my_item) { //내 게시물
-            startActivity(new Intent(MainActivity.this, MyEstimateListActivity.class));
+            startActivity(new Intent(MainActivity.this, MyItemActivity1.class));
         }
         else if (id == R.id.notice) { //공지사항
             startActivity(new Intent(MainActivity.this, NoticeActivity.class));

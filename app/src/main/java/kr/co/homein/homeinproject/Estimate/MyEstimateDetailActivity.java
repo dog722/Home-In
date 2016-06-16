@@ -9,8 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
     MyEstimateDetailAdapter mAdapter;
     Intent intent;
     EditText input_comment;
-    Button input_btn;
+    ImageButton input_btn;
     EstimateDetailData estimateDetailData;
     String comment_content;
     String general_estimate_number;
@@ -39,7 +39,7 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_estimate_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(R.drawable.back_bt_60dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +60,7 @@ public class MyEstimateDetailActivity extends AppCompatActivity {
 
         //intent받기
         input_comment = (EditText)  findViewById(R.id.input_comment);
-        input_btn = (Button) findViewById(R.id.upload_btn);
+        input_btn = (ImageButton) findViewById(R.id.upload_btn);
         input_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

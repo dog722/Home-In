@@ -19,6 +19,7 @@ public class PostingViewHolder extends RecyclerView.ViewHolder {
     TextView postingTitle;
     TextView score;
 
+
     public interface OnItemClickListener {
         public void onItemClick(View view, PostingListData postingItemData);
     }

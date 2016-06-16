@@ -15,7 +15,7 @@
         android:layout_height="260dp"
         android:orientation="vertical"
         android:layout_weight="0.16"
-        android:background="#bbbaba">
+        android:background="#dcdcdc">
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="100dp"

@@ -12,8 +12,17 @@ public class PostingItemData {
     String post_name;
     String post_website;
     String post_regdate;
-    List<String> post_picture;
+    List<String> post_picture_content;
     List<String >post_tag;
+
+
+    public List<String> getPost_picture_content() {
+        return post_picture_content;
+    }
+
+    public void setPost_picture_content(List<String> post_picture_content) {
+        this.post_picture_content = post_picture_content;
+    }
 
     public String get_id() {
         return _id;
@@ -53,14 +62,6 @@ public class PostingItemData {
 
     public void setPost_regdate(String post_regdate) {
         this.post_regdate = post_regdate;
-    }
-
-    public List<String> getPost_picture() {
-        return post_picture;
-    }
-
-    public void setPost_picture(List<String> post_picture) {
-        this.post_picture = post_picture;
     }
 
     public List<String> getPost_tag() {

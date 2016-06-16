@@ -64,6 +64,13 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
             @Override
             public void onClick(View v) {
                 doLogOut();
+                LoginManager.getInstance().logOut();
+
+                Intent intent = new Intent(MyInfoActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+
             }
         });
 
@@ -71,7 +78,7 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
         inputAdress.setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(R.drawable.back_bt_60dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,13 +146,6 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
                                 PropertyManager.getInstance().setGeneralNumber("");
                                 PropertyManager.getInstance().setPassword("");
                                 PropertyManager.getInstance().setEmail("");
-
-                                LoginManager.getInstance().logOut();
-
-                                Intent intent = new Intent(MyInfoActivity.this, LoginActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                finish();
 
                             }
                         }

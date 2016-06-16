@@ -31,17 +31,17 @@
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:imeOptions="actionSearch"
-            android:text="#"
             android:background="#01579b"
             android:id="@+id/company_name_tag"
             android:layout_gravity="center_vertical|right"
             android:clickable="true"
             android:focusableInTouchMode="true"
-            android:layout_marginLeft="80dp">
-            <requestFocus />
+            android:layout_marginLeft="80dp"
+            android:focusable="true">
         </EditText>
-
     </FrameLayout>
+
+
 
     <TextView
         android:layout_width="wrap_content"

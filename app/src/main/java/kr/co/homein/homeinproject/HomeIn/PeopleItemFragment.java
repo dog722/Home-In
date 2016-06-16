@@ -47,6 +47,8 @@ public class PeopleItemFragment extends Fragment {
     String PH_number;
     final static String PH_NUMBER = "PH_number";
     ParallaxRecyclerAdapter<PeopleItemData>  pAdapter;
+    int pSize =0;
+
 
     public PeopleItemFragment() {
         // Required empty public constructor
@@ -131,20 +133,18 @@ public class PeopleItemFragment extends Fragment {
             }
         });
 
-
         setEventPage();
-
         setData();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        listView.scrollToPosition(0);
-        for(int i = 0 ; i <peopleItem.size() ; i++)
-        pAdapter.removeItem(peopleItem.get(i));
 
-        setData();
+
+        listView.scrollToPosition(0);
+//        setData();
 
     }
 
@@ -225,7 +225,7 @@ public class PeopleItemFragment extends Fragment {
                 //indicater 구현
 //                Toast.makeText(getContext(), "dfsdf", Toast.LENGTH_SHORT).show();
                 // only one selected
-                infoIndicator.setNumberOfItems(3);
+                infoIndicator.setNumberOfItems(2);
                 infoIndicator.setSelectedItem(viewPager.getCurrentItem(), true);
 
             }
@@ -241,7 +241,7 @@ public class PeopleItemFragment extends Fragment {
             @Override
             public void onParallaxScroll(float v, float v1, View view) {
                 Drawable c = imgBack.getBackground();
-                c.setAlpha(Math.round(v * 255));
+                c.setAlpha(Math.round(v * 150));
                 imgBack.setBackground(c);
             }
         });
@@ -274,10 +274,15 @@ public class PeopleItemFragment extends Fragment {
 
 
     private void setData() {
+
+
+
         NetworkManager.getInstance().getPeopleItemList(getContext(), new NetworkManager.OnResultListener<List<PeopleItemData>>() {
             @Override
             public void onSuccess(Request request, List<PeopleItemData> result) {
 //                mAdapter.clear();
+//
+
 
                 for(int i = 0 ; i< result.size() ; i++) {
                     pAdapter.addItem(result.get(i), i);
@@ -285,6 +290,7 @@ public class PeopleItemFragment extends Fragment {
                 }
                 Log.d("test7", "dhodho");
             }
+
 
             @Override
             public void onFail(Request request, IOException exception) {

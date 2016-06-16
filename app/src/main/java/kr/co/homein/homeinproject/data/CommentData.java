@@ -15,6 +15,15 @@ public class CommentData {
     public String member_name;
     public String comment_number;
     public String recomment_regdate;
+    public int response_comment_number;
+
+    public int getResponse_comment_number() {
+        return response_comment_number;
+    }
+
+    public void setResponse_comment_number(int response_comment_number) {
+        this.response_comment_number = response_comment_number;
+    }
 
     public String getRecomment_regdate() {
         return recomment_regdate;

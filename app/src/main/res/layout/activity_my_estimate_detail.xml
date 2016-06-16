@@ -7,47 +7,56 @@
     tools:context="kr.co.homein.homeinproject.Estimate.MyEstimateDetailActivity"
     android:weightSum="1">
 
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"
-        android:titleTextColor="@android:color/black"
-        android:background="#ffffff">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="문의한 견적서"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="90dp" />
-    </android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/toolbar"
+            android:titleTextColor="@android:color/black"
+            android:background="@drawable/tab_bg">
+
+
+        </android.support.v7.widget.Toolbar>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="문의한 견적서"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black" />
+
+    </FrameLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/rvlist"
         android:layout_weight="0.99" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="#ffffff"
         android:weightSum="1">
 
         <EditText
-            android:layout_width="312dp"
-            android:layout_height="50dp"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
             android:id="@+id/input_comment"
             android:background="#ffffff"
             android:hint="눌러서 댓글 작성"
-            android:gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical"
             android:layout_weight="0.71" />
 
-        <Button
+        <ImageButton
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="등록"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/write_bt"
             android:id="@+id/upload_btn" />
     </LinearLayout>
 

@@ -9,4 +9,7 @@ public class HomeInMapResult {
 
     @SerializedName("result")
     public HomeInMapData homeInMapData;
+
+    @SerializedName("success")
+    public int isResult;
 }

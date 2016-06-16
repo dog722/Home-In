@@ -10,11 +10,20 @@ public class PeopleDetailItemData {
     public String PH_number;
     public String general_name;
     public ArrayList<String> PH_picture = new ArrayList<String>();
+    public ArrayList<String> general_picture= new ArrayList<String>();
     public String _id;
     public String PH_content;
     public ArrayList<String> PH_tag = new ArrayList<String>();
     public int PH_pick;
     public ArrayList<CommentData> PH_comment = new ArrayList<CommentData>();
+
+    public ArrayList<String> getGeneral_picture() {
+        return general_picture;
+    }
+
+    public void setGeneral_picture(ArrayList<String> general_picture) {
+        this.general_picture = general_picture;
+    }
 
     public String getPH_number() {
         return PH_number;

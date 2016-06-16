@@ -29,6 +29,7 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
 
     ImageView img;
     TextView userId;
+    ImageView icon;
     TextView comment;
     TextView tag;
     FlowLayout tagLayout;
@@ -49,14 +50,21 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
        img = (ImageView) view.findViewById(R.id.item_image);
        add_pick_btn = (ImageButton)  view.findViewById(R.id.add_pick_btn);
 
-       shareBtn = (ImageButton) view.findViewById(R.id.share_btn);
-       shareBtn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-//               Intent intent = new Intent(Intent.Act)
-           }
-       });
-       //관심목록 담기
+       icon = (ImageView) view.findViewById(R.id.icon);
+
+       shareBtn = (ImageButton) view.findViewById(R.id.btn_share);
+       shareBtn =  (ImageButton) view.findViewById(R.id.share_btn);
+//       shareBtn.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View v) {
+//
+//               ///여기다 전달한 데이터 넣어주기!
+//               Intent intent = new Intent(Intent.ACTION_SEND);
+//               intent.setType("image/*");
+//                 v.getContext().startActivity(intent);
+//           }
+//       });
+
        add_pick_btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -93,6 +101,8 @@ public class PeopleDetailItemViewHolder extends RecyclerView.ViewHolder {
 
         userId.setText(peopleDetailItem.getGeneral_name());
         comment.setText(peopleDetailItem.getPH_content());
+        Glide.with(icon.getContext()).load(peopleDetailItem.general_picture.get(0)).into(icon);
+
         for (String s : peopleDetailItem.getPH_tag()) {
             TextView tv = new TextView(itemView.getContext());
             FlowLayout.LayoutParams lp = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);

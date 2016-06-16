@@ -31,6 +31,7 @@
                 android:text="견적 문의(4/5)"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/black" />
+
         </FrameLayout>
 
         <ImageView
@@ -51,20 +52,22 @@
             android:gravity="center_horizontal"
             android:layout_below="@+id/plus"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="51dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal" />
 
         <GridView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="236dp"
             android:id="@+id/gridView"
             android:layout_below="@+id/textView26"
             android:layout_centerHorizontal="true"
             android:layout_above="@+id/next_btn"
             android:numColumns="3"
-            android:choiceMode="none" />
-    </LinearLayout>
+            android:choiceMode="none"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" />
 
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -78,5 +81,6 @@
         android:layout_alignParentStart="true"
         android:gravity="bottom"
         android:layout_gravity="bottom" />
+
 
 </FrameLayout>

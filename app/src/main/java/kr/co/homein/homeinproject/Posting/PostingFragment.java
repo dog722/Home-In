@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
+import kr.co.homein.homeinproject.MainActivity;
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.PostingListData;
 import kr.co.homein.homeinproject.manager.NetworkManager;
@@ -26,6 +27,7 @@ import okhttp3.Request;
 public class PostingFragment extends Fragment {
     RecyclerView recyclerView;
     PostingAdapter mAdatper;
+    public static  final  String POSTING_NUMBER ="post_number";
 
     public PostingFragment() {
         // Required empty public constructor
@@ -40,6 +42,7 @@ public class PostingFragment extends Fragment {
             @Override
             public void onItemClick(View view, PostingListData postingItemData) {
                 Intent intent = new Intent(getContext(), PostingDetailActivity.class); //포스팅 상세 페이지로 이동
+                intent.putExtra(POSTING_NUMBER , postingItemData.getPost_number());
                 startActivity(intent);
             }
         });
@@ -69,6 +72,30 @@ public class PostingFragment extends Fragment {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+
+                    ((MainActivity) getActivity()).visibleMenuBtn();
+                    ((MainActivity) getActivity()).visibleMapBtn();
+
+                } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    ((MainActivity) getActivity()).goneMenuBtn();
+                    ((MainActivity) getActivity()).goneMapBtn();
+                }
+
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+            }
+        });
 
         return view;
     }

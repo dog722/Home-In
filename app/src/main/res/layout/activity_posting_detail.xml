@@ -3,29 +3,141 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#4d4d4d"
     android:layout_height="match_parent"
     tools:context="kr.co.homein.homeinproject.Posting.PostingDetailActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="#ffffff"
         android:layout_height="wrap_content">
 
-        <ImageView
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/detail_item_dummy"
+                android:scaleType="centerCrop"
+                android:id="@+id/item_image" />
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/back_key"
+                    android:background="@drawable/back_bt"
+                    android:layout_margin="10dp" />
+
+            </RelativeLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/posting_dummy"
-            android:id="@+id/imageView11"
-            android:scaleType="centerCrop" />
+            android:weightSum="1"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/homein_id"
+                android:id="@+id/icon"
+                android:scaleType="fitXY"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="home_in"
+                android:id="@+id/user_id"
+                android:paddingTop="30dp"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_weight="0.91" />
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/share_bt"
+                android:id="@+id/btn_share"
+                android:scaleType="fitXY"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="더 자세한 정보는 포스팅 원문 보러 가기 버튼을 눌러 확인하세요!!"
+                android:id="@+id/comment2"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <com.wefika.flowlayout.FlowLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tag_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingBottom="30dp"
+                android:layout_marginBottom="30dp">
+
+            </com.wefika.flowlayout.FlowLayout>
+
+        </LinearLayout>
+
+            <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg1"
+            android:gravity="center_vertical|center_horizontal">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/like_bt"
+                    android:id="@+id/add_pick_btn"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp" />
+
+            </LinearLayout>
+
+    </LinearLayout>
 
         <ImageButton
-            android:layout_width="60dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
             android:layout_height="60dp"
-            android:id="@+id/back_key"
-            android:background="@drawable/back_bt"
-            android:layout_margin="10dp" />
-
-    </RelativeLayout>
+            android:background="@drawable/posting_bt"
+            android:id="@+id/goWeb" />
 
 
+    </LinearLayout>
 
 </ScrollView>

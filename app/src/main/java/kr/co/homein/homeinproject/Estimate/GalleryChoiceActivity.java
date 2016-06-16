@@ -85,6 +85,7 @@ public class GalleryChoiceActivity extends AppCompatActivity implements LoaderMa
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
                 if (columnIndex == dataColumn){
                     ImageView iv =(ImageView) view;
+                    iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
                     String path = cursor.getString(columnIndex);
 //                    opts.inSampleSize = 4;
 //                    Bitmap bm = BitmapFactory.decodeFile(path , opts);
