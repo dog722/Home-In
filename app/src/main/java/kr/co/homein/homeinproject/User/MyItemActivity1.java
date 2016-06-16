@@ -70,7 +70,7 @@ public class MyItemActivity1 extends AppCompatActivity {
             public void onItemClick(View view, MyItemListData myItemListData) {
 
                 Intent intent;
-                Toast.makeText(MyItemActivity1.this, "posting_number : " + myItemListData.getPH_number(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MyItemActivity1.this, "posting_number : " + myItemListData.getPH_number(), Toast.LENGTH_SHORT).show();
 
                 intent = new Intent(MyItemActivity1.this, PeopleItemDetailActivity.class);
                 intent.putExtra(PH_NUMBER, myItemListData.getPH_number());

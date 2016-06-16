@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import kr.co.homein.homeinproject.R;
 import kr.co.homein.homeinproject.data.EstimateDetailData;
@@ -61,14 +60,14 @@ public class EstimateRequestActivity3 extends AppCompatActivity {
                     case EditorInfo.IME_ACTION_DONE:
                         edit.setText(edit.getText().toString() + "평");
 
-                        Toast.makeText(getApplicationContext(), "완료", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "완료", Toast.LENGTH_LONG).show();
                         InputMethodManager imm= (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 
                         imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
                         //여기서 검색 키워드 서버에 보내주기
                         break;
                     default:
-                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
                         return false;
                 }
                 return true;

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
@@ -98,9 +99,7 @@ public class HomeInMapActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_map);
 
-
         mAdapter = new ArrayAdapter<AroundOffice>(this, android.R.layout.simple_list_item_1);
-
         intent = getIntent();
         office_number = intent.getStringExtra(OF_NUMBER);
 
@@ -135,13 +134,13 @@ public class HomeInMapActivity extends AppCompatActivity implements
                     outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(500)
                             .strokeWidth(10)
-                            .strokeColor(R.color.homeinColor)
+                            .strokeColor(ContextCompat.getColor(HomeInMapActivity.this, R.color.homeinColor))
                             .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
 
                     inner = mMap.addCircle(new CircleOptions().center( new LatLng(x_current,y_current))
                             .radius(30)
                             .strokeWidth(2)
-                            .strokeColor(R.color.homeinColor)
+                            .strokeColor(ContextCompat.getColor(HomeInMapActivity.this, R.color.homeinColor))
                             .fillColor(R.color.homeinColor));
 
                     moveMap(x_current, y_current, 15f);
@@ -189,7 +188,7 @@ public class HomeInMapActivity extends AppCompatActivity implements
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_SEARCH:
-                        Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
                         search_name = editText.getText().toString();
                         setSearchData();
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -197,7 +196,7 @@ public class HomeInMapActivity extends AppCompatActivity implements
                         //여기서 검색 키워드 서버에 보내주기
                         break;
                     default:
-                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
                         return false;
                 }
                 return true;
@@ -264,7 +263,7 @@ public class HomeInMapActivity extends AppCompatActivity implements
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this, "marker : " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "marker : " + marker.getTitle(), Toast.LENGTH_SHORT).show();
         marker.hideInfoWindow();
     }
 
@@ -341,13 +340,13 @@ public class HomeInMapActivity extends AppCompatActivity implements
             outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                     .radius(500)
                     .strokeWidth(10)
-                    .strokeColor(Color.BLUE)
+                    .strokeColor(ContextCompat.getColor(HomeInMapActivity.this, R.color.homeinColor))
                     .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
 
             inner = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                     .radius(30)
                     .strokeWidth(2)
-                    .strokeColor(Color.BLUE)
+                    .strokeColor(ContextCompat.getColor(HomeInMapActivity.this, R.color.homeinColor))
                     .fillColor(Color.BLUE));
 
 //            mMap.addCircle(new CircleOptions().center(new LatLng(location.getLatitude(), location.getLongitude()))
@@ -426,9 +425,9 @@ public class HomeInMapActivity extends AppCompatActivity implements
             public void onSuccess(Request request, HomeInMapData result) {
 //                mAdapter.set(result);
                 homeInMapData = result;
-                Toast.makeText(HomeInMapActivity.this, "result : " + homeInMapData.getAround_office().size(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomeInMapActivity.this, "result : " + homeInMapData.getAround_office().size(),Toast.LENGTH_SHORT).show();
                 for (int i = 0; i < homeInMapData.getAround_office().size(); i++) {
-                    Toast.makeText(HomeInMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(HomeInMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
                     addMarker(homeInMapData.getAround_office().get(i));
                 }
 
@@ -448,11 +447,11 @@ public class HomeInMapActivity extends AppCompatActivity implements
             public void onSuccess(Request request, SearchMapData result) {
 //                mAdapter.set(result);
                 searchTagData = result;
-                Toast.makeText(HomeInMapActivity.this, "result : " + searchTagData.getAround_office().size(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomeInMapActivity.this, "result : " + searchTagData.getAround_office().size(),Toast.LENGTH_SHORT).show();
 
                 if(searchTagData.getAround_office().get(0).getOffice_name() != null) {
                     for (int i = 0; i < searchTagData.getAround_office().size(); i++) {
-                        Toast.makeText(HomeInMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(HomeInMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
                         addMarker(searchTagData.getAround_office().get(i));
                     }
 

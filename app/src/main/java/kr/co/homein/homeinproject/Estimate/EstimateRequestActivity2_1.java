@@ -45,17 +45,17 @@ public class  EstimateRequestActivity2_1 extends AppCompatActivity {
             if (estimateDetailData.getEstimate_space().equals("주거공간")) {
                 mAdapter.clear();
                 mAdapter.addAll(category1);
-                Toast.makeText(EstimateRequestActivity2_1.this, "주거공간!!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EstimateRequestActivity2_1.this, "주거공간!!", Toast.LENGTH_SHORT).show();
 
             } else if (estimateDetailData.getEstimate_space().equals("상업공간")) {
                 mAdapter.clear();
                 mAdapter.addAll(category2);
-                Toast.makeText(EstimateRequestActivity2_1.this, "상업공!!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EstimateRequestActivity2_1.this, "상업공!!", Toast.LENGTH_SHORT).show();
 
             } else if (estimateDetailData.getEstimate_space().equals("부분시공")) {
                 mAdapter.clear();
                 mAdapter.addAll(category3);
-                Toast.makeText(EstimateRequestActivity2_1.this, "부분시공!!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EstimateRequestActivity2_1.this, "부분시공!!", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -88,7 +88,7 @@ public class  EstimateRequestActivity2_1 extends AppCompatActivity {
 
                     if(resultKeyword != null) {
                         estimateDetailData.setEstimate_sub_space(resultKeyword);
-                        Toast.makeText(EstimateRequestActivity2_1.this, "key 값 : " + resultKeyword, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(EstimateRequestActivity2_1.this, "key 값 : " + resultKeyword, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(EstimateRequestActivity2_1.this, EstimateRequestActivity3.class);
 //                intent.putExtra(ESTIMATE_SUB_SPACE, estimate_sub_space);
                         intent.putExtra(EstimateRequestActivity.ESTIMATE_DATA, estimateDetailData);

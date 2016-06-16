@@ -25,8 +25,7 @@
                 <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/detail_item_dummy"
-                android:scaleType="centerCrop"
+                android:scaleType="fitStart"
                 android:id="@+id/item_image" />
 
                 <ImageButton

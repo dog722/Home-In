@@ -81,7 +81,7 @@ public class SearchTagActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_SEARCH:
-                        Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                         //여기서 검색 키워드 서버에 보내주기
@@ -89,7 +89,7 @@ public class SearchTagActivity extends AppCompatActivity {
                         setData();
                         break;
                     default:
-                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
                         return false;
                 }
                 return true;
@@ -102,7 +102,7 @@ public class SearchTagActivity extends AppCompatActivity {
         NetworkManager.getInstance().getSearchResult(this, tag, new NetworkManager.OnResultListener<SearchListDataResult>() {
             @Override
             public void onSuccess(Request request,SearchListDataResult result) {
-                Toast.makeText(SearchTagActivity.this, " tag:" + tag, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SearchTagActivity.this, " tag:" + tag, Toast.LENGTH_SHORT).show();
 
                 if(result.getSearchData().size() !=0) {
 

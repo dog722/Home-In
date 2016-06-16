@@ -259,7 +259,7 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
                 if(result.getGeneral_picture().size()>0) {
 
                     String path = result.getGeneral_picture().get(0);
-                    Toast.makeText(MyInfoActivity.this, "사진 :" + result.getGeneral_picture().get(0), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MyInfoActivity.this, "사진 :" + result.getGeneral_picture().get(0), Toast.LENGTH_SHORT).show();
                     Glide.with(MyInfoActivity.this).load(path).into(profileImg);
 
                 }
@@ -289,13 +289,13 @@ public class MyInfoActivity extends AppCompatActivity implements OnDismissListen
     public void onClick(View v) {
 
         if(v == editPW) {
-            EditPassWordDialog dialog = new EditPassWordDialog(this);
+            EditPassWordDialog dialog = new EditPassWordDialog();
             dialog.setOnDismissListener(this);
-            dialog.show();
+            dialog.show(getSupportFragmentManager(), "dialog");
         }else if (v == inputAdress){
-            InputAdressDialog dialog = new InputAdressDialog(this);
+            InputAdressDialog dialog = new InputAdressDialog();
             dialog.setOnDismissListener(this);
-            dialog.show();
+            dialog.show(getSupportFragmentManager(), "dialog");
         }
     }
 }

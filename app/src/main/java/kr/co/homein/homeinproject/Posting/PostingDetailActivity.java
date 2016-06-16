@@ -1,17 +1,22 @@
 package kr.co.homein.homeinproject.Posting;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.wefika.flowlayout.FlowLayout;
 
 import java.io.IOException;
@@ -84,7 +89,21 @@ public class PostingDetailActivity extends AppCompatActivity {
                 Toast.makeText(PostingDetailActivity.this, "server connected", Toast.LENGTH_SHORT).show();
 
 
-                Glide.with(imageView.getContext()).load(postingItemData.getPost_picture_content().get(0)).into(imageView);
+                Glide.with(imageView.getContext()).load(postingItemData.getPost_picture_content().get(0))
+                        .asBitmap()
+                        .into(new SimpleTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+
+                                Display display = getWindowManager().getDefaultDisplay();
+                                int width = display.getWidth();
+                                ViewGroup.LayoutParams params = imageView.getLayoutParams();
+                                params.width = width;
+                                params.height = (int)(((float)width) / resource.getWidth() * resource.getHeight());
+                                imageView.setLayoutParams(params);
+                                imageView.setImageBitmap(resource);
+                            }
+                        });
                 webUrl = postingItemData.getPost_website();
 
 

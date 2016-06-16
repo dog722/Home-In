@@ -1,10 +1,12 @@
 package kr.co.homein.homeinproject.Menu;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,32 +22,38 @@ import okhttp3.Request;
 /**
  * Created by seoeunbi on 2016. 5. 25..
  */
-public class EditPassWordDialog extends Dialog {
+public class EditPassWordDialog extends DialogFragment {
 
     EditText inputCurrent, inputNewPw1 ,inputNewPw2;
     Button exit , ok;
     String currentPW, newPW1, newPW2;
     int isSuccess;
 
-    private OnDismissListener _listener ;
-    public EditPassWordDialog(Context context) {
-        super(context);
-    }
+    private Dialog.OnDismissListener _listener ;
+
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.input_pw_view);
-        inputCurrent = (EditText) findViewById(R.id.input_adress);
-        inputNewPw1 = (EditText) findViewById(R.id.new_pw);
-        inputNewPw2 = (EditText) findViewById(R.id.new_pw2);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        int width = getResources().getDimensionPixelSize(R.dimen.input_pw_width);
+        int height = getResources().getDimensionPixelSize(R.dimen.input_pw_height);
+        getDialog().getWindow().setLayout(width, height);
+    }
 
 
 
-        ///여기서 비밀번호 서로 비교해주는 알고리즘 추가하기.
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        exit = (Button)findViewById(R.id.exit);
+        View view = inflater.inflate(R.layout.input_pw_view, container, false);
+        inputCurrent = (EditText) view.findViewById(R.id.input_adress);
+        inputNewPw1 = (EditText) view.findViewById(R.id.new_pw);
+        inputNewPw2 = (EditText) view.findViewById(R.id.new_pw2);
+
+
+        exit = (Button)view.findViewById(R.id.exit);
         exit.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -53,14 +61,14 @@ public class EditPassWordDialog extends Dialog {
                 // TODO Auto-generated method stub
                 if (_listener == null) {
                 } else {
-                    _listener.onDismiss(EditPassWordDialog.this);
+                    _listener.onDismiss(getDialog());
                 }
                 dismiss();
             }
         }) ;
 
 
-        ok = (Button)findViewById(R.id.ok);
+        ok = (Button)view.findViewById(R.id.ok);
         ok.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -68,17 +76,32 @@ public class EditPassWordDialog extends Dialog {
                 // TODO Auto-generated method stub
                 if (_listener == null) {
                 } else {
-                    _listener.onDismiss(EditPassWordDialog.this);
+                    _listener.onDismiss(getDialog());
                 }
                 updatePW();
                 dismiss();
             }
         }) ;
 
+        return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_TITLE, R.style.MyDIalogTheme);
+
+
+
+
+        ///여기서 비밀번호 서로 비교해주는 알고리즘 추가하기.
+
+
+
 
     }
 
-    public void setOnDismissListener( OnDismissListener $listener ) {
+    public void setOnDismissListener( Dialog.OnDismissListener $listener ) {
         _listener = $listener ;
     }
 
@@ -101,10 +124,10 @@ public class EditPassWordDialog extends Dialog {
 //                mAdapter.clear();
 //                wishListData= result;
                 if(result.isResult == 1 ) {
-                    Toast.makeText(getContext(), "비밀번호가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "비밀번호가 수정되었습니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(getContext(), "비밀번호 수정에 실패하였습니다..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "비밀번호 수정에 실패하였습니다..", Toast.LENGTH_SHORT).show();
                 }
 
             }

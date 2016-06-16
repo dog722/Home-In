@@ -159,7 +159,7 @@ public class EstimateRequestActivity5 extends AppCompatActivity implements Dialo
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(EstimateRequestActivity5.this, "general_number : " + estimateDetailData.getGeneral_number(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(EstimateRequestActivity5.this, "general_number : " + estimateDetailData.getGeneral_number(), Toast.LENGTH_SHORT).show();
         senEstimateInfo();
         EstimateRegisterDialog dialog = new EstimateRegisterDialog();
         dialog.setOnDismissListener(this);

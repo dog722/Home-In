@@ -51,7 +51,7 @@ public class MyEstimateListActivity extends AppCompatActivity {
             public void onItemClick(View view, EstimateListData myEstimateItemData) {
                 Intent intent = new Intent(MyEstimateListActivity.this, MyEstimateDetailActivity.class); //내 견적서 문의 상세 페이지로 이동
                 intent.putExtra(GENERAL_ESTIMATE_NUMBER, myEstimateItemData.getGeneral_estimate_number());
-                Toast.makeText(MyEstimateListActivity.this, "general_estimate_number : "+ myEstimateItemData.getGeneral_estimate_number() , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MyEstimateListActivity.this, "general_estimate_number : "+ myEstimateItemData.getGeneral_estimate_number() , Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });

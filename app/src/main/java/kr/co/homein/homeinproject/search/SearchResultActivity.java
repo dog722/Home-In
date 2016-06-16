@@ -110,7 +110,7 @@ public class SearchResultActivity extends AppCompatActivity {
             public void onSuccess(Request request, SearchDetailListResult result) {
 
 
-                Toast.makeText(SearchResultActivity.this, " tag:" + tag, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SearchResultActivity.this, " tag:" + tag, Toast.LENGTH_SHORT).show();
                 peopleItemData =  result.peopleItemData;
                 companyItemData = result.companyItemData;
                 postingItemData = result.postingItemData;

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:layout_height="350dp">
+    android:layout_height="250dp"
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="비밀번호 변경"
+        android:textColor="#01579B"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="40dp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_margin="30dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,7 +28,10 @@
         android:layout_centerHorizontal="true"
         android:autoText="false"
         android:allowUndo="false"
-        android:hint="현재 비밀번호" />
+        android:background="#dcdcdc"
+        android:textColor="#01579B"
+        android:hint="현재 비밀번호"
+        android:layout_marginBottom="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -35,7 +42,10 @@
         android:layout_below="@+id/input_adress"
         android:layout_alignLeft="@+id/input_adress"
         android:layout_alignStart="@+id/input_adress"
-        android:hint="새로운 비밀번호" />
+        android:textColor="#01579B"
+        android:background="#dcdcdc"
+        android:hint="새로운 비밀번호"
+        android:layout_marginBottom="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,23 +56,26 @@
         android:layout_below="@+id/new_pw"
         android:layout_alignLeft="@+id/new_pw"
         android:layout_alignStart="@+id/new_pw"
+        android:textColor="#01579B"
+        android:background="#dcdcdc"
         android:hint="새로운 비밀번호 확인" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="닫기"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/popup_bt1"
         android:id="@+id/exit"
-        android:layout_marginTop="45dp"
         android:layout_below="@+id/new_pw2"
         android:layout_toLeftOf="@+id/ok"
-        android:layout_toStartOf="@+id/ok" />
+        android:layout_toStartOf="@+id/ok"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="적용"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/ok"
+        android:background="@drawable/popup_bt2"
         android:layout_alignTop="@+id/exit"
         android:layout_alignRight="@+id/new_pw2"
         android:layout_alignEnd="@+id/new_pw2" />

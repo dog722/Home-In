@@ -71,7 +71,7 @@ public class WishListActivity2 extends AppCompatActivity {
             public void onItemClick(View view, WishListData wishListData) {
 
                 Intent intent;
-                Toast.makeText(WishListActivity2.this, "posting_number : "+ wishListData.getPosting_number(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(WishListActivity2.this, "posting_number : "+ wishListData.getPosting_number(), Toast.LENGTH_SHORT).show();
 
                 //피플 홈인
                 if(wishListData.getCategory_number() == 1){

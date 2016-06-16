@@ -11,6 +11,15 @@ public class EstimateListData {
     String general_estimate_number;
     String interior_info_content;
     List<String> interior_picture ;
+    String estimate_regdate;
+
+    public String getEstimate_regdate() {
+        return estimate_regdate;
+    }
+
+    public void setEstimate_regdate(String estimate_regdate) {
+        this.estimate_regdate = estimate_regdate;
+    }
 
     public String get_id() {
         return _id;

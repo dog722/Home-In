@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
@@ -138,14 +139,14 @@ public class CompanyMapActivity extends AppCompatActivity implements
                     outer = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(500)
                             .strokeWidth(10)
-                            .strokeColor(R.color.homeinColor)
+                            .strokeColor(ContextCompat.getColor(CompanyMapActivity.this, R.color.homeinColor))
                             .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
 
                     inner = mMap.addCircle(new CircleOptions().center(new LatLng(x_current, y_current))
                             .radius(30)
                             .strokeWidth(2)
-                            .strokeColor(R.color.homeinColor)
-                            .fillColor(R.color.homeinColor));
+                            .strokeColor(ContextCompat.getColor(CompanyMapActivity.this, R.color.homeinColor))
+                            .fillColor(Color.argb(0x40, 0, 0, 0xff))); // ff면 불투명 , 00은 투명
 
                     moveMap(x_current, y_current, 15f);
                 } else if (isPushed == 1) {
@@ -192,7 +193,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_SEARCH:
-                        Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "검색", Toast.LENGTH_LONG).show();
                         search_name = editText.getText().toString();
                         setSearchData();
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -200,7 +201,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
                         //여기서 검색 키워드 서버에 보내주기
                         break;
                     default:
-                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
                         return false;
                 }
                 return true;
@@ -253,7 +254,7 @@ public class CompanyMapActivity extends AppCompatActivity implements
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this, "marker : " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "marker : " + marker.getTitle(), Toast.LENGTH_SHORT).show();
         marker.hideInfoWindow();
     }
 
@@ -406,11 +407,11 @@ public class CompanyMapActivity extends AppCompatActivity implements
 //                mAdapter.set(result);
                 searchTagData = result;
 
-                Toast.makeText(CompanyMapActivity.this, "result : " + searchTagData.getAround_office().size(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(CompanyMapActivity.this, "result : " + searchTagData.getAround_office().size(), Toast.LENGTH_SHORT).show();
 
                 if(searchTagData.getAround_office().get(0).getOffice_name() != null) {
                     for (int i = 0; i < searchTagData.getAround_office().size(); i++) {
-                        Toast.makeText(CompanyMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(CompanyMapActivity.this, "size :" + i, Toast.LENGTH_SHORT).show();
                         addMarker2(searchTagData.getAround_office().get(i));
                     }
 

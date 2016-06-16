@@ -11,6 +11,12 @@
     <dimen name="register_dialog_width">250dp</dimen>
     <dimen name="register_dialog_Height">190dp</dimen>
 
+    <dimen name="input_pw_width">300dp</dimen>
+    <dimen name="input_pw_height">250dp</dimen>
+
+    <dimen name="input_add_width">250dp</dimen>
+    <dimen name="input_add_height">190dp</dimen>
+
 
     <dimen name="inputtag_dialog_width">250dp</dimen>
     <dimen name="inputtag_dialog_Height">140dp</dimen>

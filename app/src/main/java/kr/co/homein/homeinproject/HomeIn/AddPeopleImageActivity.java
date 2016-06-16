@@ -127,14 +127,14 @@ public class AddPeopleImageActivity extends AppCompatActivity implements OnDismi
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_NEXT:
-                        Toast.makeText(getApplicationContext(), "다음", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "다음", Toast.LENGTH_LONG).show();
                         //키보드 내리기
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(inputComment.getWindowToken(), 0);
 
                         break;
                     default:
-                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "기본", Toast.LENGTH_LONG).show();
                         return false;
                 }
                 return true;

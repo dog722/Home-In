@@ -53,7 +53,7 @@ public class CompanyInfoFragment extends Fragment {
         companyInfoData = new CompanyInfoData();
 //        Bundle extra = getArguments();
         officeNumber = ((CompanyInfoActivity)getActivity()).getOfficeNumber();
-        Toast.makeText(getContext(), "officeNumber : "+ officeNumber, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "officeNumber : "+ officeNumber, Toast.LENGTH_SHORT).show();
 
         setData();
     }

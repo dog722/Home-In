@@ -68,7 +68,7 @@ public class PeopleItemDetailActivity extends AppCompatActivity {
         });
 
 
-        Toast.makeText(PeopleItemDetailActivity.this, PH_number + "", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(PeopleItemDetailActivity.this, PH_number + "", Toast.LENGTH_SHORT).show();
 
         backKey = (ImageButton) findViewById(R.id.back_key);
         backKey.setOnClickListener(new View.OnClickListener() {

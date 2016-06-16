@@ -66,11 +66,11 @@ public class WishListActivity extends AppCompatActivity {
                 for (int index = 0; index < array.size(); index++) {
                     int position = array.keyAt(index);
                     if (array.get(position)) {
-                        Toast.makeText(WishListActivity.this, "position : "+ mAdapter.getWishListdata(position).getPosting_number(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(WishListActivity.this, "position : "+ mAdapter.getWishListdata(position).getPosting_number(), Toast.LENGTH_SHORT).show();
                         select.add(mAdapter.getWishListdata(position).getPosting_number());
                     }
                 }
-                Toast.makeText(WishListActivity.this, "delete바로전 ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(WishListActivity.this, "delete바로전 ", Toast.LENGTH_SHORT).show();
 
 
                 if(select.size() != 0) {
@@ -93,7 +93,7 @@ public class WishListActivity extends AppCompatActivity {
 
     private void deleteWishList(List<String> select) {
 
-        Toast.makeText(WishListActivity.this, "select 첫 원소 : +" + select.get(0), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(WishListActivity.this, "select 첫 원소 : +" + select.get(0), Toast.LENGTH_SHORT).show();
 
             /////여기다가 삭제 구현!
         NetworkManager.getInstance().deleteMyWishList(this, PropertyManager.getInstance().getGeneralNumber(), select, new NetworkManager.OnResultListener<WishListResult>() {

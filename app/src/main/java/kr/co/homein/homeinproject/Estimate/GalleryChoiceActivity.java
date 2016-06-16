@@ -17,7 +17,6 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -47,7 +46,7 @@ public class GalleryChoiceActivity extends AppCompatActivity implements LoaderMa
         setContentView(R.layout.activity_gallery_choice);
 
 
-        Toast.makeText(GalleryChoiceActivity.this, "갤러리로 이동", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(GalleryChoiceActivity.this, "갤러리로 이동", Toast.LENGTH_SHORT).show();
 
         gridView = (GridView) findViewById(R.id.grid_view);
         btn = (ImageButton) findViewById(R.id.upload_btn);

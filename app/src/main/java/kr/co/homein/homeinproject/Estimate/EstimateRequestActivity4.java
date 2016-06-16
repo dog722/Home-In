@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,7 +56,7 @@ public class EstimateRequestActivity4 extends AppCompatActivity {
         uploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(EstimateRequestActivity4.this, "업로드 버튼 누르기 전 ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EstimateRequestActivity4.this, "업로드 버튼 누르기 전 ", Toast.LENGTH_SHORT).show();
                 startActivityForResult(new Intent(EstimateRequestActivity4.this , GalleryChoiceActivity.class), REQUEST_IMAGE_CHOICE);
             }
         });
